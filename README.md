@@ -1,7 +1,3 @@
-webQd
-=====
-
-web前端面试相关的知识点
 #2014年最新前端开发面试题（题目列表+答案 完整版）
 
 
@@ -38,40 +34,38 @@ web前端面试相关的知识点
 **前端开发面试知识点大纲：**
 
 	HTML&CSS：
-		对Web标准的理解、浏览器内核差异、兼容性、hack、CSS基本功：布局、盒子模型、选择器优先级及使用、HTML5、CSS3、移动端适应 
-
+	对Web标准的理解、浏览器内核差异、兼容性、hack、CSS基本功：布局、盒子模型、选择器优先级及使用、HTML5、CSS3、移动端适应 
+	
 	JavaScript：  
-        数据类型、面向对象、继承、闭包、插件、作用域、跨域、原型链、模块化、自定义事件、内存泄漏、事件机制、异步装载回调、模板引擎、Nodejs、JSON、ajax等。
-
+	数据类型、面向对象、继承、闭包、插件、作用域、跨域、原型链、模块化、自定义事件、内存泄漏、事件机制、异步装载回调、模板引擎、Nodejs、JSON、ajax等。
+	
 	其他：
-       HTTP、安全、正则、优化、重构、响应式、移动端、团队协作、可维护、SEO、UED、架构、职业生涯 
+	HTTP、安全、正则、优化、重构、响应式、移动端、团队协作、可维护、SEO、UED、架构、职业生涯 
 
 作为一名前端工程师，**无论工作年头长短都应该必须掌握的知识点**：
 
 此条由 王子墨 发表在 [前端随笔](http://julying.com/blog/front-end-engineers-must-master-knowledge/) 
    
-		1、DOM结构 —— 两个节点之间可能存在哪些关系以及如何在节点之间任意移动。
-		
-		2、DOM操作  ——如何添加、移除、移动、复制、创建和查找节点等。
-		
-		3、事件    —— 如何使用事件，以及IE和标准DOM事件模型之间存在的差别。
-		
-		4、XMLHttpRequest —— 这是什么、怎样完整地执行一次GET请求、怎样检测错误。
-		
-		5、严格模式与混杂模式 —— 如何触发这两种模式，区分它们有何意义。
-		
-		6、盒模型 —— 外边距、内边距和边框之间的关系，及IE8以下版本的浏览器中的盒模型
-		
-		7、块级元素与行内元素 —— 怎么用CSS控制它们、以及如何合理的使用它们
-		
-		8、浮动元素——怎么使用它们、它们有什么问题以及怎么解决这些问题。
-		
-		9、HTML与XHTML——二者有什么区别，你觉得应该使用哪一个并说出理由。
-		
-		10、JSON  —— 作用、用途、设计结构。
+	1、DOM结构 —— 两个节点之间可能存在哪些关系以及如何在节点之间任意移动。
+	
+	2、DOM操作  ——如何添加、移除、移动、复制、创建和查找节点等。
+	
+	3、事件    —— 如何使用事件，以及IE和标准DOM事件模型之间存在的差别。
+	
+	4、XMLHttpRequest —— 这是什么、怎样完整地执行一次GET请求、怎样检测错误。
+	
+	5、严格模式与混杂模式 —— 如何触发这两种模式，区分它们有何意义。
+	
+	6、盒模型 —— 外边距、内边距和边框之间的关系，及IE8以下版本的浏览器中的盒模型
+	
+	7、块级元素与行内元素 —— 怎么用CSS控制它们、以及如何合理的使用它们
+	
+	8、浮动元素——怎么使用它们、它们有什么问题以及怎么解决这些问题。
+	
+	9、HTML与XHTML——二者有什么区别，你觉得应该使用哪一个并说出理由。
+	
+	10、JSON  —— 作用、用途、设计结构。
 			
-
-
 
 **备注：** 
 
@@ -86,86 +80,86 @@ web前端面试相关的知识点
 
 - Doctype作用? 严格模式与混杂模式如何区分？它们有何意义? 
 
-		（1）、<!DOCTYPE> 声明位于文档中的最前面，处于 <html> 标签之前。告知浏览器的解析器，
-              用什么文档类型 规范来解析这个文档。 
-		
-		（2）、严格模式的排版和 JS 运作模式是  以该浏览器支持的最高标准运行。
-		
-		（3）、在混杂模式中，页面以宽松的向后兼容的方式显示。模拟老式浏览器的行为以防止站点无法工作。
-		
-		（4）、DOCTYPE不存在或格式不正确会导致文档以混杂模式呈现。
+	（1）、<!DOCTYPE> 声明位于文档中的最前面，处于 <html> 标签之前。告知浏览器的解析器，
+      用什么文档类型 规范来解析这个文档。 
+	
+	（2）、严格模式的排版和 JS 运作模式是  以该浏览器支持的最高标准运行。
+	
+	（3）、在混杂模式中，页面以宽松的向后兼容的方式显示。模拟老式浏览器的行为以防止站点无法工作。
+	
+	（4）、DOCTYPE不存在或格式不正确会导致文档以混杂模式呈现。
 
 - 行内元素有哪些？块级元素有哪些？ 空(void)元素有那些？
 
-		（1）CSS规范规定，每个元素都有display属性，确定该元素的类型，每个元素都有默认的display值，
-		  比如div默认display属性值为“block”，成为“块级”元素；
-		  span默认display属性值为“inline”，是“行内”元素。  
+	（1）CSS规范规定，每个元素都有display属性，确定该元素的类型，每个元素都有默认的display值，
+	  比如div默认display属性值为“block”，成为“块级”元素；
+	  span默认display属性值为“inline”，是“行内”元素。  
 
-		（2）行内元素有：a b span img input select strong（强调的语气） 
-		 块级元素有：div ul ol li dl dt dd h1 h2 h3 h4…p  
-	
-		（3）知名的空元素： 
-		<br> <hr> <img> <input> <link> <meta> 
-		鲜为人知的是： 
-		<area> <base> <col> <command> <embed> <keygen> <param> <source> <track> <wbr>
+	（2）行内元素有：a b span img input select strong（强调的语气） 
+	 块级元素有：div ul ol li dl dt dd h1 h2 h3 h4…p  
+
+	（3）知名的空元素： 
+	<br> <hr> <img> <input> <link> <meta> 
+	鲜为人知的是： 
+	<area> <base> <col> <command> <embed> <keygen> <param> <source> <track> <wbr>
 
 
 - link 和@import 的区别是？
 
 	
-		（1）link属于XHTML标签，而@import是CSS提供的;
+	（1）link属于XHTML标签，而@import是CSS提供的;
 
-		（2）页面被加载的时，link会同时被加载，而@import引用的CSS会等到页面被加载完再加载;
+	（2）页面被加载的时，link会同时被加载，而@import引用的CSS会等到页面被加载完再加载;
 
-		（3）import只在IE5以上才能识别，而link是XHTML标签，无兼容问题;
+	（3）import只在IE5以上才能识别，而link是XHTML标签，无兼容问题;
 
-		（4）link方式的样式的权重 高于@import的权重.	
+	（4）link方式的样式的权重 高于@import的权重.	
 
 - 浏览器的内核分别是什么?
 	
-	     * IE浏览器的内核Trident、Mozilla的Gecko、Chrome的Blink（WebKit的分支）、Opera内核原为Presto，现为Blink；
+     * IE浏览器的内核Trident、Mozilla的Gecko、Chrome的Blink（WebKit的分支）、Opera内核原为Presto，现为Blink；
 
 
 - 常见兼容性问题？
 
-	    * png24位的图片在iE6浏览器上出现背景，解决方案是做成PNG8.
+    * png24位的图片在iE6浏览器上出现背景，解决方案是做成PNG8.
 	
-		* 浏览器默认的margin和padding不同。解决方案是加一个全局的*{margin:0;padding:0;}来统一。
-		 
-		* IE6双边距bug:块属性标签float后，又有横行的margin情况下，在ie6显示margin比设置的大。 
-	       
-		  浮动ie产生的双倍距离 #box{ float:left; width:10px; margin:0 0 0 100px;} 
-	    
-	     这种情况之下IE会产生20px的距离，解决方案是在float的标签样式控制中加入 ——_display:inline;将其转化为行内属性。(_这个符号只有ie6会识别)
-	
-		  渐进识别的方式，从总体中逐渐排除局部。 
-	  
-		  首先，巧妙的使用“\9”这一标记，将IE游览器从所有情况中分离出来。 
-		  接着，再次使用“+”将IE8和IE7、IE6分离开来，这样IE8已经独立识别。
-         
-          css
-	          .bb{
-	           background-color:#f1ee18;/*所有识别*/
-	          .background-color:#00deff\9; /*IE6、7、8识别*/
-	          +background-color:#a200ff;/*IE6、7识别*/
-	          _background-color:#1e0bd1;/*IE6识别*/ 
-	          } 
-  
-		*  IE下,可以使用获取常规属性的方法来获取自定义属性,
-		   也可以使用getAttribute()获取自定义属性;
-           Firefox下,只能使用getAttribute()获取自定义属性. 
-           解决方法:统一通过getAttribute()获取自定义属性.
-          
-		* IE下,even对象有x,y属性,但是没有pageX,pageY属性; 
-          Firefox下,event对象有pageX,pageY属性,但是没有x,y属性.
-		  
-		* 解决方法：（条件注释）缺点是在IE浏览器下可能会增加额外的HTTP请求数。
-		
-		* Chrome 中文界面下默认会将小于 12px 的文本强制按照 12px 显示, 
-		  可通过加入 CSS 属性 -webkit-text-size-adjust: none; 解决.
+	* 浏览器默认的margin和padding不同。解决方案是加一个全局的*{margin:0;padding:0;}来统一。
+	 
+	* IE6双边距bug:块属性标签float后，又有横行的margin情况下，在ie6显示margin比设置的大。 
+       
+	  浮动ie产生的双倍距离 #box{ float:left; width:10px; margin:0 0 0 100px;} 
+    
+     这种情况之下IE会产生20px的距离，解决方案是在float的标签样式控制中加入 ——_display:inline;将其转化为行内属性。(_这个符号只有ie6会识别)
 
-		超链接访问过后hover样式就不出现了 被点击访问过的超链接样式不在具有hover和active了解决方法是改变CSS属性的排列顺序:
-	    L-V-H-A :  a:link {} a:visited {} a:hover {} a:active {}
+	  渐进识别的方式，从总体中逐渐排除局部。 
+  
+	  首先，巧妙的使用“\9”这一标记，将IE游览器从所有情况中分离出来。 
+	  接着，再次使用“+”将IE8和IE7、IE6分离开来，这样IE8已经独立识别。
+ 
+  css
+          .bb{
+           background-color:#f1ee18;/*所有识别*/
+          .background-color:#00deff\9; /*IE6、7、8识别*/
+          +background-color:#a200ff;/*IE6、7识别*/
+          _background-color:#1e0bd1;/*IE6识别*/ 
+          } 
+
+	*  IE下,可以使用获取常规属性的方法来获取自定义属性,
+	   也可以使用getAttribute()获取自定义属性;
+   Firefox下,只能使用getAttribute()获取自定义属性. 
+   解决方法:统一通过getAttribute()获取自定义属性.
+  
+	* IE下,even对象有x,y属性,但是没有pageX,pageY属性; 
+  Firefox下,event对象有pageX,pageY属性,但是没有x,y属性.
+	  
+	* 解决方法：（条件注释）缺点是在IE浏览器下可能会增加额外的HTTP请求数。
+	
+	* Chrome 中文界面下默认会将小于 12px 的文本强制按照 12px 显示, 
+	  可通过加入 CSS 属性 -webkit-text-size-adjust: none; 解决.
+
+	超链接访问过后hover样式就不出现了 被点击访问过的超链接样式不在具有hover和active了解决方法是改变CSS属性的排列顺序:
+    L-V-H-A :  a:link {} a:visited {} a:hover {} a:active {}
 
 
 
@@ -173,22 +167,22 @@ web前端面试相关的知识点
 HTML5？
 	
 	
-		* HTML5 现在已经不是 SGML 的子集，主要是关于图像，位置，存储，多任务等功能的增加。
-
-		* 绘画 canvas  
-		  用于媒介回放的 video 和 audio 元素 
-		  本地离线存储 localStorage 长期存储数据，浏览器关闭后数据不丢失；
-          sessionStorage 的数据在浏览器关闭后自动删除
-		  
-		  语意化更好的内容元素，比如 article、footer、header、nav、section 
-		  表单控件，calendar、date、time、email、url、search  
-		  新的技术webworker, websockt, Geolocation
-
-		* 移除的元素
-		
-		纯表现的元素：basefont，big，center，font, s，strike，tt，u；
-		
-		对可用性产生负面影响的元素：frame，frameset，noframes；
+	* HTML5 现在已经不是 SGML 的子集，主要是关于图像，位置，存储，多任务等功能的增加。
+	
+	* 绘画 canvas  
+	  用于媒介回放的 video 和 audio 元素 
+	  本地离线存储 localStorage 长期存储数据，浏览器关闭后数据不丢失；
+	sessionStorage 的数据在浏览器关闭后自动删除
+	  
+	  语意化更好的内容元素，比如 article、footer、header、nav、section 
+	  表单控件，calendar、date、time、email、url、search  
+	  新的技术webworker, websockt, Geolocation
+	
+	* 移除的元素
+	
+	纯表现的元素：basefont，big，center，font, s，strike，tt，u；
+	
+	对可用性产生负面影响的元素：frame，frameset，noframes；
 
 	    支持HTML5新标签：
 		
