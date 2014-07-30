@@ -34,10 +34,12 @@
 **前端开发面试知识点大纲：**
 
 	HTML&CSS：
-	对Web标准的理解、浏览器内核差异、兼容性、hack、CSS基本功：布局、盒子模型、选择器优先级及使用、HTML5、CSS3、移动端适应 
+	对Web标准的理解、浏览器内核差异、兼容性、hack、CSS基本功：布局、盒子模型、
+	选择器优先级及使用、HTML5、CSS3、移动端适应 
 	
 	JavaScript：  
-	数据类型、面向对象、继承、闭包、插件、作用域、跨域、原型链、模块化、自定义事件、内存泄漏、事件机制、异步装载回调、模板引擎、Nodejs、JSON、ajax等。
+	数据类型、面向对象、继承、闭包、插件、作用域、跨域、原型链、模块化、自定义事件、
+	内存泄漏、事件机制、异步装载回调、模板引擎、Nodejs、JSON、ajax等。
 	
 	其他：
 	HTTP、安全、正则、优化、重构、响应式、移动端、团队协作、可维护、SEO、UED、架构、职业生涯 
@@ -80,40 +82,40 @@
 
 - Doctype作用? 严格模式与混杂模式如何区分？它们有何意义? 
 
-	（1）、<!DOCTYPE> 声明位于文档中的最前面，处于 <html> 标签之前。告知浏览器的解析器，
-      用什么文档类型 规范来解析这个文档。 
-	
-	（2）、严格模式的排版和 JS 运作模式是  以该浏览器支持的最高标准运行。
-	
-	（3）、在混杂模式中，页面以宽松的向后兼容的方式显示。模拟老式浏览器的行为以防止站点无法工作。
-	
-	（4）、DOCTYPE不存在或格式不正确会导致文档以混杂模式呈现。
+        （1）、<!DOCTYPE> 声明位于文档中的最前面，处于 <html> 标签之前。告知浏览器的解析器，
+              用什么文档类型 规范来解析这个文档。 
+        	
+        （2）、严格模式的排版和 JS 运作模式是  以该浏览器支持的最高标准运行。
+        	
+        （3）、在混杂模式中，页面以宽松的向后兼容的方式显示。模拟老式浏览器的行为以防止站点无法工作。
+        	
+        （4）、DOCTYPE不存在或格式不正确会导致文档以混杂模式呈现。
 
 - 行内元素有哪些？块级元素有哪些？ 空(void)元素有那些？
 
-	（1）CSS规范规定，每个元素都有display属性，确定该元素的类型，每个元素都有默认的display值，
-	  比如div默认display属性值为“block”，成为“块级”元素；
-	  span默认display属性值为“inline”，是“行内”元素。  
-
-	（2）行内元素有：a b span img input select strong（强调的语气） 
-	 块级元素有：div ul ol li dl dt dd h1 h2 h3 h4…p  
-
-	（3）知名的空元素： 
-	<br> <hr> <img> <input> <link> <meta> 
-	鲜为人知的是： 
-	<area> <base> <col> <command> <embed> <keygen> <param> <source> <track> <wbr>
+        （1）CSS规范规定，每个元素都有display属性，确定该元素的类型，每个元素都有默认的display值，
+          比如div默认display属性值为“block”，成为“块级”元素；
+          span默认display属性值为“inline”，是“行内”元素。  
+        
+        （2）行内元素有：a b span img input select strong（强调的语气） 
+         块级元素有：div ul ol li dl dt dd h1 h2 h3 h4…p  
+                
+        （3）知名的空元素： 
+        <br> <hr> <img> <input> <link> <meta> 
+        鲜为人知的是： 
+        <area> <base> <col> <command> <embed> <keygen> <param> <source> <track> <wbr>
 
 
 - link 和@import 的区别是？
 
 	
-	（1）link属于XHTML标签，而@import是CSS提供的;
-
-	（2）页面被加载的时，link会同时被加载，而@import引用的CSS会等到页面被加载完再加载;
-
-	（3）import只在IE5以上才能识别，而link是XHTML标签，无兼容问题;
-
-	（4）link方式的样式的权重 高于@import的权重.	
+        （1）link属于XHTML标签，而@import是CSS提供的;
+        
+        （2）页面被加载的时，link会同时被加载，而@import引用的CSS会等到页面被加载完再加载;
+        
+        （3）import只在IE5以上才能识别，而link是XHTML标签，无兼容问题;
+        
+        （4）link方式的样式的权重 高于@import的权重.	
 
 - 浏览器的内核分别是什么?
 	
