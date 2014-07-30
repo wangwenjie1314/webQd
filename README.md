@@ -3,16 +3,16 @@
 
 ## <a name='list'>目录</a>
 
-  1. [前言](#preface)
-  1. [HTML 部分](#html)
-  1. [CSS  部分](#css)
-  1. [JavaScript 部分](#js)
-  1. [其他问题](#other) 
-  1. [优质网站推荐](#web) 
+  1. [前言](#user-content-preface)
+  1. [HTML 部分](#user-content-html)
+  1. [CSS  部分](#user-content-css)
+  1. [JavaScript 部分](#user-content-js)
+  1. [其他问题](#user-content-other) 
+  1. [优质网站推荐](#user-content-web) 
  
  
 
-## <a name='preface'>前言</a> ##
+## <a name='preface' id='preface'>前言</a> ##
 
 本文总结了一些优质的前端面试题（多数源于网络），初学者阅后也要用心钻研其中的原理，重要知识需要系统学习，透彻学习，形成自己的知识链。万不可投机取巧，只求面试过关是错误的！
 
