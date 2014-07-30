@@ -1,4 +1,4 @@
-#2014年最新前端开发面试题（题目列表+答案 完整版）
+#2014年最新前端开发面试题（题目列表+答案 完整版）转自markyun
 
 
 ## <a name='list'>目录</a>
@@ -219,6 +219,18 @@
         <br> <hr> <img> <input> <link> <meta> 
         鲜为人知的是： 
         <area> <base> <col> <command> <embed> <keygen> <param> <source> <track> <wbr>
+
+- 请问css中的区块 inline inline-block block 三者有什么区别呢？
+
+		这样先讲内联元素和块级元素：
+		内联元素是不可以控制宽和高、margin等；并且在同一行显示，不换行。
+		块级元素时可以控制宽和高、margin等，并且会换行。
+		
+		inline：使用此属性后，元素会被显示为内联元素，元素则不会换行。
+		block：使用此属性后，元素会被现实为块级元素，元素会进行换行。
+		inline-block：是使元素以块级元素的形式呈现在行内。意思就是说，让这个元素显示在同一行不换行，但是又可以控制高度和宽度，这相当于内联元素的增强。
+		
+		要注意的是IE6 不支持inline-block
 
 
 - link 和@import 的区别是？
@@ -544,12 +556,41 @@ HTML5？
 
 -  JavaScript原型，原型链 ? 有什么特点？
 
+* 什么是原型：
+		每一个对象都有原型，使用 __proto__ 标记，原型是一个对象的引用或 null（ Object.prototype 的原型为 null ），允许对象使用其原型所引用的对象中的变量。
+		var fun = function(){}
+		fun.prototype.a = 1;
+		var obj = new fun();
+		obj.a; //1
+* 原型的来源：
+		对象的原型来自其构造函数的原型属性（用 prototype 标记）的引用。注意原型与原型属性是两个概念。
+		    Function 为实例（ function ）定义了原型属性，其中包含一个构造函数（默认是 function 对象自己，用于构造 function 自己的实例），因此所有 function 都有原型属性。
+		Function 将自己的的原型属性的引用作为function 的原型。 new 一个 function ，function 的实例便有了原型，指向 function 的原型属性。
+		
+		var fun = function(){
+		    this.a= 1;
+		}
+		fun.prototype.b = 2;
+		var obj = new fun();
+		console.log(obj.a+"---"+obj.b);
+* 原型的作用
+		继承。
+		    如：
+		var fun = function(){}
+		fun.prototype = String.prototype;
+		new fun().split //function split() {[native code]}
+* 原型链：
+		通过自己的原型并向上寻找直到Object.prototype.__proto__; 这条链就是原型链。
+
+
 -  eval是做什么的？ 
 
 		它的功能是把对应的字符串解析成JS代码并运行；
 		应该避免使用eval，不安全，非常耗性能（2次，一次解析成js语句，一次执行）。
 
 -  null，undefined 的区别？
+		前者的意思是javascript解释器不知道这是什麽东西,会抛出"未定义"的错误
+		後者的意思是你定义了它,但它没有分配内存空间,无心肝不痛,不会抛出错误.
 
 -  写一个通用的事件侦听器函数。
 
@@ -644,6 +685,20 @@ HTML5？
 -  Javascript如何实现继承？
 
 		通过原型和构造器
+		我觉得是类继续与原型链继承
+		
+		原型链：每个函数都有自己的原型（prototype）属性，这个属性其实是隐藏对象，通过对这个对象的操作，
+		子类可以同样持有这个对象的引用，间隔实现继承，这个的好处是大大节省了空间，
+		因为下面的子类不用重新去实例化父类定义的属性和方法，而直接引用原型链上的属性与方法，
+		也就是说父类的原型链上定义了一个方法，当子类无论实例化多少次时，并没有实例化原型链上内容，
+		而是共同享有同一个属性与方法。JavaScript原型继承（对象间的继承）
+		
+		类继承：在函数内部定义自身的属性的方法，子类继续时，用call或apply实现对象冒充，
+		把类型定义的东西都复制过来，这样的继承子类与父类并没有多少关联，不互相影响，
+		有利于保护自身的一些私有属性。JavaScript类继承（构造函数间的继承）
+		
+		
+		不过在实际中，肯定是这两种混合使用的
 	
 -  ["1", "2", "3"].map(parseInt) 答案是多少？
 
@@ -674,7 +729,7 @@ HTML5？
 
 -  什么是闭包（closure），为什么要用它？
 
-
+		就是一个函数里面又套有子函数，在这个函数里面声明的变量可以直接在子函数里面使用而不用再声明
 		执行say667()后,say667()闭包内部变量会存在,而闭包内部函数的内部变量不会存在.
 		使得Javascript的垃圾回收机制GC不会收回say667()所占用的资源，
 		因为say667()的内部函数的执行需要依赖say667()中的变量。这是对闭包作用的非常直白的描述.
@@ -695,19 +750,17 @@ HTML5？
 
 -  如何判断一个对象是否属于某个类？
 
-
+		使用instanceof （待完善）
 		
- 		  使用instanceof （待完善）
-
-	       if(a instanceof Person){
-	           alert('yes');
-	       }
+		if(a instanceof Person){
+		   alert('yes');
+		}
 -  new操作符具体干了什么呢?
 
-			 1、创建一个空对象，并且 this 变量引用该对象，同时还继承了该函数的原型。
-	  	  	 2、属性和方法被加入到 this 引用的对象中。
-	 		 3、新创建的对象由 this 所引用，并且最后隐式的返回 this 。
-		    
+		1、创建一个空对象，并且 this 变量引用该对象，同时还继承了该函数的原型。
+		2、属性和方法被加入到 this 引用的对象中。
+		3、新创建的对象由 this 所引用，并且最后隐式的返回 this 。
+		
 		var obj  = {};
 		obj.__proto__ = Base.prototype;
 		Base.call(obj); 
@@ -729,30 +782,48 @@ HTML5？
 		
 -  ajax 是什么? 
 
+		Ajax允许JavaScript可以发送HTTP请求和响应HTTP响应，依赖来浏览器的实现。
+		交互模式： 建立XHR对象， 定义回调处理函数，发送HTTP请求（Get 和 Post 方式），完成HTTP响应后执行回调函数。
+-  GET POST 区别
+
+		1. get是从服务器上获取数据，post是向服务器传送数据。
+		2. get是把参数数据队列加到提交表单的ACTION属性所指的URL中，值和表单内各个字段一一对应，在URL中可以看到。post是通过HTTP post机制，将表单内各个字段与其内容放置在HTML HEADER内一起传送到ACTION属性所指的URL地址。用户看不到这个过程。
+		3. 对于get方式，服务器端用Request.QueryString获取变量的值，对于post方式，服务器端用Request.Form获取提交的数据。
+		4. get传送的数据量较小，不能大于2KB。post传送的数据量较大，一般被默认为不受限制。但理论上，IIS4中最大量为80KB，IIS5中为100KB。
+		5. get安全性非常低，post安全性较高。但是执行效率却比Post方法好。 
+		
+		建议：
+		1、get方式的安全性较Post方式要差些，包含机密信息的话，建议用Post数据提交方式；
+		2、在做数据查询时，建议用Get方式；而在做数据添加、修改或删除时，建议用Post方式；
+
 -  同步和异步的区别?
 
+		同步需要等待返回结果才能继续，异步不必等待，一般需要监听异步的结果
+		同步是在一条直线上的队列，异步不在一个队列上 各走各的
+		
 -  如何解决跨域问题?
 	 
 		jsonp、 iframe、window.name、window.postMessage、服务器上设置代理页面
+		(1) iframe  (2) 动态创建script标签 （3）JSONP （4）crox
+
 -  模块化怎么做？
 
 
+		[ 立即执行函数](http://benalman.com/news/2010/11/immediately-invoked-function-expression/),不暴露私有成员
 		
-	 [ 立即执行函数](http://benalman.com/news/2010/11/immediately-invoked-function-expression/),不暴露私有成员
-		
-		    var module1 = (function(){
-		    　　　　var _count = 0;
-		    　　　　var m1 = function(){
-		    　　　　　　//...
-		    　　　　};
-		    　　　　var m2 = function(){
-		    　　　　　　//...
-		    　　　　};
-		    　　　　return {
-		    　　　　　　m1 : m1,
-		    　　　　　　m2 : m2
-		    　　　　};
-		    　　})(); 
+		var module1 = (function(){
+		　　　　var _count = 0;
+		　　　　var m1 = function(){
+		　　　　　　//...
+		　　　　};
+		　　　　var m2 = function(){
+		　　　　　　//...
+		　　　　};
+		　　　　return {
+		　　　　　　m1 : m1,
+		　　　　　　m2 : m2
+		　　　　};
+		　　})(); 
 
 -  AMD（Modules/Asynchronous-Definition）、CMD（Common Module Definition）规范区别？
 
@@ -908,6 +979,14 @@ jQuery中没有提供这个功能，所以你需要先编写两个jQuery的扩�
 		300-399 用于已经移动的文件并且常被包含在定位头信息中指定新的地址信息。 
 		400-499 用于指出客户端的错误。400	1、语义有误，当前请求无法被服务器理解。401	当前请求需要用户验证 403	服务器已经理解请求，但是拒绝执行它。
 		500-599 用于支持服务器错误。 503 – 服务不可用
+		
+		HTTP协议的状态消息都有哪些?
+“200〃 : OK（成功） 一切正常
+“302〃 : Found（临时移动）类似于301，但新的URL应该被视为临时性的替代，而不是永久性的。
+“400〃 : Bad Request（错误请求）请求出现语法错误。
+“404〃 : Not Found（未找到）无法找到指定位置的资源。 
+“500〃 : Internal Server Error（服务器内部错误）服务器遇到错误，无法完成请求。
+“502〃 : Bad Gateway（错误网关）服务器作为网关或者代理时，为了完成请求访问下一个服务器，但该服务器返回了非法的应答。
 
 - 一个页面从输入 URL 到页面加载显示完成，这个过程中都发生了什么？（流程说的越详细越好）
 
