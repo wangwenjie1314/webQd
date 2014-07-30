@@ -248,7 +248,8 @@
 		
 		  浮动ie产生的双倍距离 #box{ float:left; width:10px; margin:0 0 0 100px;} 
 		
-		这种情况之下IE会产生20px的距离，解决方案是在float的标签样式控制中加入 ——_display:inline;将其转化为行内属性。(_这个符号只有ie6会识别)
+		这种情况之下IE会产生20px的距离，解决方案是在float的标签样式控制中加入 ——_display:inline;将其转化为行内属性。
+(_这个符号只有ie6会识别)
 		
 		  渐进识别的方式，从总体中逐渐排除局部。 
 		
@@ -331,12 +332,12 @@ HTML5？
 
 - (写)描述一段语义的html代码吧。
 
-	    （HTML5中新增加的很多标签（如：<article>、<nav>、<header>和<footer>等）
-         就是基于语义化设计原则）  
-			< div id="header"> 
-			< h1>标题< /h1> 
-			< h2>专注Web前端技术< /h2> 
-			< /div>
+		（HTML5中新增加的很多标签（如：<article>、<nav>、<header>和<footer>等）
+		就是基于语义化设计原则）  
+		< div id="header"> 
+		< h1>标题< /h1> 
+		< h2>专注Web前端技术< /h2> 
+		< /div>
 
 
 - iframe有那些缺点？ 
@@ -476,7 +477,8 @@ HTML5？
 		*最简单的初始化方法就是： * {padding: 0; margin: 0;} （不建议）
 	
 		淘宝的样式初始化： 
-		body, h1, h2, h3, h4, h5, h6, hr, p, blockquote, dl, dt, dd, ul, ol, li, pre, form, fieldset, legend, button, input, textarea, th, td { margin:0; padding:0; }
+		body, h1, h2, h3, h4, h5, h6, hr, p, blockquote, dl, dt, 
+		dd, ul, ol, li, pre, form, fieldset, legend, button, input, textarea, th, td { margin:0; padding:0; }
 		body, button, input, select, textarea { font:12px/1.5tahoma, arial, \5b8b\4f53; }
 		h1, h2, h3, h4, h5, h6{ font-size:100%; }
 		address, cite, dfn, em, var { font-style:normal; }
@@ -551,83 +553,83 @@ HTML5？
 
 -  写一个通用的事件侦听器函数。
 
-			// event(事件)工具集，来源：github.com/markyun
-			markyun.Event = {
-				// 页面加载完成后
-				readyEvent : function(fn) {
-					if (fn==null) {
-						fn=document;
-					}
-					var oldonload = window.onload;
-					if (typeof window.onload != 'function') {
-						window.onload = fn;
-					} else {
-						window.onload = function() {
-							oldonload();
-							fn();
-						};
-					}
-				},
-				// 视能力分别使用dom0||dom2||IE方式 来绑定事件
-				// 参数： 操作的元素,事件名称 ,事件处理程序
-				addEvent : function(element, type, handler) {
-					if (element.addEventListener) {
-						//事件类型、需要执行的函数、是否捕捉
-						element.addEventListener(type, handler, false);
-					} else if (element.attachEvent) {
-						element.attachEvent('on' + type, function() {
-							handler.call(element);
-						});
-					} else {
-						element['on' + type] = handler;
-					}
-				},
-				// 移除事件
-				removeEvent : function(element, type, handler) {
-					if (element.removeEnentListener) {
-						element.removeEnentListener(type, handler, false);
-					} else if (element.datachEvent) {
-						element.detachEvent('on' + type, handler);
-					} else {
-						element['on' + type] = null;
-					}
-				}, 
-				// 阻止事件 (主要是事件冒泡，因为IE不支持事件捕获)
-				stopPropagation : function(ev) {
-					if (ev.stopPropagation) {
-						ev.stopPropagation();
-					} else {
-						ev.cancelBubble = true;
-					}
-				},
-				// 取消事件的默认行为
-				preventDefault : function(event) {
-					if (event.preventDefault) {
-						event.preventDefault();
-					} else {
-						event.returnValue = false;
-					}
-				},
-				// 获取事件目标
-				getTarget : function(event) {
-					return event.target || event.srcElement;
-				},
-				// 获取event对象的引用，取到事件的所有信息，确保随时能使用event；
-				getEvent : function(e) {
-					var ev = e || window.event;
-					if (!ev) {
-						var c = this.getEvent.caller;
-						while (c) {
-							ev = c.arguments[0];
-							if (ev && Event == ev.constructor) {
-								break;
-							}
-							c = c.caller;
-						}
-					}
-					return ev;
+		// event(事件)工具集，来源：github.com/markyun
+		markyun.Event = {
+			// 页面加载完成后
+			readyEvent : function(fn) {
+				if (fn==null) {
+					fn=document;
 				}
-			}; 
+				var oldonload = window.onload;
+				if (typeof window.onload != 'function') {
+					window.onload = fn;
+				} else {
+					window.onload = function() {
+						oldonload();
+						fn();
+					};
+				}
+			},
+			// 视能力分别使用dom0||dom2||IE方式 来绑定事件
+			// 参数： 操作的元素,事件名称 ,事件处理程序
+			addEvent : function(element, type, handler) {
+				if (element.addEventListener) {
+					//事件类型、需要执行的函数、是否捕捉
+					element.addEventListener(type, handler, false);
+				} else if (element.attachEvent) {
+					element.attachEvent('on' + type, function() {
+						handler.call(element);
+					});
+				} else {
+					element['on' + type] = handler;
+				}
+			},
+			// 移除事件
+			removeEvent : function(element, type, handler) {
+				if (element.removeEnentListener) {
+					element.removeEnentListener(type, handler, false);
+				} else if (element.datachEvent) {
+					element.detachEvent('on' + type, handler);
+				} else {
+					element['on' + type] = null;
+				}
+			}, 
+			// 阻止事件 (主要是事件冒泡，因为IE不支持事件捕获)
+			stopPropagation : function(ev) {
+				if (ev.stopPropagation) {
+					ev.stopPropagation();
+				} else {
+					ev.cancelBubble = true;
+				}
+			},
+			// 取消事件的默认行为
+			preventDefault : function(event) {
+				if (event.preventDefault) {
+					event.preventDefault();
+				} else {
+					event.returnValue = false;
+				}
+			},
+			// 获取事件目标
+			getTarget : function(event) {
+				return event.target || event.srcElement;
+			},
+			// 获取event对象的引用，取到事件的所有信息，确保随时能使用event；
+			getEvent : function(e) {
+				var ev = e || window.event;
+				if (!ev) {
+					var c = this.getEvent.caller;
+					while (c) {
+						ev = c.arguments[0];
+						if (ev && Event == ev.constructor) {
+							break;
+						}
+						c = c.caller;
+					}
+				}
+				return ev;
+			}
+		}; 
 
 
 
@@ -659,10 +661,10 @@ HTML5？
 -  谈谈This对象的理解。
 
 		this是js的一个关键字，随着函数使用场合不同，this的值会发生变化。
-	
-	    但是有一个总原则，那就是this指的是调用函数的那个对象。
 		
-	    this一般情况下：是全局对象Global。 作为方法调用，那么this就是指这个对象	
+		但是有一个总原则，那就是this指的是调用函数的那个对象。
+		
+		this一般情况下：是全局对象Global。 作为方法调用，那么this就是指这个对象	
 
 -  事件是？IE与火狐的事件机制有什么区别？ 如何阻止冒泡？ 
 
@@ -673,7 +675,9 @@ HTML5？
 -  什么是闭包（closure），为什么要用它？
 
 
-		执行say667()后,say667()闭包内部变量会存在,而闭包内部函数的内部变量不会存在.使得Javascript的垃圾回收机制GC不会收回say667()所占用的资源，因为say667()的内部函数的执行需要依赖say667()中的变量。这是对闭包作用的非常直白的描述.
+		执行say667()后,say667()闭包内部变量会存在,而闭包内部函数的内部变量不会存在.
+		使得Javascript的垃圾回收机制GC不会收回say667()所占用的资源，
+		因为say667()的内部函数的执行需要依赖say667()中的变量。这是对闭包作用的非常直白的描述.
   
 		  function say667() {
 			// Local variable that ends up within closure
@@ -836,7 +840,10 @@ jQuery中没有提供这个功能，所以你需要先编写两个jQuery的扩�
 
 			 
 	    内存泄漏指任何对象在您不再拥有或需要它之后仍然存在。
-        垃圾回收器定期扫描对象，并计算引用了每个对象的其他对象的数量。如果一个对象的引用数量为 0（没有其他对象引用过该对象），或对该对象的惟一引用是循环的，那么该对象的内存即可回收。
+	    
+      垃圾回收器定期扫描对象，并计算引用了每个对象的其他对象的数量。
+      如果一个对象的引用数量为 0（没有其他对象引用过该对象），
+      或对该对象的惟一引用是循环的，那么该对象的内存即可回收。
 
         setTimeout 的第一个参数使用字符串而非函数的话，会引发内存泄漏。
 		闭包、控制台日志、循环（在两个对象彼此引用且彼此保留时，就会产生一个循环）
@@ -1034,3 +1041,4 @@ jQuery中没有提供这个功能，所以你需要先编写两个jQuery的扩�
 
 
 
+我的个人主页（http://www.wenjie.info）
