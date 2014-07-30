@@ -133,8 +133,10 @@
 
 	在标准模式中，浏览器根据规范呈现页面；
 	在混杂模式中，页面以一种比较宽松的向后兼容的方式显示。
-	浏览器根据DOCTYPE是否存在以及使用的哪种DTD来选择要使用的呈现方法。如果XHTML文档包含形式完整的DOCTYPE，那么它一般以标准模式呈现。
-	对于HTML 4.01文档，包含严格DTD的DOCTYPE常常导致页面以标准模式呈现。包含过渡DTD和URI的DOCTYPE也导致页面以标准模式呈现，但是有过
+	浏览器根据DOCTYPE是否存在以及使用的哪种DTD来选择要使用的呈现方法。
+	如果XHTML文档包含形式完整的DOCTYPE，那么它一般以标准模式呈现。
+	对于HTML 4.01文档，包含严格DTD的DOCTYPE常常导致页面以标准模式呈现。
+	包含过渡DTD和URI的DOCTYPE也导致页面以标准模式呈现，但是有过
 	渡DTD而没有URI会导致页面以混杂模式呈现。DOCTYPE不存在或形式不正确会导致HTML和XHTML文档以混杂模式呈现。
 
 6、盒模型——外边距、内边距和边框之间的关系，IE 8以下版本的浏览器中的盒模型有什么不同。
@@ -156,7 +158,8 @@
 	（2）与浮动元素同级的非浮动元素会跟随其后
 	（3）若非第一个元素浮动，则该元素之前的元素也需要浮动，否则会影响页面显示的结构
 	解决方法：
-	使用CSS中的clear:both;属性来清除元素的浮动可解决2、3问题，对于问题1，添加如下样式，给父元素添加clearfix样式：
+	使用CSS中的clear:both;属性来清除元素的浮动可解决2、3问题，
+	对于问题1，添加如下样式，给父元素添加clearfix样式：
 	.clearfix:after{content: ".";display: block;height: 0;clear: both;visibility: hidden;}
 	.clearfix{display: inline-block;}  /* for IE/Mac */
 
@@ -176,10 +179,13 @@
 
 10、JSON——它是什么、为什么应该使用它、到底该怎么使用它，说出实现细节来。
 
-	JSON(JavaScript Object Notation) 是一种轻量级的数据交换格式。易于人阅读和编写。同时也易于机器解析和生成。
+	JSON(JavaScript Object Notation) 是一种轻量级的数据交换格式。
+	易于人阅读和编写。同时也易于机器解析和生成。
 	JSON建构于两种结构：
 	“名称/值”对的集合（A collection of name/value 
-	pairs）。不同的语言中，它被理解为对象（object），纪录（record），结构（struct），字典（dictionary），哈希表
+	pairs）。
+	不同的语言中，它被理解为对象（object），纪录（record），结构（struct），
+	字典（dictionary），哈希表
 	（hash table），有键列表（keyed list），或者关联数组 （associative array）。 
 	值的有序列表（An ordered list of values）。在大部分语言中，它被理解为数组（array）。
 			
@@ -228,7 +234,8 @@
 		
 		inline：使用此属性后，元素会被显示为内联元素，元素则不会换行。
 		block：使用此属性后，元素会被现实为块级元素，元素会进行换行。
-		inline-block：是使元素以块级元素的形式呈现在行内。意思就是说，让这个元素显示在同一行不换行，但是又可以控制高度和宽度，这相当于内联元素的增强。
+		inline-block：是使元素以块级元素的形式呈现在行内。
+		意思就是说，让这个元素显示在同一行不换行，但是又可以控制高度和宽度，这相当于内联元素的增强。
 		
 		要注意的是IE6 不支持inline-block
 
@@ -557,7 +564,8 @@ HTML5？
 -  JavaScript原型，原型链 ? 有什么特点？
 
 * 什么是原型：
-		每一个对象都有原型，使用 __proto__ 标记，原型是一个对象的引用或 null（ Object.prototype 的原型为 null ），允许对象使用其原型所引用的对象中的变量。
+		每一个对象都有原型，使用 __proto__ 标记，原型是一个对象的引用或 null
+（ Object.prototype 的原型为 null ），允许对象使用其原型所引用的对象中的变量。
 		var fun = function(){}
 		fun.prototype.a = 1;
 		var obj = new fun();
@@ -723,7 +731,8 @@ HTML5？
 
 -  事件是？IE与火狐的事件机制有什么区别？ 如何阻止冒泡？ 
 
-		 1. 我们在网页中的某个操作（有的操作对应多个事件）。例如：当我们点击一个按钮就会产生一个事件。是可以被 JavaScript 侦测到的行为。  
+		 1. 我们在网页中的某个操作（有的操作对应多个事件）。
+		 例如：当我们点击一个按钮就会产生一个事件。是可以被 JavaScript 侦测到的行为。  
 		 2. 事件处理机制：IE是事件冒泡、火狐是 事件捕获；
 		 3. ev.stopPropagation();
 
@@ -787,9 +796,13 @@ HTML5？
 -  GET POST 区别
 
 		1. get是从服务器上获取数据，post是向服务器传送数据。
-		2. get是把参数数据队列加到提交表单的ACTION属性所指的URL中，值和表单内各个字段一一对应，在URL中可以看到。post是通过HTTP post机制，将表单内各个字段与其内容放置在HTML HEADER内一起传送到ACTION属性所指的URL地址。用户看不到这个过程。
-		3. 对于get方式，服务器端用Request.QueryString获取变量的值，对于post方式，服务器端用Request.Form获取提交的数据。
-		4. get传送的数据量较小，不能大于2KB。post传送的数据量较大，一般被默认为不受限制。但理论上，IIS4中最大量为80KB，IIS5中为100KB。
+		2. get是把参数数据队列加到提交表单的ACTION属性所指的URL中，
+		值和表单内各个字段一一对应，在URL中可以看到。post是通过HTTP post机制，
+将表单内各个字段与其内容放置在HTML HEADER内一起传送到ACTION属性所指的URL地址。用户看不到这个过程。
+		3. 对于get方式，服务器端用Request.QueryString获取变量的值，
+		对于post方式，服务器端用Request.Form获取提交的数据。
+		4. get传送的数据量较小，不能大于2KB。post传送的数据量较大，一般被默认为不受限制。
+		但理论上，IIS4中最大量为80KB，IIS5中为100KB。
 		5. get安全性非常低，post安全性较高。但是执行效率却比Post方法好。 
 		
 		建议：
@@ -974,19 +987,19 @@ jQuery中没有提供这个功能，所以你需要先编写两个jQuery的扩�
 
 - http状态码有那些？分别代表是什么意思？
 
-		100-199 用于指定客户端应相应的某些动作。 
-		200-299 用于表示请求成功。 
-		300-399 用于已经移动的文件并且常被包含在定位头信息中指定新的地址信息。 
-		400-499 用于指出客户端的错误。400	1、语义有误，当前请求无法被服务器理解。401	当前请求需要用户验证 403	服务器已经理解请求，但是拒绝执行它。
-		500-599 用于支持服务器错误。 503 – 服务不可用
-		
-		HTTP协议的状态消息都有哪些?
-“200〃 : OK（成功） 一切正常
-“302〃 : Found（临时移动）类似于301，但新的URL应该被视为临时性的替代，而不是永久性的。
-“400〃 : Bad Request（错误请求）请求出现语法错误。
-“404〃 : Not Found（未找到）无法找到指定位置的资源。 
-“500〃 : Internal Server Error（服务器内部错误）服务器遇到错误，无法完成请求。
-“502〃 : Bad Gateway（错误网关）服务器作为网关或者代理时，为了完成请求访问下一个服务器，但该服务器返回了非法的应答。
+			100-199 用于指定客户端应相应的某些动作。 
+			200-299 用于表示请求成功。 
+			300-399 用于已经移动的文件并且常被包含在定位头信息中指定新的地址信息。 
+			400-499 用于指出客户端的错误。400	1、语义有误，当前请求无法被服务器理解。401	当前请求需要用户验证 403	服务器已经理解请求，但是拒绝执行它。
+			500-599 用于支持服务器错误。 503 – 服务不可用
+			
+			HTTP协议的状态消息都有哪些?
+			“200〃 : OK（成功） 一切正常
+			“302〃 : Found（临时移动）类似于301，但新的URL应该被视为临时性的替代，而不是永久性的。
+			“400〃 : Bad Request（错误请求）请求出现语法错误。
+			“404〃 : Not Found（未找到）无法找到指定位置的资源。 
+			“500〃 : Internal Server Error（服务器内部错误）服务器遇到错误，无法完成请求。
+			“502〃 : Bad Gateway（错误网关）服务器作为网关或者代理时，为了完成请求访问下一个服务器，但该服务器返回了非法的应答。
 
 - 一个页面从输入 URL 到页面加载显示完成，这个过程中都发生了什么？（流程说的越详细越好）
 
@@ -1091,33 +1104,106 @@ jQuery中没有提供这个功能，所以你需要先编写两个jQuery的扩�
 
 1. 极客标签：		 http://www.gbtags.com/
 
-
 2. 码农周刊：		 http://weekly.manong.io/issues/
-
 
 3. 前端周刊：		 http://www.feweekly.com/issues
 
+4. 极客头条： 	 http://geek.csdn.net/
 
-9. 极客头条： 	 http://geek.csdn.net/
+5. Startup News：http://news.dbanotes.net/
 
-
-3. Startup News：http://news.dbanotes.net/
-
-
-4. Hacker News： https://news.ycombinator.com/news  
-
+6. Hacker News： https://news.ycombinator.com/news  
 
 7. InfoQ：  		 http://www.infoq.com/ 
 
+8. w3cplus：     http://www.w3cplus.com/
 
-10. w3cplus：     http://www.w3cplus.com/
+9. Stack Overflow： http://stackoverflow.com/ 
 
-
-10. Stack Overflow： http://stackoverflow.com/ 
-
-
-6. Atp：  		 http://atp-posts.b0.upaiyun.com/posts/ 
+10. Atp：  		 http://atp-posts.b0.upaiyun.com/posts/ 
 
 
 
-我的个人主页（http://www.wenjie.info）
+了解更多：http://note.youdao.com/share/?id=f179a18d162ce08afa020a8ba8fc0cdf&type=note
+
+————————————————————————————————————————————————————————————————————————————————————————————————
+额外推荐：
+事先声明：
+		◆ 这些题目的来源：面试曾经被问过;工作被别人问过或者遇见过;网上看见过...
+		◆ 答案真心不给提供，真的是许多问题都需要个人的理解和沉淀，所以还请各位自己动手...前端可以试试自己差不多能回答多少题，哈哈。
+		◆ 其实很多题我也没有好答案，面试的时候如果遇到牛人我也可以顺便交流交流，反正我也只是一面，不丢人也不怕丢人。
+		◆ 如果朋友们有好的面试题欢迎提建议，我会其实补充更新的，先谢谢各位了。
+		
+HTML相关
+
+		1. <!DOCTYPE>标签的定义与用法。
+		2. 块级元素和行内元素都有哪些?
+		3. 你真的了解HTML吗? 雅虎面试题　　把前面黄底那段拿去搜索下就知道了(曾在某浪公司面试的时候被问到过，确实是很好的问题)。
+		CSS相关
+		1. 介绍所知道的CSS hack技巧(如：_， *， +， \9， !important 之类)。
+		2. 介绍CSS盒模型。
+		3. CSS层叠是什么?介绍一下。
+		4. 都知道哪些CSS浏览器兼容性问题。
+		5. 有时会被问到些刁钻点的题，比如position值都有哪些，CSS3都有哪些新内容...
+		JavaScript基础相关
+		1. HTTP协议的状态消息都有哪些?(如200、302对应的描述)
+		2. AJAX是什么? AJAX的交互模型(流程)? AJAX跨域的解决办法?
+		3. 同步和异步的区别?
+		4. 简述JavaScript封装。
+		5. JavaScript继承有哪两种形式形式，进行描述。
+		6. 什么是闭包?以下代码点击<p> 会输出什么?为什么?能大概说明白的话继续问能想出几种解决办法。
+		<!DOCTYPE HTML> 
+		<html> 
+		<head> 
+		<meta charset="utf-8" /> 
+		<title>闭包演示</title> 
+		<style type="text/css"> 
+		    p {background:gold;}  
+		</style> 
+		<script type="text/javascript">   
+		function init() {      
+		    var pAry = document.getElementsByTagName("p");      
+		    for( var i=0; i<pAry.length; i++ ) {      
+		         pAry[i].onclick = function() {      
+		         alert(i);      
+		    }   
+		  }  
+		}  
+		</script>   
+		</head>   
+		<body onload="init();">   
+		<p>产品 0</p>   
+		<p>产品 1</p>   
+		<p>产品 2</p>   
+		<p>产品 3</p>   
+		<p>产品 4</p>   
+		</body>   
+		</html>  
+		7. 在JS中this关键字的使用场合和用法(如在构造函数中、setTimeout中等)。
+		8. 简述下cookie的操作，还有cookie的属性都知道哪些。
+		9. IE与FF的JS兼容性都知道哪些。
+		10. DOM操作 - 怎样添加、移除、移动、复制、创建和查找节点(这个问题真心是基础题，一般不会问)。
+		jQuery相关
+		1. jQuery源码是否尝试去读过?说说基本的架构或者 jQuery.fn.init 中都做了哪些判断。
+		2. 都知道哪些不好的jQuery书写方式。
+		3. Sizzle是否有读过?
+		其它相关的加分项：
+		1. 都使用和了解过哪些编辑器?都使用和了解过哪些日常工具?
+		2. 都知道有哪些浏览器内核?开发过的项目都兼容哪些浏览器?
+		3. 国内外的JS牛人都知道哪些?
+		4. 瀑布流布局或者流式布局是否有了解
+		4. 正则表达式有系统学习过吗(看书或网上教程)?有的话就问问简单点的邮箱验证、URL验证， 或者问问 贪婪匹配与懒惰匹配 的理论知识。
+		5. Node.js是否有过尝试?到什么程度?说说个人理解的看法?
+		6. HTML5都有哪些新的JS API?
+		7. 前端优化知识都知道哪些?
+		8. 基础算法题(如快速排序，能否一两句说说重要的核心原理或者数组消重等)。
+		9. 是否有接触过或者了解过重构。
+		原文：http://www.cnblogs.com/Darren_code/archive/2012/01/31/questions.html
+
+【编辑推荐】
+
+什么是Node.js？(http://developer.51cto.com/art/201109/288849.htm)
+前端必读：浏览器内部工作原理(http://developer.51cto.com/art/201202/314376.htm)
+HTML 5 APIs程序员指南(http://developer.51cto.com/art/201202/314376.htm)
+10个在线正则表达式测试网站推荐(http://developer.51cto.com/art/201103/251633.htm)
+从新浪微博的改版谈网页重构(http://developer.51cto.com/art/201109/290414.htm)
