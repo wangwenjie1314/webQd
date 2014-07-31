@@ -590,6 +590,26 @@ HTML5？
 		原型链：
 		通过自己的原型并向上寻找直到Object.prototype.__proto__; 这条链就是原型链。
 
+- 看看下面运行结果？
+
+```javascript
+window.onload=function(){
+  var a=1+"1";
+  var b="1"+1;
+  var c="abc"+12+5+"def";
+  var d="abc"+(12+5)+"def";
+  console.log(a);
+  console.log(b);
+  console.log(c);
+  console.log(d);
+}
+
+//结果
+11
+11
+abc125def
+abc17def
+```
 
 -  eval是做什么的？ 
 
