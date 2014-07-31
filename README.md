@@ -563,53 +563,55 @@ HTML5？
 
 -  JavaScript原型，原型链 ? 有什么特点？
 
-		什么是原型：
-		每一个对象都有原型，使用 __proto__ 标记，原型是一个对象的引用或 null
-		（ Object.prototype 的原型为 null ），允许对象使用其原型所引用的对象中的变量。
-		var fun = function(){}
-		fun.prototype.a = 1;
-		var obj = new fun();
-		obj.a; //1
-		原型的来源：
-		对象的原型来自其构造函数的原型属性（用 prototype 标记）的引用。注意原型与原型属性是两个概念。
-		  Function 为实例（ function ）定义了原型属性，其中包含一个构造函数（默认是 function 对象自己，用于构造 function 自己的实例），因此所有 function 都有原型属性。
-		Function 将自己的的原型属性的引用作为function 的原型。 new 一个 function ，function 的实例便有了原型，指向 function 的原型属性。
-		
-		var fun = function(){
-		  this.a= 1;
-		}
-		fun.prototype.b = 2;
-		var obj = new fun();
-		console.log(obj.a+"---"+obj.b);
-		原型的作用
-		继承。
-		  如：
-		var fun = function(){}
-		fun.prototype = String.prototype;
-		new fun().split //function split() {[native code]}
-		原型链：
-		通过自己的原型并向上寻找直到Object.prototype.__proto__; 这条链就是原型链。
+	```javascript
+	什么是原型：
+	每一个对象都有原型，使用 __proto__ 标记，原型是一个对象的引用或 null
+	（ Object.prototype 的原型为 null ），允许对象使用其原型所引用的对象中的变量。
+	var fun = function(){}
+	fun.prototype.a = 1;
+	var obj = new fun();
+	obj.a; //1
+	原型的来源：
+	对象的原型来自其构造函数的原型属性（用 prototype 标记）的引用。注意原型与原型属性是两个概念。
+	  Function 为实例（ function ）定义了原型属性，其中包含一个构造函数（默认是 function 对象自己，用于构造 function 自己的实例），因此所有 function 都有原型属性。
+	Function 将自己的的原型属性的引用作为function 的原型。 new 一个 function ，function 的实例便有了原型，指向 function 的原型属性。
+	
+	var fun = function(){
+	  this.a= 1;
+	}
+	fun.prototype.b = 2;
+	var obj = new fun();
+	console.log(obj.a+"---"+obj.b);
+	原型的作用
+	继承。
+	  如：
+	var fun = function(){}
+	fun.prototype = String.prototype;
+	new fun().split //function split() {[native code]}
+	原型链：
+	通过自己的原型并向上寻找直到Object.prototype.__proto__; 这条链就是原型链。
+	```
 
 - 看看下面运行结果？
 
-```javascript
-window.onload=function(){
-  var a=1+"1";
-  var b="1"+1;
-  var c="abc"+12+5+"def";
-  var d="abc"+(12+5)+"def";
-  console.log(a);
-  console.log(b);
-  console.log(c);
-  console.log(d);
-}
-
-//结果
-11
-11
-abc125def
-abc17def
-```
+	```javascript
+	window.onload=function(){
+	  var a=1+"1";
+	  var b="1"+1;
+	  var c="abc"+12+5+"def";
+	  var d="abc"+(12+5)+"def";
+	  console.log(a);
+	  console.log(b);
+	  console.log(c);
+	  console.log(d);
+	}
+	
+	//结果
+	11
+	11
+	abc125def
+	abc17def
+	```
 
 -  eval是做什么的？ 
 
