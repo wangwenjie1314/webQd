@@ -635,84 +635,85 @@ HTML5？
 
 -  写一个通用的事件侦听器函数。
 
-		// event(事件)工具集，来源：github.com/markyun
-		markyun.Event = {
-			// 页面加载完成后
-			readyEvent : function(fn) {
-				if (fn==null) {
-					fn=document;
-				}
-				var oldonload = window.onload;
-				if (typeof window.onload != 'function') {
-					window.onload = fn;
-				} else {
-					window.onload = function() {
-						oldonload();
-						fn();
-					};
-				}
-			},
-			// 视能力分别使用dom0||dom2||IE方式 来绑定事件
-			// 参数： 操作的元素,事件名称 ,事件处理程序
-			addEvent : function(element, type, handler) {
-				if (element.addEventListener) {
-					//事件类型、需要执行的函数、是否捕捉
-					element.addEventListener(type, handler, false);
-				} else if (element.attachEvent) {
-					element.attachEvent('on' + type, function() {
-						handler.call(element);
-					});
-				} else {
-					element['on' + type] = handler;
-				}
-			},
-			// 移除事件
-			removeEvent : function(element, type, handler) {
-				if (element.removeEnentListener) {
-					element.removeEnentListener(type, handler, false);
-				} else if (element.datachEvent) {
-					element.detachEvent('on' + type, handler);
-				} else {
-					element['on' + type] = null;
-				}
-			}, 
-			// 阻止事件 (主要是事件冒泡，因为IE不支持事件捕获)
-			stopPropagation : function(ev) {
-				if (ev.stopPropagation) {
-					ev.stopPropagation();
-				} else {
-					ev.cancelBubble = true;
-				}
-			},
-			// 取消事件的默认行为
-			preventDefault : function(event) {
-				if (event.preventDefault) {
-					event.preventDefault();
-				} else {
-					event.returnValue = false;
-				}
-			},
-			// 获取事件目标
-			getTarget : function(event) {
-				return event.target || event.srcElement;
-			},
-			// 获取event对象的引用，取到事件的所有信息，确保随时能使用event；
-			getEvent : function(e) {
-				var ev = e || window.event;
-				if (!ev) {
-					var c = this.getEvent.caller;
-					while (c) {
-						ev = c.arguments[0];
-						if (ev && Event == ev.constructor) {
-							break;
-						}
-						c = c.caller;
-					}
-				}
-				return ev;
+	```javascript
+	// event(事件)工具集，来源：github.com/markyun
+	markyun.Event = {
+		// 页面加载完成后
+		readyEvent : function(fn) {
+			if (fn==null) {
+				fn=document;
 			}
-		}; 
-
+			var oldonload = window.onload;
+			if (typeof window.onload != 'function') {
+				window.onload = fn;
+			} else {
+				window.onload = function() {
+					oldonload();
+					fn();
+				};
+			}
+		},
+		// 视能力分别使用dom0||dom2||IE方式 来绑定事件
+		// 参数： 操作的元素,事件名称 ,事件处理程序
+		addEvent : function(element, type, handler) {
+			if (element.addEventListener) {
+				//事件类型、需要执行的函数、是否捕捉
+				element.addEventListener(type, handler, false);
+			} else if (element.attachEvent) {
+				element.attachEvent('on' + type, function() {
+					handler.call(element);
+				});
+			} else {
+				element['on' + type] = handler;
+			}
+		},
+		// 移除事件
+		removeEvent : function(element, type, handler) {
+			if (element.removeEnentListener) {
+				element.removeEnentListener(type, handler, false);
+			} else if (element.datachEvent) {
+				element.detachEvent('on' + type, handler);
+			} else {
+				element['on' + type] = null;
+			}
+		}, 
+		// 阻止事件 (主要是事件冒泡，因为IE不支持事件捕获)
+		stopPropagation : function(ev) {
+			if (ev.stopPropagation) {
+				ev.stopPropagation();
+			} else {
+				ev.cancelBubble = true;
+			}
+		},
+		// 取消事件的默认行为
+		preventDefault : function(event) {
+			if (event.preventDefault) {
+				event.preventDefault();
+			} else {
+				event.returnValue = false;
+			}
+		},
+		// 获取事件目标
+		getTarget : function(event) {
+			return event.target || event.srcElement;
+		},
+		// 获取event对象的引用，取到事件的所有信息，确保随时能使用event；
+		getEvent : function(e) {
+			var ev = e || window.event;
+			if (!ev) {
+				var c = this.getEvent.caller;
+				while (c) {
+					ev = c.arguments[0];
+					if (ev && Event == ev.constructor) {
+						break;
+					}
+					c = c.caller;
+				}
+			}
+			return ev;
+		}
+	}; 
+	```
 
 
 -  Node.js的适用场景？
@@ -747,11 +748,13 @@ HTML5？
 
 -  如何创建一个对象? （画出此对象的内存图）
 
-		  function Person(name, age) {
-		    this.name = name;
-		    this.age = age;
-		    this.sing = function() { alert(this.name) } 
-		  } 
+	  ```javascript
+	  function Person(name, age) {
+	    this.name = name;
+	    this.age = age;
+	    this.sing = function() { alert(this.name) } 
+	  } 
+	  ```
 
 
 -  谈谈This对象的理解。
@@ -771,6 +774,7 @@ HTML5？
 
 -  什么是闭包（closure），为什么要用它？
 
+		```javascript
 		就是一个函数里面又套有子函数，在这个函数里面声明的变量可以直接在子函数里面使用而不用再声明
 		执行say667()后,say667()闭包内部变量会存在,而闭包内部函数的内部变量不会存在.
 		使得Javascript的垃圾回收机制GC不会收回say667()所占用的资源，
@@ -786,7 +790,7 @@ HTML5？
 		 
 		 var sayAlert = say667();
 		 sayAlert()//执行结果应该弹出的667  
-
+		```
 
 -  "use strict";是什么意思 ? 使用它的好处和坏处分别是什么？
 
@@ -830,8 +834,7 @@ HTML5？
 
 		1. get是从服务器上获取数据，post是向服务器传送数据。
 		2. get是把参数数据队列加到提交表单的ACTION属性所指的URL中，
-		值和表单内各个字段一一对应，在URL中可以看到。post是通过HTTP post机制，
-将表单内各个字段与其内容放置在HTML HEADER内一起传送到ACTION属性所指的URL地址。用户看不到这个过程。
+		值和表单内各个字段一一对应，在URL中可以看到。post是通过HTTP post机制，将表单内各个字段与其内容放置在HTML HEADER内一起传送到ACTION属性所指的URL地址。用户看不到这个过程。
 		3. 对于get方式，服务器端用Request.QueryString获取变量的值，
 		对于post方式，服务器端用Request.Form获取提交的数据。
 		4. get传送的数据量较小，不能大于2KB。post传送的数据量较大，一般被默认为不受限制。
@@ -854,24 +857,45 @@ HTML5？
 
 -  模块化怎么做？
 
-
-		[ 立即执行函数](http://benalman.com/news/2010/11/immediately-invoked-function-expression/),不暴露私有成员
-		
-		var module1 = (function(){
-		　　　　var _count = 0;
-		　　　　var m1 = function(){
-		　　　　　　//...
-		　　　　};
-		　　　　var m2 = function(){
-		　　　　　　//...
-		　　　　};
-		　　　　return {
-		　　　　　　m1 : m1,
-		　　　　　　m2 : m2
-		　　　　};
-		　　})(); 
-
+	```javascript
+	[ 立即执行函数](http://benalman.com/news/2010/11/immediately-invoked-function-expression/),不暴露私有成员
+	
+	var module1 = (function(){
+	　　　　var _count = 0;
+	　　　　var m1 = function(){
+	　　　　　　//...
+	　　　　};
+	　　　　var m2 = function(){
+	　　　　　　//...
+	　　　　};
+	　　　　return {
+	　　　　　　m1 : m1,
+	　　　　　　m2 : m2
+	　　　　};
+	　　})(); 
+	```
 -  AMD（Modules/Asynchronous-Definition）、CMD（Common Module Definition）规范区别？
+	```javascript
+	//AMD 依赖前置，提前执行依赖；
+	//api一个当多个用
+	//全局require和局部require都叫require
+	
+	require(['/a','/b'],function(a,b){
+		a.dosomething();
+		b.dosomething();
+	});
+
+	//CMD 依赖就近，延迟执行依赖（as lazy as possiable）；
+	//api严格区分，职责单一
+	//没有全局require，根据模块化系统的完备性 提供seajs.use 来实现模块化的启动
+
+	define(function(require,exports,modules){
+		var a=require('/a');
+		a.dosomething();
+		var b=require('/b');
+		b.dosomething();
+	});
+	```
 
 -  异步加载的方式有哪些？
 
@@ -924,17 +948,18 @@ HTML5？
 			
 jQuery中没有提供这个功能，所以你需要先编写两个jQuery的扩展：
  
-		$.fn.stringifyArray = function(array) {
-		    return JSON.stringify(array)
-		}
-		
-		$.fn.parseArray = function(array) {
-		    return JSON.parse(array)
-		} 
+	```javascript
+	$.fn.stringifyArray = function(array) {
+	    return JSON.stringify(array)
+	}
+	
+	$.fn.parseArray = function(array) {
+	    return JSON.parse(array)
+	} 
 
-		然后调用：
-		$("").stringifyArray(array)
-
+	然后调用：
+	$("").stringifyArray(array)
+	```
 
 -  针对 jQuery 的优化方法？
 
