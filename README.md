@@ -774,23 +774,23 @@ HTML5？
 
 -  什么是闭包（closure），为什么要用它？
 
-		```javascript
-		就是一个函数里面又套有子函数，在这个函数里面声明的变量可以直接在子函数里面使用而不用再声明
-		执行say667()后,say667()闭包内部变量会存在,而闭包内部函数的内部变量不会存在.
-		使得Javascript的垃圾回收机制GC不会收回say667()所占用的资源，
-		因为say667()的内部函数的执行需要依赖say667()中的变量。这是对闭包作用的非常直白的描述.
-  
-		  function say667() {
-			// Local variable that ends up within closure
-			var num = 666;
-			var sayAlert = function() { alert(num); }
-			num++;
-			return sayAlert;
-		}
-		 
-		 var sayAlert = say667();
-		 sayAlert()//执行结果应该弹出的667  
-		```
+```javascript
+	/**就是一个函数里面又套有子函数，在这个函数里面声明的变量可以直接在子函数里面使用而不用再声明
+	执行say667()后,say667()闭包内部变量会存在,而闭包内部函数的内部变量不会存在.
+	使得Javascript的垃圾回收机制GC不会收回say667()所占用的资源，
+	因为say667()的内部函数的执行需要依赖say667()中的变量。这是对闭包作用的非常直白的描述.**/
+	  
+	function say667() {
+		// Local variable that ends up within closure
+		var num = 666;
+		var sayAlert = function() { alert(num); }
+		num++;
+		return sayAlert;
+	}
+	 
+	var sayAlert = say667();
+	sayAlert()//执行结果应该弹出的667  
+```
 
 -  "use strict";是什么意思 ? 使用它的好处和坏处分别是什么？
 
@@ -915,22 +915,30 @@ HTML5？
 
 -  .call() 和 .apply() 的区别？
 
-						
-		  例子中用 add 来替换 sub，add.call(sub,3,1) == add(3,1) ，所以运行结果为：alert(4); 
-		
-		  注意：js 中的函数其实是对象，函数名是对 Function 对象的引用。
-		 
-			function add(a,b)
-			{
-			    alert(a+b);
-			}
-			
-			function sub(a,b)
-			{
-			    alert(a-b);
-			}
-			
-			add.call(sub,3,1);  
+	```javascript
+	//call: 调用一个对象的一个方法，以另一个对象替换当前对象
+	//apply: 应用某一对象的一个方法，用另一个对象替换当前对象 
+	function add(a,b){
+		return a+b;
+	}
+	function sub(a,b){
+		return a-b;
+	}
+	alert(add.call(sub,3,1));//add替换sub 
+	//call函数和apply方法的第一个参数都是要传入给当前对象的对象，及函数内部的this。后面的参数都是传递给当前对象的参数。
+	var func=new function(){this.a="func"}
+    var myfunc=function(x){
+        var a="myfunc";
+        alert(this.a);
+        alert(x);
+    }
+    myfunc.call(func,"var");
+    /*对于apply和call两者在作用上是相同的，但两者在参数上有区别的。
+	对于第一个参数意义都一样，但对第二个参数：
+	apply传入的是一个参数数组，也就是将多个参数组合成为一个数组传入，而call则作为call的参数传入（从第二个参数开始）。
+	如 func.call(func1,var1,var2,var3)对应的apply写法为：func.apply(func1,[var1,var2,var3])
+	同时使用apply的好处是可以直接将当前函数的arguments对象作为apply的第二个参数传入*/
+	```
 
 -  Jquery与jQuery UI 有啥区别？ 
 
@@ -948,18 +956,17 @@ HTML5？
 			
 jQuery中没有提供这个功能，所以你需要先编写两个jQuery的扩展：
  
-	```javascript
+```javascript
 	$.fn.stringifyArray = function(array) {
 	    return JSON.stringify(array)
 	}
-	
+
 	$.fn.parseArray = function(array) {
 	    return JSON.parse(array)
 	} 
-
-	然后调用：
+	//然后调用：
 	$("").stringifyArray(array)
-	```
+```
 
 -  针对 jQuery 的优化方法？
 
