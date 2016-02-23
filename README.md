@@ -403,7 +403,8 @@ sessionStorage  数据在浏览器关闭后自动删除。
 *iframe会阻塞主页面的Onload事件；
 
 *iframe和主页面共享连接池，而浏览器对相同域的连接有限制，所以会影响页面的并行加载。
-使用iframe之前需要考虑这两个缺点。如果需要使用iframe，最好是通过javascript动态给iframe添加src属性值，这样可以可以绕开以上两个问题。
+使用iframe之前需要考虑这两个缺点。如果需要使用iframe，
+最好是通过javascript动态给iframe添加src属性值，这样可以可以绕开以上两个问题。
 ```
 
 - 请描述一下 cookies，sessionStorage 和 localStorage 的区别？ 
@@ -457,11 +458,11 @@ CSS3新增伪类举例：
 
 p:first-of-type	选择属于其父元素的首个 <p> 元素的每个 <p> 元素。
 p:last-of-type	选择属于其父元素的最后 <p> 元素的每个 <p> 元素。
-        p:only-of-type选择属于其父元素唯一的 <p> 元素的每个 <p> 元素。
+p:only-of-type选择属于其父元素唯一的 <p> 元素的每个 <p> 元素。
 p:only-child	选择属于其父元素的唯一子元素的每个 <p> 元素。
 p:nth-child(2)	选择属于其父元素的第二个子元素的每个 <p> 元素。
-     :enabled  :disabled 控制表单控件的禁用状态。
-:checked        单选框或复选框被选中。
+:enabled  :disabled 控制表单控件的禁用状态。
+:checked   单选框或复选框被选中。
 ```
 
 - 如何居中div？如何居中一个浮动元素？
@@ -482,8 +483,8 @@ div{
 .div { 
   Width:500px ; height:300px;//高度可以不设
   Margin: -150px 0 0 -250px;
-  position:relative;相对定位
-              background-color:pink;//方便看效果
+  position:relative;//相对定位
+  background-color:pink;//方便看效果
   left:50%;
   top:50%;
 } 
@@ -787,7 +788,6 @@ number,string,boolean,object,undefined
 把类型定义的东西都复制过来，这样的继承子类与父类并没有多少关联，不互相影响，
 有利于保护自身的一些私有属性。JavaScript类继承（构造函数间的继承）
 
-
 不过在实际中，肯定是这两种混合使用的
 ```
 
@@ -850,189 +850,212 @@ sayAlert()//执行结果应该弹出的667
 
 -  如何判断一个对象是否属于某个类？
 
-		使用instanceof （待完善）
-		
-		if(a instanceof Person){
-		   alert('yes');
-		}
+```html
+使用instanceof （待完善）
+
+if(a instanceof Person){
+   alert('yes');
+}
+```
+
 -  new操作符具体干了什么呢?
 
-		1、创建一个空对象，并且 this 变量引用该对象，同时还继承了该函数的原型。
-		2、属性和方法被加入到 this 引用的对象中。
-		3、新创建的对象由 this 所引用，并且最后隐式的返回 this 。
-		
-		var obj  = {};
-		obj.__proto__ = Base.prototype;
-		Base.call(obj); 
+```html
+1、创建一个空对象，并且 this 变量引用该对象，同时还继承了该函数的原型。
+2、属性和方法被加入到 this 引用的对象中。
+3、新创建的对象由 this 所引用，并且最后隐式的返回 this 。
+
+var obj  = {};
+obj.__proto__ = Base.prototype;
+Base.call(obj);
+```
 
 -  Javascript中，有一个函数，执行时对象查找时，永远不会去查找原型，这个函数是？
-  
-		hasOwnProperty
+
+```html 
+hasOwnProperty
+```
 
 -  JSON 的了解？
-		
-		JSON(JavaScript Object Notation) 是一种轻量级的数据交换格式。
-		它是基于JavaScript的一个子集。数据格式简单, 易于读写, 占用带宽小
-        {'age':'12', 'name':'back'}
+
+```html
+JSON(JavaScript Object Notation) 是一种轻量级的数据交换格式。
+它是基于JavaScript的一个子集。数据格式简单, 易于读写, 占用带宽小
+{'age':'12', 'name':'back'}
+```
 
 -  js延迟加载的方式有哪些？
-		
-		defer和async、动态创建DOM方式（用得最多）、按需异步载入js
 
-		
+```html		
+defer和async、动态创建DOM方式（用得最多）、按需异步载入js
+```
+
 -  ajax 是什么? 
 
-		Ajax允许JavaScript可以发送HTTP请求和响应HTTP响应，依赖来浏览器的实现。
-		交互模式： 建立XHR对象， 定义回调处理函数，发送HTTP请求（Get 和 Post 方式），完成HTTP响应后执行回调函数。
+```html
+Ajax允许JavaScript可以发送HTTP请求和响应HTTP响应，依赖来浏览器的实现。
+交互模式： 建立XHR对象， 定义回调处理函数，发送HTTP请求（Get 和 Post 方式），完成HTTP响应后执行回调函数。
+```
+
 -  GET POST 区别
 
-		1. get是从服务器上获取数据，post是向服务器传送数据。
-		2. get是把参数数据队列加到提交表单的ACTION属性所指的URL中，
-		值和表单内各个字段一一对应，在URL中可以看到。post是通过HTTP post机制，将表单内各个字段与其内容放置在HTML HEADER内一起传送到ACTION属性所指的URL地址。用户看不到这个过程。
-		3. 对于get方式，服务器端用Request.QueryString获取变量的值，
-		对于post方式，服务器端用Request.Form获取提交的数据。
-		4. get传送的数据量较小，不能大于2KB。post传送的数据量较大，一般被默认为不受限制。
-		但理论上，IIS4中最大量为80KB，IIS5中为100KB。
-		5. get安全性非常低，post安全性较高。但是执行效率却比Post方法好。 
-		
-		建议：
-		1、get方式的安全性较Post方式要差些，包含机密信息的话，建议用Post数据提交方式；
-		2、在做数据查询时，建议用Get方式；而在做数据添加、修改或删除时，建议用Post方式；
+```html
+1. get是从服务器上获取数据，post是向服务器传送数据。
+2. get是把参数数据队列加到提交表单的ACTION属性所指的URL中，
+值和表单内各个字段一一对应，在URL中可以看到。post是通过HTTP post机制，将表单内各个字段与其内容放置在HTML HEADER内一起传送到ACTION属性所指的URL地址。用户看不到这个过程。
+3. 对于get方式，服务器端用Request.QueryString获取变量的值，
+对于post方式，服务器端用Request.Form获取提交的数据。
+4. get传送的数据量较小，不能大于2KB。post传送的数据量较大，一般被默认为不受限制。
+但理论上，IIS4中最大量为80KB，IIS5中为100KB。
+5. get安全性非常低，post安全性较高。但是执行效率却比Post方法好。 
+
+建议：
+1、get方式的安全性较Post方式要差些，包含机密信息的话，建议用Post数据提交方式；
+2、在做数据查询时，建议用Get方式；而在做数据添加、修改或删除时，建议用Post方式；
+```
 
 -  同步和异步的区别?
 
-		同步需要等待返回结果才能继续，异步不必等待，一般需要监听异步的结果
-		同步是在一条直线上的队列，异步不在一个队列上 各走各的
+```html
+同步需要等待返回结果才能继续，异步不必等待，一般需要监听异步的结果
+同步是在一条直线上的队列，异步不在一个队列上 各走各的
+```
 		
 -  如何解决跨域问题?
-	 
-		jsonp、 iframe、window.name、window.postMessage、服务器上设置代理页面
-		(1) iframe  (2) 动态创建script标签 （3）JSONP （4）crox
+
+```html
+jsonp、 iframe、window.name、window.postMessage、服务器上设置代理页面
+(1) iframe  (2) 动态创建script标签 （3）JSONP （4）crox
+```
 
 -  模块化怎么做？
 
-	```javascript
-	[ 立即执行函数](http://benalman.com/news/2010/11/immediately-invoked-function-expression/),不暴露私有成员
-	
-	var module1 = (function(){
-	　　　　var _count = 0;
-	　　　　var m1 = function(){
-	　　　　　　//...
-	　　　　};
-	　　　　var m2 = function(){
-	　　　　　　//...
-	　　　　};
-	　　　　return {
-	　　　　　　m1 : m1,
-	　　　　　　m2 : m2
-	　　　　};
-	　　})(); 
-	```
--  AMD（Modules/Asynchronous-Definition）、CMD（Common Module Definition）规范区别？
-	```javascript
-	//AMD 依赖前置，提前执行依赖；
-	//api一个当多个用
-	//全局require和局部require都叫require
-	
-	require(['/a','/b'],function(a,b){
-		a.dosomething();
-		b.dosomething();
-	});
+```html
+[ 立即执行函数](http://benalman.com/news/2010/11/immediately-invoked-function-expression/),不暴露私有成员
 
-	//CMD 依赖就近，延迟执行依赖（as lazy as possiable）；
-	//api严格区分，职责单一
-	//没有全局require，根据模块化系统的完备性 提供seajs.use 来实现模块化的启动
+var module1 = (function(){
+　　　　var _count = 0;
+　　　　var m1 = function(){
+　　　　　　//...
+　　　　};
+　　　　var m2 = function(){
+　　　　　　//...
+　　　　};
+　　　　return {
+　　　　　　m1 : m1,
+　　　　　　m2 : m2
+　　　　};
+　　})(); 
+```
 
-	define(function(require,exports,modules){
-		var a=require('/a');
-		a.dosomething();
-		var b=require('/b');
-		b.dosomething();
-	});
-	```
+AMD（Modules/Asynchronous-Definition）、CMD（Common Module Definition）规范区别？
+
+```html
+//AMD 依赖前置，提前执行依赖；
+//api一个当多个用
+//全局require和局部require都叫require
+
+require(['/a','/b'],function(a,b){
+	a.dosomething();
+	b.dosomething();
+});
+
+//CMD 依赖就近，延迟执行依赖（as lazy as possiable）；
+//api严格区分，职责单一
+//没有全局require，根据模块化系统的完备性 提供seajs.use 来实现模块化的启动
+
+define(function(require,exports,modules){
+	var a=require('/a');
+	a.dosomething();
+	var b=require('/b');
+	b.dosomething();
+});
+```
 
 -  异步加载的方式有哪些？
 
-			
-	      (1) defer，只支持IE
-	      
-	      (2) async：
-	      
-	      (3) 创建script，插入到DOM中，加载完毕后callBack
-	  
+```html		
+(1) defer，只支持IE
+      
+(2) async：
+      
+(3) 创建script，插入到DOM中，加载完毕后callBack
+```
+
 - documen.write和 innerHTML的区别
-			  
-		document.write只能重绘整个页面
-		
-		innerHTML可以重绘页面的一部分
-		  
+
+```html				  
+document.write只能重绘整个页面
+
+innerHTML可以重绘页面的一部分
+```
 
 -  .call() 和 .apply() 的区别？
 
-	```javascript
-	//call: 调用一个对象的一个方法，以另一个对象替换当前对象
-	//apply: 应用某一对象的一个方法，用另一个对象替换当前对象 
-	function add(a,b){
-		return a+b;
-	}
-	function sub(a,b){
-		return a-b;
-	}
-	alert(add.call(sub,3,1));//add替换sub 
-	//call函数和apply方法的第一个参数都是要传入给当前对象的对象，及函数内部的this。后面的参数都是传递给当前对象的参数。
-	var func=new function(){this.a="func"}
-    var myfunc=function(x){
-        var a="myfunc";
-        alert(this.a);
-        alert(x);
-    }
-    myfunc.call(func,"var");
-    /*对于apply和call两者在作用上是相同的，但两者在参数上有区别的。
-	对于第一个参数意义都一样，但对第二个参数：
-	apply传入的是一个参数数组，也就是将多个参数组合成为一个数组传入，而call则作为call的参数传入（从第二个参数开始）。
-	如 func.call(func1,var1,var2,var3)对应的apply写法为：func.apply(func1,[var1,var2,var3])
-	同时使用apply的好处是可以直接将当前函数的arguments对象作为apply的第二个参数传入*/
-	```
+```javascript
+//call: 调用一个对象的一个方法，以另一个对象替换当前对象
+//apply: 应用某一对象的一个方法，用另一个对象替换当前对象 
+function add(a,b){
+	return a+b;
+}
+function sub(a,b){
+	return a-b;
+}
+alert(add.call(sub,3,1));//add替换sub 
+//call函数和apply方法的第一个参数都是要传入给当前对象的对象，及函数内部的this。后面的参数都是传递给当前对象的参数。
+var func=new function(){
+	this.a="func";
+}
+var myfunc=function(x){
+    var a="myfunc";
+    alert(this.a);
+    alert(x);
+}
+myfunc.call(func,"var");
+/*对于apply和call两者在作用上是相同的，但两者在参数上有区别的。
+对于第一个参数意义都一样，但对第二个参数：
+apply传入的是一个参数数组，也就是将多个参数组合成为一个数组传入，而call则作为call的参数传入（从第二个参数开始）。
+如 func.call(func1,var1,var2,var3)对应的apply写法为：func.apply(func1,[var1,var2,var3])
+同时使用apply的好处是可以直接将当前函数的arguments对象作为apply的第二个参数传入*/
+```
 
 -  Jquery与jQuery UI 有啥区别？ 
+```html		
+*jQuery是一个js库，主要提供的功能是选择器，属性修改和事件绑定等等。
 
-			
-		*jQuery是一个js库，主要提供的功能是选择器，属性修改和事件绑定等等。
-
-		*jQuery UI则是在jQuery的基础上，利用jQuery的扩展性，设计的插件。
-         提供了一些常用的界面元素，诸如对话框、拖动行为、改变大小行为等等
-
+*jQuery UI则是在jQuery的基础上，利用jQuery的扩展性，设计的插件。
+提供了一些常用的界面元素，诸如对话框、拖动行为、改变大小行为等等
+```
 
 -  JQuery的源码看过吗？能不能简单说一下它的实现原理？
 
 -  jquery 中如何将数组转化为json字符串，然后再转化回来？
-
-			
+		
 jQuery中没有提供这个功能，所以你需要先编写两个jQuery的扩展：
  
 ```javascript
-	$.fn.stringifyArray = function(array) {
-	    return JSON.stringify(array)
-	}
+$.fn.stringifyArray = function(array) {
+    return JSON.stringify(array)
+}
 
-	$.fn.parseArray = function(array) {
-	    return JSON.parse(array)
-	} 
-	//然后调用：
-	$("").stringifyArray(array)
+$.fn.parseArray = function(array) {
+    return JSON.parse(array)
+} 
+//然后调用：
+$("").stringifyArray(array)
 ```
 
 -  针对 jQuery 的优化方法？
+```html	
+*基于Class的选择性的性能相对于Id选择器开销很大，因为需遍历所有DOM元素。
 
-		*基于Class的选择性的性能相对于Id选择器开销很大，因为需遍历所有DOM元素。
-
-		*频繁操作的DOM，先缓存起来再操作。用Jquery的链式调用更好。   
+*频繁操作的DOM，先缓存起来再操作。用Jquery的链式调用更好。   
          比如：var str=$("a").attr("href");
 
-		*for (var i = size; i < arr.length; i++) {}
-         for 循环每一次循环都查找了数组 (arr) 的.length 属性，在开始循环的时候设置一个变量来存储这个数字，可以让循环跑得更快： 
-         for (var i = size, length = arr.length; i < length; i++) {}
-
+*for (var i = size; i < arr.length; i++) {}
+for 循环每一次循环都查找了数组 (arr) 的.length 属性，在开始循环的时候设置一个变量来存储这个数字，可以让循环跑得更快： 
+for (var i = size, length = arr.length; i < length; i++) {}
+```
 
 -  JavaScript中的作用域与变量声明提升？ 
 
@@ -1040,19 +1063,19 @@ jQuery中没有提供这个功能，所以你需要先编写两个jQuery的扩�
 
 -  那些操作会造成内存泄漏？
 
-
-			 
-	    内存泄漏指任何对象在您不再拥有或需要它之后仍然存在。
+```html	
+内存泄漏指任何对象在您不再拥有或需要它之后仍然存在。
 	    
-      垃圾回收器定期扫描对象，并计算引用了每个对象的其他对象的数量。
-      如果一个对象的引用数量为 0（没有其他对象引用过该对象），
-      或对该对象的惟一引用是循环的，那么该对象的内存即可回收。
+垃圾回收器定期扫描对象，并计算引用了每个对象的其他对象的数量。
+如果一个对象的引用数量为 0（没有其他对象引用过该对象），
+或对该对象的惟一引用是循环的，那么该对象的内存即可回收。
 
-        setTimeout 的第一个参数使用字符串而非函数的话，会引发内存泄漏。
-		闭包、控制台日志、循环（在两个对象彼此引用且彼此保留时，就会产生一个循环）
+setTimeout 的第一个参数使用字符串而非函数的话，会引发内存泄漏。
+闭包、控制台日志、循环（在两个对象彼此引用且彼此保留时，就会产生一个循环）
+```
 
 -  JQuery一个对象可以同时绑定多个事件，这是如何实现的？
-  
+
 
 ## <a name='other'>其他问题</a>
 
@@ -1073,140 +1096,152 @@ jQuery中没有提供这个功能，所以你需要先编写两个jQuery的扩�
 
 - 对Node的优点和缺点提出了自己的看法？
 
-		
-		*（优点）因为Node是基于事件驱动和无阻塞的，所以非常适合处理并发请求，
-          因此构建在Node上的代理服务器相比其他技术实现（如Ruby）的服务器表现要好得多。
-		  此外，与Node代理服务器交互的客户端代码是由javascript语言编写的，
-	      因此客户端和服务器端都用同一种语言编写，这是非常美妙的事情。
+```html	
+*（优点）因为Node是基于事件驱动和无阻塞的，所以非常适合处理并发请求，
+因此构建在Node上的代理服务器相比其他技术实现（如Ruby）的服务器表现要好得多。
+此外，与Node代理服务器交互的客户端代码是由javascript语言编写的，
+因此客户端和服务器端都用同一种语言编写，这是非常美妙的事情。
 
-		*（缺点）Node是一个相对新的开源项目，所以不太稳定，它总是一直在变，
-          而且缺少足够多的第三方库支持。看起来，就像是Ruby/Rails当年的样子。
-
+*（缺点）Node是一个相对新的开源项目，所以不太稳定，它总是一直在变，
+而且缺少足够多的第三方库支持。看起来，就像是Ruby/Rails当年的样子。
+```
 
 - 你有哪些性能优化的方法？
 
+```html	
+ （看雅虎14条性能优化原则）。
 
-		 （看雅虎14条性能优化原则）。
-	
-		  （1） 减少http请求次数：CSS Sprites, JS、CSS源码压缩、图片大小控制合适；网页Gzip，CDN托管，data缓存 ，图片服务器。
-		
-		  （2） 前端模板 JS+数据，减少由于HTML标签导致的带宽浪费，前端用变量保存AJAX请求结果，每次操作本地变量，不用请求，减少请求次数
-		
-		  （3） 用innerHTML代替DOM操作，减少DOM操作次数，优化javascript性能。
-		
-		  （4） 当需要设置的样式很多时设置className而不是直接操作style。
-		
-		  （5） 少用全局变量、缓存DOM节点查找的结果。减少IO读取操作。
-		
-		  （6） 避免使用CSS Expression（css表达式)又称Dynamic properties(动态属性)。
-		
-		  （7） 图片预加载，将样式表放在顶部，将脚本放在底部  加上时间戳。
-		
-		  （8） 避免在页面的主体布局中使用table，table要等其中的内容完全下载之后才会显示出来，显示比div+css布局慢。
+  （1） 减少http请求次数：CSS Sprites, JS、CSS源码压缩、图片大小控制合适；网页Gzip，CDN托管，data缓存 ，图片服务器。
+
+  （2） 前端模板 JS+数据，减少由于HTML标签导致的带宽浪费，前端用变量保存AJAX请求结果，每次操作本地变量，不用请求，减少请求次数
+
+  （3） 用innerHTML代替DOM操作，减少DOM操作次数，优化javascript性能。
+
+  （4） 当需要设置的样式很多时设置className而不是直接操作style。
+
+  （5） 少用全局变量、缓存DOM节点查找的结果。减少IO读取操作。
+
+  （6） 避免使用CSS Expression（css表达式)又称Dynamic properties(动态属性)。
+
+  （7） 图片预加载，将样式表放在顶部，将脚本放在底部  加上时间戳。
+
+  （8） 避免在页面的主体布局中使用table，table要等其中的内容完全下载之后才会显示出来，显示比div+css布局慢。
+```
 
 - http状态码有那些？分别代表是什么意思？
 
-			100-199 用于指定客户端应相应的某些动作。 
-			200-299 用于表示请求成功。 
-			300-399 用于已经移动的文件并且常被包含在定位头信息中指定新的地址信息。 
-			400-499 用于指出客户端的错误。
-			400	1、语义有误，当前请求无法被服务器理解。
-			401	当前请求需要用户验证 
-			403	服务器已经理解请求，但是拒绝执行它。
-			500-599 用于支持服务器错误。 503 – 服务不可用
-			
-			HTTP协议的状态消息都有哪些?
-			“200〃 : OK（成功） 一切正常
-			“302〃 : Found（临时移动）类似于301，但新的URL应该被视为临时性的替代，而不是永久性的。
-			“400〃 : Bad Request（错误请求）请求出现语法错误。
-			“404〃 : Not Found（未找到）无法找到指定位置的资源。 
-			“500〃 : Internal Server Error（服务器内部错误）服务器遇到错误，无法完成请求。
-			“502〃 : Bad Gateway（错误网关）服务器作为网关或者代理时，
-			为了完成请求访问下一个服务器，但该服务器返回了非法的应答。
+```html	
+100-199 用于指定客户端应相应的某些动作。 
+200-299 用于表示请求成功。 
+300-399 用于已经移动的文件并且常被包含在定位头信息中指定新的地址信息。 
+400-499 用于指出客户端的错误。
+400	1、语义有误，当前请求无法被服务器理解。
+401	当前请求需要用户验证 
+403	服务器已经理解请求，但是拒绝执行它。
+500-599 用于支持服务器错误。 503 – 服务不可用
+
+HTTP协议的状态消息都有哪些?
+“200〃 : OK（成功） 一切正常
+“302〃 : Found（临时移动）类似于301，但新的URL应该被视为临时性的替代，而不是永久性的。
+“400〃 : Bad Request（错误请求）请求出现语法错误。
+“404〃 : Not Found（未找到）无法找到指定位置的资源。 
+“500〃 : Internal Server Error（服务器内部错误）服务器遇到错误，无法完成请求。
+“502〃 : Bad Gateway（错误网关）服务器作为网关或者代理时，
+为了完成请求访问下一个服务器，但该服务器返回了非法的应答。
+```
 
 - 一个页面从输入 URL 到页面加载显示完成，这个过程中都发生了什么？（流程说的越详细越好）
 
+```html	
+查找浏览器缓存 
+    DNS解析、查找该域名对应的IP地址、重定向（301）、发出第二个GET请求
+    进行HTTP协议会话
+    客户端发送报头(请求报头)
+    服务器回馈报头(响应报头)
+    html文档开始下载
+    文档树建立，根据标记请求所需指定MIME类型的文件
+    文件显示
 
-			查找浏览器缓存 
-		    DNS解析、查找该域名对应的IP地址、重定向（301）、发出第二个GET请求
-		    进行HTTP协议会话
-		    客户端发送报头(请求报头)
-		    服务器回馈报头(响应报头)
-		    html文档开始下载
-		    文档树建立，根据标记请求所需指定MIME类型的文件
-		    文件显示
-			[
-			浏览器这边做的工作大致分为以下几步：
-			
-			加载：根据请求的URL进行域名解析，向服务器发起请求，接收文件（HTML、JS、CSS、图象等）。
-			
-			解析：对加载到的资源（HTML、JS、CSS等）进行语法解析，
-			建议相应的内部数据结构（比如HTML的DOM树，JS的（对象）属性表，CSS的样式规则等等）
-			}
+[浏览器这边做的工作大致分为以下几步：
+
+加载：根据请求的URL进行域名解析，向服务器发起请求，接收文件（HTML、JS、CSS、图象等）。
+
+解析：对加载到的资源（HTML、JS、CSS等）进行语法解析，
+建议相应的内部数据结构（比如HTML的DOM树，JS的（对象）属性表，CSS的样式规则等等）
+]
+```
+
 - 除了前端以外还了解什么其它技术么？你最最厉害的技能是什么？
 
 - 你常用的开发工具是什么，为什么？
 
 - 对前端界面工程师这个职位是怎么样理解的？它的前景会怎么样？
 
-		     前端是最贴近用户的程序员，比后端、数据库、产品经理、运营、安全都近。
-			1、实现界面交互
-			2、提升用户体验
-			3、有了Node.js，前端可以实现服务端的一些事情
-			
+```html	
+前端是最贴近用户的程序员，比后端、数据库、产品经理、运营、安全都近。
 
-		前端是最贴近用户的程序员，前端的能力就是能让产品从 90分进化到 100 分，甚至更好，
+1、实现界面交互
+
+2、提升用户体验
+
+3、有了Node.js，前端可以实现服务端的一些事情
+
+前端是最贴近用户的程序员，前端的能力就是能让产品从 90分进化到 100 分，甚至更好，
         
-         参与项目，快速高质量完成实现效果图，精确到1px；
+参与项目，快速高质量完成实现效果图，精确到1px；
+
+与团队成员，UI设计，产品经理的沟通；
         
-         与团队成员，UI设计，产品经理的沟通；
+做好的页面结构，页面重构和用户体验；
         
-         做好的页面结构，页面重构和用户体验；
-        
-         处理hack，兼容、写出优美的代码格式；
-        
-         针对服务器的优化、拥抱最新前端技术。
+处理hack，兼容、写出优美的代码格式；
+
+针对服务器的优化、拥抱最新前端技术。
+```
+
 - 加班的看法？
 
-
-   		加班就像借钱，原则应当是------救急不救穷
-	
+```html
+加班就像借钱，原则应当是------救急不救穷
+```
 
 
 - 平时如何管理你的项目？
+```html
+先期团队必须确定好全局样式（globe.css），编码模式(utf-8) 等
+		
+编写习惯必须一致（例如都是采用继承式的写法，单样式都写成一行）；
+		
+标注样式编写人，各模块都及时标注（标注关键样式调用的地方）；
+		
+页面进行标注（例如 页面 模块 开始和结束）；
+		
+CSS跟HTML 分文件夹并行存放，命名都得统一（例如style.css）
+		
+JS 分文件夹存放 命民以该JS 功能为准英文翻译；
+		
+图片采用整合的 images.png png8 格式文件使用 尽量整合在一起使用方便将来的管理
+```
 
-		先期团队必须确定好全局样式（globe.css），编码模式(utf-8) 等
-		
-		编写习惯必须一致（例如都是采用继承式的写法，单样式都写成一行）；
-		
-		标注样式编写人，各模块都及时标注（标注关键样式调用的地方）；
-		
-		页面进行标注（例如 页面 模块 开始和结束）；
-		
-		CSS跟HTML 分文件夹并行存放，命名都得统一（例如style.css）
-		
-		JS 分文件夹存放 命民以该JS 功能为准英文翻译；
-		
-		图片采用整合的 images.png png8 格式文件使用 尽量整合在一起使用方便将来的管理
-		
 - 如何设计突发大规模并发架构？
-
 
 - 说说最近最流行的一些东西吧？常去哪些网站？
 
-
-		Node.js、Mongodb、npm、MVVM、MEAN、three.js
+```html
+Node.js、Mongodb、npm、MVVM、MEAN、three.js
+```
 
 - 移动端（Android IOS）怎么做好用户体验?
-
-		清晰的视觉纵线、信息的分组、极致的减法、
-		利用选择代替输入、标签及文字的排布方式、
-		依靠明文确认密码、合理的键盘利用、
+- 
+```html
+清晰的视觉纵线、信息的分组、极致的减法、
+利用选择代替输入、标签及文字的排布方式、
+依靠明文确认密码、合理的键盘利用、
+```
 
 - 你在现在的团队处于什么样的角色，起到了什么明显的作用？
 
 - 你认为怎样才是全端工程师（Full Stack developer）？ 
-
 
 - 介绍一个你最得意的作品吧？
 
@@ -1214,16 +1249,16 @@ jQuery中没有提供这个功能，所以你需要先编写两个jQuery的扩�
 
 - 如何管理前端团队?
 
-
 - 最近在学什么？能谈谈你未来3，5年给自己的规划吗？
 
 - 想问公司的问题？
-		
-			问公司问题：
-			目前关注哪些最新的Web前端技术（未来的发展方向）？
-			前端团队如何工作的（实现一个产品的流程）？
-			公司的薪资结构是什么样子的？
 
+```html
+问公司问题：
+目前关注哪些最新的Web前端技术（未来的发展方向）？
+前端团队如何工作的（实现一个产品的流程）？
+公司的薪资结构是什么样子的？
+```
 
 ## <a name='web'>优质网站推荐</a>
 
@@ -1246,7 +1281,6 @@ jQuery中没有提供这个功能，所以你需要先编写两个jQuery的扩�
 9. Stack Overflow： http://stackoverflow.com/ 
 
 10. Atp：  		 http://atp-posts.b0.upaiyun.com/posts/ 
-
 
 
 了解更多：http://note.youdao.com/share/?id=f179a18d162ce08afa020a8ba8fc0cdf&type=note
