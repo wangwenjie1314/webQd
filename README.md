@@ -932,26 +932,25 @@ jsonp、 iframe、window.name、window.postMessage、服务器上设置代理页
 
 -  模块化怎么做？
 
-```html
 [Javascript模块化编程](http://www.ruanyifeng.com/blog/2012/10/javascript_module.html)
-
+```html
 //不暴露私有成员
 var module1 = (function(){
-　　　　var _count = 0;
-　　　　var m1 = function(){
-　　　　　　//...
-　　　　};
-　　　　var m2 = function(){
-　　　　　　//...
-　　　　};
-　　　　return {
-　　　　　　m1 : m1,
-　　　　　　m2 : m2
-　　　　};
-　　})(); 
+　　var _count = 0;
+　　var m1 = function(){
+　　　　//...
+　　};
+　　var m2 = function(){
+　　　　//...
+　　};
+　　return {
+　　　　m1 : m1,
+　　　　m2 : m2
+　　};
+})(); 
 ```
 
-AMD（Modules/Asynchronous-Definition）、CMD（Common Module Definition）规范区别？
+-  AMD（Modules/Asynchronous-Definition）、CMD（Common Module Definition）规范区别？
 
 ```html
 //AMD 依赖前置，提前执行依赖；
@@ -1022,7 +1021,8 @@ apply传入的是一个参数数组，也就是将多个参数组合成为一个
 同时使用apply的好处是可以直接将当前函数的arguments对象作为apply的第二个参数传入*/
 ```
 
--  jQuery与jQuery UI 有啥区别？ 
+-  jQuery与jQuery UI 有啥区别？
+ 
 ```html		
 *jQuery是一个js库，主要提供的功能是选择器，属性修改和事件绑定等等。
 
@@ -1049,6 +1049,7 @@ $("#xxx").stringifyArray(array)
 ```
 
 -  针对 jQuery 的优化方法？
+
 ```html	
 *基于Class的选择性的性能相对于Id选择器开销很大，因为需遍历所有DOM元素。
 
