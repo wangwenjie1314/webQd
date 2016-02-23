@@ -902,7 +902,9 @@ Ajax允许JavaScript可以发送HTTP请求和响应HTTP响应，依赖来浏览�
 ```html
 1. get是从服务器上获取数据，post是向服务器传送数据。
 2. get是把参数数据队列加到提交表单的ACTION属性所指的URL中，
-值和表单内各个字段一一对应，在URL中可以看到。post是通过HTTP post机制，将表单内各个字段与其内容放置在HTML HEADER内一起传送到ACTION属性所指的URL地址。用户看不到这个过程。
+值和表单内各个字段一一对应，在URL中可以看到。
+post是通过HTTP post机制，将表单内各个字段与其内容放置在HTML
+HEADER内一起传送到ACTION属性所指的URL地址。用户看不到这个过程。
 3. 对于get方式，服务器端用Request.QueryString获取变量的值，
 对于post方式，服务器端用Request.Form获取提交的数据。
 4. get传送的数据量较小，不能大于2KB。post传送的数据量较大，一般被默认为不受限制。
@@ -931,8 +933,9 @@ jsonp、 iframe、window.name、window.postMessage、服务器上设置代理页
 -  模块化怎么做？
 
 ```html
-[ 立即执行函数](http://benalman.com/news/2010/11/immediately-invoked-function-expression/),不暴露私有成员
+[Javascript模块化编程](http://www.ruanyifeng.com/blog/2012/10/javascript_module.html)
 
+//不暴露私有成员
 var module1 = (function(){
 　　　　var _count = 0;
 　　　　var m1 = function(){
@@ -1019,7 +1022,7 @@ apply传入的是一个参数数组，也就是将多个参数组合成为一个
 同时使用apply的好处是可以直接将当前函数的arguments对象作为apply的第二个参数传入*/
 ```
 
--  Jquery与jQuery UI 有啥区别？ 
+-  jQuery与jQuery UI 有啥区别？ 
 ```html		
 *jQuery是一个js库，主要提供的功能是选择器，属性修改和事件绑定等等。
 
@@ -1027,9 +1030,9 @@ apply传入的是一个参数数组，也就是将多个参数组合成为一个
 提供了一些常用的界面元素，诸如对话框、拖动行为、改变大小行为等等
 ```
 
--  JQuery的源码看过吗？能不能简单说一下它的实现原理？
+-  jQuery的源码看过吗？能不能简单说一下它的实现原理？
 
--  jquery 中如何将数组转化为json字符串，然后再转化回来？
+-  jQuery 中如何将数组转化为json字符串，然后再转化回来？
 		
 jQuery中没有提供这个功能，所以你需要先编写两个jQuery的扩展：
  
@@ -1049,7 +1052,7 @@ $("#xxx").stringifyArray(array)
 ```html	
 *基于Class的选择性的性能相对于Id选择器开销很大，因为需遍历所有DOM元素。
 
-*频繁操作的DOM，先缓存起来再操作。用Jquery的链式调用更好。   
+*频繁操作的DOM，先缓存起来再操作。用jQuery的链式调用更好。   
          比如：var str=$("a").attr("href");
 
 *for (var i = size; i < arr.length; i++) {}
@@ -1074,7 +1077,7 @@ setTimeout 的第一个参数使用字符串而非函数的话，会引发内存
 闭包、控制台日志、循环（在两个对象彼此引用且彼此保留时，就会产生一个循环）
 ```
 
--  JQuery一个对象可以同时绑定多个事件，这是如何实现的？
+-  jQuery一个对象可以同时绑定多个事件，这是如何实现的？
 
 
 ## <a name='other'>其他问题</a>
