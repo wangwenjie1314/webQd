@@ -30,7 +30,7 @@
 
 **前端开发面试知识点大纲：**
 
-```javascript
+```html
 HTML&CSS：
 对Web标准的理解、浏览器内核差异、兼容性、hack、CSS基本功：布局、盒子模型、
 选择器优先级及使用、HTML5、CSS3、移动端适应 
@@ -49,7 +49,7 @@ HTTP、安全、正则、优化、重构、响应式、移动端、团队协作�
    
 1、DOM结构——两个节点之间可能存在哪些关系以及如何在节点之间任意移动。
 
-```javascript
+```html
 document.documentElement     返回文档的根节点<html> 
 document.body     <body> 
 document.activeElement 返回当前文档中被击活的标签节点(ie) 
@@ -71,136 +71,150 @@ childNodes是符合W3C标准的，可以说比较通用。而另外两个只是I
 
 2、DOM操作——怎样添加、移除、移动、复制、创建和查找节点。
 
-	（1）创建新节点
-	    createDocumentFragment()    //创建一个DOM片段
-	    createElement()   //创建一个具体的元素
-	    createTextNode()   //创建一个文本节点
-	（2）添加、移除、替换、插入
-	    appendChild()
-	    removeChild()
-	    replaceChild()
-	    insertBefore()
-	（3）查找
-	    getElementsByTagName()    //通过标签名称
-	    getElementsByName()    //通过元素的Name属性的值
-	    getElementById()    //通过元素Id，唯一性
+```html
+（1）创建新节点
+    createDocumentFragment()    //创建一个DOM片段
+    createElement()   //创建一个具体的元素
+    createTextNode()   //创建一个文本节点
+（2）添加、移除、替换、插入
+    appendChild()
+    removeChild()
+    replaceChild()
+    insertBefore()
+（3）查找
+    getElementsByTagName()    //通过标签名称
+    getElementsByName()    //通过元素的Name属性的值
+    getElementById()    //通过元素Id，唯一性
+```
 
 3、事件——怎样使用事件以及IE和DOM事件模型之间存在哪些主要差别。
 
-	（1）冒泡型事件：事件按照从最特定的事件目标到最不特定的事件目标(document对象)的顺序触发。
-	IE 5.5: div -> body -> document
-	IE 6.0: div -> body -> html -> document
-	Mozilla 1.0: div -> body -> html -> document -> window
-	（2）捕获型事件(event capturing)：事件从最不精确的对象(document 对象)开始触发，
-	然后到最精确(也可以在窗口级别捕获事件，不过必须由开发人员特别指定)。
-	（3）DOM事件流：同时支持两种事件模型：捕获型事件和冒泡型事件，
-	但是，捕获型事件先发生。两种事件流会触及DOM中的所有对象，从document对象开始，也在document对象结束。
-	DOM事件模型最独特的性质是，文本节点也触发事件(在IE中不会)。
+```html
+（1）冒泡型事件：事件按照从最特定的事件目标到最不特定的事件目标(document对象)的顺序触发。
+IE 5.5: div -> body -> document
+IE 6.0: div -> body -> html -> document
+Mozilla 1.0: div -> body -> html -> document -> window
+（2）捕获型事件(event capturing)：事件从最不精确的对象(document 对象)开始触发，
+然后到最精确(也可以在窗口级别捕获事件，不过必须由开发人员特别指定)。
+（3）DOM事件流：同时支持两种事件模型：捕获型事件和冒泡型事件，
+但是，捕获型事件先发生。两种事件流会触及DOM中的所有对象，从document对象开始，也在document对象结束。
+DOM事件模型最独特的性质是，文本节点也触发事件(在IE中不会)。
+```
 
 4、XMLHttpRequest——这是什么、怎样完整地执行一次GET请求、怎样检测错误。
 
-	XMLHttpRequest 对象提供了在网页加载后与服务器进行通信的方法。
-	
-	<script type="text/javascript">
-	    var xmlhttp;
-	    function loadXMLDoc(url){
-	        xmlhttp=null;
-	        if(window.XMLHttpRequest){    //code for all new browsers
-	            xmlhttp=newXMLHttpRequest();
-	        }elseif(window.ActiveXObject){    //code for IE5 and IE6
-	            xmlhttp=newActiveXObject("Microsoft.XMLHTTP");
-	        }
-	        if(xmlhttp!=null){
-	            xmlhttp.onreadystatechange=state_Change;
-	               xmlhttp.open("GET",url,true);
-	            xmlhttp.send(null);
-	        }else{
-	            alert("Your browser does not support XMLHTTP.");
-	        }
-	}
-	
-	function state_Change(){
-	    if(xmlhttp.readyState==4){    //4 = "loaded"
-	        if(xmlhttp.status==200){    //200 = OK
-	            //...our code here...
-	        }else{
-	            alert("Problem retrieving XML data");
-	        }
-	    }
-	}
-	</script>
+```html
+//MLHttpRequest 对象提供了在网页加载后与服务器进行通信的方法。
+
+<script type="text/javascript">
+var xmlhttp;
+function loadXMLDoc(url){
+        xmlhttp=null;
+        if(window.XMLHttpRequest){    //code for all new browsers
+            xmlhttp=newXMLHttpRequest();
+        }elseif(window.ActiveXObject){    //code for IE5 and IE6
+            xmlhttp=newActiveXObject("Microsoft.XMLHTTP");
+        }
+        if(xmlhttp!=null){
+            xmlhttp.onreadystatechange=state_Change;
+               xmlhttp.open("GET",url,true);
+            xmlhttp.send(null);
+        }else{
+            alert("Your browser does not support XMLHTTP.");
+        }
+}
+
+function state_Change(){
+    if(xmlhttp.readyState==4){    //4 = "loaded"
+        if(xmlhttp.status==200){    //200 = OK
+            //...our code here...
+        }else{
+            alert("Problem retrieving XML data");
+        }
+    }
+}
+</script>
+```
 
 5、严格模式与混杂模式——如何触发这两种模式，区分它们有何意义。
 
-	在标准模式中，浏览器根据规范呈现页面；
-	在混杂模式中，页面以一种比较宽松的向后兼容的方式显示。
-	浏览器根据DOCTYPE是否存在以及使用的哪种DTD来选择要使用的呈现方法。
-	如果XHTML文档包含形式完整的DOCTYPE，那么它一般以标准模式呈现。
-	对于HTML 4.01文档，包含严格DTD的DOCTYPE常常导致页面以标准模式呈现。
-	包含过渡DTD和URI的DOCTYPE也导致页面以标准模式呈现，但是有过
-	渡DTD而没有URI会导致页面以混杂模式呈现。DOCTYPE不存在或形式不正确会导致HTML和XHTML文档以混杂模式呈现。
+```html
+在标准模式中，浏览器根据规范呈现页面；
+在混杂模式中，页面以一种比较宽松的向后兼容的方式显示。
+浏览器根据DOCTYPE是否存在以及使用的哪种DTD来选择要使用的呈现方法。
+如果XHTML文档包含形式完整的DOCTYPE，那么它一般以标准模式呈现。
+对于HTML 4.01文档，包含严格DTD的DOCTYPE常常导致页面以标准模式呈现。
+包含过渡DTD和URI的DOCTYPE也导致页面以标准模式呈现，但是有过
+渡DTD而没有URI会导致页面以混杂模式呈现。DOCTYPE不存在或形式不正确会导致HTML和XHTML文档以混杂模式呈现。
+```
 
 6、盒模型——外边距、内边距和边框之间的关系，IE 8以下版本的浏览器中的盒模型有什么不同。
 
-	一个元素盒模型的层次从内到外分别为：内边距、边框和外边距
-	IE8以下浏览器的盒模型中定义的元素的宽高不包括内边距和边框。（这句回答有争议，期待能有人解答原因QQ1662484899）
-	
-	延伸：
-	盒子模型分为两类：W3C标准盒子模型和IE盒子模型 （微软确实不喜欢服从他家的标准）
-        这两者的关键差别就在于：
-	W3C盒子模型——属性高（height）和属性宽（width）这两个值不包含 填充（padding）和边框（border）
-        IE盒子模型——属性高（height）和属性宽（width）这两个值包含 填充（padding）和边框（border）
-        我们在编写页面代码的时候应该尽量使用标准的W3C盒子模型（需要在页面中声明DOCTYPE类型），
-        这样可以避免多个浏览器对同一页面的不兼容。
-	因为如果不声明DOCTYPE类型，IE会将盒子模型解释为IE盒子模型，FireFox等会将其解释为W3C盒子模型；
-	而如果在页面中声明了DOCTYPE模型，所有的浏览器都会把盒子模型解释为W3C盒子模型。
-	
+```html
+一个元素盒模型的层次从内到外分别为：内边距、边框和外边距
+IE8以下浏览器的盒模型中定义的元素的宽高不包括内边距和边框。（这句回答有争议，期待能有人解答原因QQ1662484899）
+
+延伸：
+盒子模型分为两类：W3C标准盒子模型和IE盒子模型 （微软确实不喜欢服从他家的标准）
+这两者的关键差别就在于：
+W3C盒子模型——属性高（height）和属性宽（width）这两个值不包含 填充（padding）和边框（border）
+IE盒子模型——属性高（height）和属性宽（width）这两个值包含 填充（padding）和边框（border）
+我们在编写页面代码的时候应该尽量使用标准的W3C盒子模型（需要在页面中声明DOCTYPE类型），
+这样可以避免多个浏览器对同一页面的不兼容。
+因为如果不声明DOCTYPE类型，IE会将盒子模型解释为IE盒子模型，FireFox等会将其解释为W3C盒子模型；
+而如果在页面中声明了DOCTYPE模型，所有的浏览器都会把盒子模型解释为W3C盒子模型。
+```
 
 7、块级元素与行内元素——怎么用CSS控制它们、它们怎样影响周围的元素以及你觉得应该如何定义它们的样式。
 
-	块级元素，用CSS中的display:inline;属性则变为行内元素
-	行内元素，用CSS中的display:block;属性则变为块级元素
-	影响：周围元素显示在同一行或换行显示，根据具体情况调整样式
+```html
+块级元素，用CSS中的display:inline;属性则变为行内元素
+行内元素，用CSS中的display:block;属性则变为块级元素
+影响：周围元素显示在同一行或换行显示，根据具体情况调整样式
+```
 
 8、浮动元素——怎么使用它们、它们有什么问题以及怎么解决这些问题。
 
-	需要浮动的元素可使用CSS中float属性来定义元素的浮动位置，left：往左浮动，right：往右浮动
-	浮动元素引起的问题：
-	（1）父元素的高度无法被撑开，影响与父元素同级的元素
-	（2）与浮动元素同级的非浮动元素会跟随其后
-	（3）若非第一个元素浮动，则该元素之前的元素也需要浮动，否则会影响页面显示的结构
-	解决方法：
-	使用CSS中的clear:both;属性来清除元素的浮动可解决2、3问题，
-	对于问题1，添加如下样式，给父元素添加clearfix样式：
-	.clearfix:after{content: ".";display: block;height: 0;clear: both;visibility: hidden;}
-	.clearfix{display: inline-block;}  /* for IE/Mac */
+```html
+需要浮动的元素可使用CSS中float属性来定义元素的浮动位置，left：往左浮动，right：往右浮动
+浮动元素引起的问题：
+（1）父元素的高度无法被撑开，影响与父元素同级的元素
+（2）与浮动元素同级的非浮动元素会跟随其后
+（3）若非第一个元素浮动，则该元素之前的元素也需要浮动，否则会影响页面显示的结构
+解决方法：
+使用CSS中的clear:both;属性来清除元素的浮动可解决2、3问题，
+对于问题1，添加如下样式，给父元素添加clearfix样式：
+.clearfix:after{content: ".";display: block;height: 0;clear: both;visibility: hidden;}
+.clearfix{display: inline-block;}  /* for IE/Mac */
+```
 
 9、HTML与XHTML——二者有什么区别，你觉得应该使用哪一个并说出理由。
 
-	主要区别：
-	XHTML 元素必须被正确地嵌套
-	XHTML 元素必须被关闭，空标签也必须被关闭，如 <br> 必须写成 <br />
-	XHTML 标签名必须用小写字母
-	XHTML 文档必须拥有根元素
-	XHTML 文档要求给所有属性赋一个值
-	XHTML 要求所有的属性必须用引号""括起来
-	XHTML 文档需要把所有 < 、>、& 等特殊符号用编码表示
-	XHTML 文档不要在注释内容中使“--”
-	XHTML 图片必须有说明文字
-	XHTML 文档中用id属性代替name属性
+```html
+主要区别：
+XHTML 元素必须被正确地嵌套
+XHTML 元素必须被关闭，空标签也必须被关闭，如 <br> 必须写成 <br />
+XHTML 标签名必须用小写字母
+XHTML 文档必须拥有根元素
+XHTML 文档要求给所有属性赋一个值
+XHTML 要求所有的属性必须用引号""括起来
+XHTML 文档需要把所有 < 、>、& 等特殊符号用编码表示
+XHTML 文档不要在注释内容中使“--”
+XHTML 图片必须有说明文字
+XHTML 文档中用id属性代替name属性
+```
 
 10、JSON——它是什么、为什么应该使用它、到底该怎么使用它，说出实现细节来。
 
-	JSON(JavaScript Object Notation) 是一种轻量级的数据交换格式。
-	易于人阅读和编写。同时也易于机器解析和生成。
-	JSON建构于两种结构：
-	“名称/值”对的集合（A collection of name/value 
-	pairs）。
-	不同的语言中，它被理解为对象（object），纪录（record），结构（struct），
-	字典（dictionary），哈希表
-	（hash table），有键列表（keyed list），或者关联数组 （associative array）。 
-	值的有序列表（An ordered list of values）。在大部分语言中，它被理解为数组（array）。
-			
+```html
+JSON(JavaScript Object Notation) 是一种轻量级的数据交换格式。
+易于人阅读和编写。同时也易于机器解析和生成。
+JSON建构于两种结构：
+“名称/值”对的集合（A collection of name/value pairs）。
+不同的语言中，它被理解为对象（object），纪录（record），结构（struct），
+字典（dictionary），哈希表（hash table），有键列表（keyed list），或者关联数组 （associative array）。 
+值的有序列表（An ordered list of values）。在大部分语言中，它被理解为数组（array）。
+```
 
 **备注：** 
 
@@ -215,317 +229,335 @@ childNodes是符合W3C标准的，可以说比较通用。而另外两个只是I
 
 - Doctype作用? 严格模式与混杂模式如何区分？它们有何意义? 
 
-	（1）、<!DOCTYPE> 声明位于文档中的最前面，处于 <html> 标签之前。告知浏览器的解析器，
-	用什么文档类型 规范来解析这个文档。 
-	
-	（2）、严格模式的排版和 JS 运作模式是  以该浏览器支持的最高标准运行。
-	
-	（3）、在混杂模式中，页面以宽松的向后兼容的方式显示。模拟老式浏览器的行为以防止站点无法工作。
-	
-	（4）、DOCTYPE不存在或格式不正确会导致文档以混杂模式呈现。
+```html
+（1）、<!DOCTYPE> 声明位于文档中的最前面，处于 <html> 标签之前。告知浏览器的解析器，
+用什么文档类型 规范来解析这个文档。 
+
+（2）、严格模式的排版和 JS 运作模式是  以该浏览器支持的最高标准运行。
+
+（3）、在混杂模式中，页面以宽松的向后兼容的方式显示。模拟老式浏览器的行为以防止站点无法工作。
+
+（4）、DOCTYPE不存在或格式不正确会导致文档以混杂模式呈现。
+```
 
 - 行内元素有哪些？块级元素有哪些？ 空(void)元素有那些？
 
-        （1）CSS规范规定，每个元素都有display属性，确定该元素的类型，每个元素都有默认的display值，
-          比如div默认display属性值为“block”，成为“块级”元素；
-          span默认display属性值为“inline”，是“行内”元素。  
+```html
+（1）CSS规范规定，每个元素都有display属性，确定该元素的类型，每个元素都有默认的display值，
+比如div默认display属性值为“block”，成为“块级”元素；
+span默认display属性值为“inline”，是“行内”元素。  
         
-        （2）行内元素有：a b span img input select strong（强调的语气） 
-         块级元素有：div ul ol li dl dt dd h1 h2 h3 h4…p  
+（2）行内元素有：a b span img input select strong(强调的语气);
+块级元素有：div ul ol li dl dt dd h1 h2 h3 h4…p  
                 
-        （3）知名的空元素： 
-        <br> <hr> <img> <input> <link> <meta> 
-        鲜为人知的是： 
-        <area> <base> <col> <command> <embed> <keygen> <param> <source> <track> <wbr>
+（3）知名的空元素： 
+<br> <hr> <img> <input> <link> <meta> 
+鲜为人知的是： 
+<area> <base> <col> <command> <embed> <keygen> <param> <source> <track> <wbr>
+```
 
 - 请问css中的区块 inline inline-block block 三者有什么区别呢？
 
-		这样先讲内联元素和块级元素：
-		内联元素是不可以控制宽和高、margin等；并且在同一行显示，不换行。
-		块级元素时可以控制宽和高、margin等，并且会换行。
-		
-		inline：使用此属性后，元素会被显示为内联元素，元素则不会换行。
-		block：使用此属性后，元素会被现实为块级元素，元素会进行换行。
-		inline-block：是使元素以块级元素的形式呈现在行内。
-		意思就是说，让这个元素显示在同一行不换行，但是又可以控制高度和宽度，这相当于内联元素的增强。
-		
-		要注意的是IE6 不支持inline-block
+```html
+这样先讲内联元素和块级元素：
+内联元素是不可以控制宽和高、margin等；并且在同一行显示，不换行。
+块级元素时可以控制宽和高、margin等，并且会换行。
 
+inline：使用此属性后，元素会被显示为内联元素，元素则不会换行。
+block：使用此属性后，元素会被现实为块级元素，元素会进行换行。
+inline-block：是使元素以块级元素的形式呈现在行内。
+意思就是说，让这个元素显示在同一行不换行，但是又可以控制高度和宽度，这相当于内联元素的增强。
+
+要注意的是IE6 不支持inline-block
+```
 
 - link 和@import 的区别是？
 
-	
-        （1）link属于XHTML标签，而@import是CSS提供的;
+```html
+（1）link属于XHTML标签，而@import是CSS提供的;
         
-        （2）页面被加载的时，link会同时被加载，而@import引用的CSS会等到页面被加载完再加载;
+（2）页面被加载的时，link会同时被加载，而@import引用的CSS会等到页面被加载完再加载;
         
-        （3）import只在IE5以上才能识别，而link是XHTML标签，无兼容问题;
+（3）import只在IE5以上才能识别，而link是XHTML标签，无兼容问题;
         
-        （4）link方式的样式的权重 高于@import的权重.	
+（4）link方式的样式的权重 高于@import的权重.
+```
 
 - 浏览器的内核分别是什么?
-	
-		* IE浏览器的内核Trident、Mozilla的Gecko、
-		* Chrome的Blink（WebKit的分支）、Opera内核原为Presto，现为Blink；
 
+```html	
+* IE浏览器的内核Trident、Mozilla的Gecko、
+* Chrome的Blink（WebKit的分支）、Opera内核原为Presto，现为Blink；
+```
 
 - 常见兼容性问题？
 
-		* png24位的图片在iE6浏览器上出现背景，解决方案是做成PNG8.
-		
-		* 浏览器默认的margin和padding不同。解决方案是加一个全局的*{margin:0;padding:0;}来统一。
-		
-		* IE6双边距bug:块属性标签float后，又有横行的margin情况下，在ie6显示margin比设置的大。 
-		
-		浮动ie产生的双倍距离 #box{ float:left; width:10px; margin:0 0 0 100px;} 
-		
-		这种情况之下IE会产生20px的距离，解决方案是在float的标签样式控制中
-		加入 ——_display:inline;将其转化为行内属性。(_这个符号只有ie6会识别)
-		
-		渐进识别的方式，从总体中逐渐排除局部。 
-		
-		首先，巧妙的使用“\9”这一标记，将IE游览器从所有情况中分离出来。 
-		接着，再次使用“+”将IE8和IE7、IE6分离开来，这样IE8已经独立识别。
-		
-		css
-		.bb{
-		background-color:#f1ee18;/*所有识别*/
-		.background-color:#00deff\9; /*IE6、7、8识别*/
-		+background-color:#a200ff;/*IE6、7识别*/
-		_background-color:#1e0bd1;/*IE6识别*/ 
-		} 
-		
-		*  IE下,可以使用获取常规属性的方法来获取自定义属性,
-		也可以使用getAttribute()获取自定义属性;
-		Firefox下,只能使用getAttribute()获取自定义属性. 
-		解决方法:统一通过getAttribute()获取自定义属性.
-		
-		* IE下,even对象有x,y属性,但是没有pageX,pageY属性; 
-		Firefox下,event对象有pageX,pageY属性,但是没有x,y属性.
-		
-		* 解决方法：（条件注释）缺点是在IE浏览器下可能会增加额外的HTTP请求数。
-		
-		* Chrome 中文界面下默认会将小于 12px 的文本强制按照 12px 显示, 
-		可通过加入 CSS 属性 -webkit-text-size-adjust: none; 解决.
-		
-		超链接访问过后hover样式就不出现了 被点击访问过的超链接样式不在具有hover和active了解决方法是改变CSS属性的排列顺序:
-		L-V-H-A :  a:link {} a:visited {} a:hover {} a:active {}
+```html
+- png24位的图片在iE6浏览器上出现背景，解决方案是做成PNG8.
 
+- 浏览器默认的margin和padding不同。解决方案是加一个全局的*{margin:0;padding:0;}来统一。
 
+- IE6双边距bug:块属性标签float后，又有横行的margin情况下，在ie6显示margin比设置的大。 
+
+浮动ie产生的双倍距离 #box{ float:left; width:10px; margin:0 0 0 100px;} 
+
+这种情况之下IE会产生20px的距离，解决方案是在float的标签样式控制中
+加入 ——_display:inline;将其转化为行内属性。(_这个符号只有ie6会识别)
+
+渐进识别的方式，从总体中逐渐排除局部。 
+
+首先，巧妙的使用“\9”这一标记，将IE游览器从所有情况中分离出来。 
+接着，再次使用“+”将IE8和IE7、IE6分离开来，这样IE8已经独立识别。
+
+css
+.bb{
+background-color:#f1ee18;/*所有识别*/
+.background-color:#00deff\9; /*IE6、7、8识别*/
++background-color:#a200ff;/*IE6、7识别*/
+_background-color:#1e0bd1;/*IE6识别*/ 
+} 
+
+-  IE下,可以使用获取常规属性的方法来获取自定义属性,
+也可以使用getAttribute()获取自定义属性;
+Firefox下,只能使用getAttribute()获取自定义属性. 
+解决方法:统一通过getAttribute()获取自定义属性.
+
+- IE下,even对象有x,y属性,但是没有pageX,pageY属性; 
+Firefox下,event对象有pageX,pageY属性,但是没有x,y属性.
+
+- 解决方法：（条件注释）缺点是在IE浏览器下可能会增加额外的HTTP请求数。
+
+- Chrome 中文界面下默认会将小于 12px 的文本强制按照 12px 显示, 
+可通过加入 CSS 属性 -webkit-text-size-adjust: none; 解决.
+
+超链接访问过后hover样式就不出现了 被点击访问过的超链接样式不在具有hover和active了解决方法是改变CSS属性的排列顺序:
+L-V-H-A :  a:link {} a:visited {} a:hover {} a:active {}
+```
 
 - html5有哪些新特性、移除了那些元素？如何处理HTML5新标签的浏览器兼容问题？如何区分 HTML 和 
 HTML5？
-	
-	
-		* HTML5 现在已经不是 SGML 的子集，主要是关于图像，位置，存储，多任务等功能的增加。
-		
-		* 绘画 canvas  
-		用于媒介回放的 video 和 audio 元素 
-		本地离线存储 localStorage 长期存储数据，浏览器关闭后数据不丢失；
-		sessionStorage 的数据在浏览器关闭后自动删除
-		
-		语意化更好的内容元素，比如 article、footer、header、nav、section 
-		表单控件，calendar、date、time、email、url、search  
-		新的技术webworker, websockt, Geolocation
-		
-		* 移除的元素
-		
-		纯表现的元素：basefont，big，center，font, s，strike，tt，u；
-		
-		对可用性产生负面影响的元素：frame，frameset，noframes；
-		
-		支持HTML5新标签：
-		
-		* IE8/IE7/IE6支持通过document.createElement方法产生的标签，
-		  可以利用这一特性让这些浏览器支持HTML5新标签，
-		
-		浏览器支持新标签后，还需要添加标签默认的样式：
-		
-		* 当然最好的方式是直接使用成熟的框架、使用最多的是html5shim框架
-		   <!--[if lt IE 9]> 
-		   <script> src="http://html5shim.googlecode.com/svn/trunk/html5.js"</script> 
-		   <![endif]--> 
-		如何区分： DOCTYPE声明\新增的结构元素\功能元素
-	
 
-- 语义化的理解？ 
-	
-		用正确的标签做正确的事情！
-	    html语义化就是让页面的内容结构化，便于对浏览器、搜索引擎解析；
-	    在没有样式CCS情况下也以一种文档格式显示，并且是容易阅读的。
-	    搜索引擎的爬虫依赖于标记来确定上下文和各个关键字的权重，利于 SEO。
-	    使阅读源代码的人对网站更容易将网站分块，便于阅读维护理解。
+```html
+- HTML5 现在已经不是 SGML 的子集，主要是关于图像，位置，存储，多任务等功能的增加。
+
+- 绘画 canvas  
+用于媒介回放的 video 和 audio 元素 
+本地离线存储 localStorage 长期存储数据，浏览器关闭后数据不丢失；
+sessionStorage 的数据在浏览器关闭后自动删除
+
+语意化更好的内容元素，比如 article、footer、header、nav、section 
+表单控件，calendar、date、time、email、url、search  
+新的技术webworker, websockt, Geolocation
+
+- 移除的元素
+
+纯表现的元素：basefont，big，center，font, s，strike，tt，u；
+
+对可用性产生负面影响的元素：frame，frameset，noframes；
+
+支持HTML5新标签：
+
+- IE8/IE7/IE6支持通过document.createElement方法产生的标签，
+  可以利用这一特性让这些浏览器支持HTML5新标签，
+
+浏览器支持新标签后，还需要添加标签默认的样式：
+
+- 当然最好的方式是直接使用成熟的框架、使用最多的是html5shim框架
+   <!--[if lt IE 9]> 
+   <script> src="http://html5shim.googlecode.com/svn/trunk/html5.js"</script> 
+   <![endif]--> 
+如何区分： DOCTYPE声明\新增的结构元素\功能元素
+```
+
+- 语义化的理解？
+ 
+```html
+用正确的标签做正确的事情！
+html语义化就是让页面的内容结构化，便于对浏览器、搜索引擎解析；
+在没有样式CCS情况下也以一种文档格式显示，并且是容易阅读的。
+搜索引擎的爬虫依赖于标记来确定上下文和各个关键字的权重，利于 SEO。
+使阅读源代码的人对网站更容易将网站分块，便于阅读维护理解。
+```
 
 - HTML5的离线储存？
 
-	    localStorage    长期存储数据，浏览器关闭后数据不丢失；
-        sessionStorage  数据在浏览器关闭后自动删除。
+```html
+localStorage    长期存储数据，浏览器关闭后数据不丢失；
+sessionStorage  数据在浏览器关闭后自动删除。
+```
 
 - (写)描述一段语义的html代码吧。
 
-		（HTML5中新增加的很多标签（如：<article>、<nav>、<header>和<footer>等）
-		就是基于语义化设计原则）  
-		< div id="header"> 
-		< h1>标题< /h1> 
-		< h2>专注Web前端技术< /h2> 
-		< /div>
-
+```html
+（HTML5中新增加的很多标签（如：<article>、<nav>、<header>和<footer>等）
+就是基于语义化设计原则）  
+< div id="header"> 
+< h1>标题< /h1> 
+< h2>专注Web前端技术< /h2> 
+< /div>
+```
 
 - iframe有那些缺点？ 
 
-		*iframe会阻塞主页面的Onload事件；
+```html
+*iframe会阻塞主页面的Onload事件；
 
-		*iframe和主页面共享连接池，而浏览器对相同域的连接有限制，所以会影响页面的并行加载。
-        使用iframe之前需要考虑这两个缺点。如果需要使用iframe，最好是通过javascript
-        动态给iframe添加src属性值，这样可以可以绕开以上两个问题。
+*iframe和主页面共享连接池，而浏览器对相同域的连接有限制，所以会影响页面的并行加载。
+使用iframe之前需要考虑这两个缺点。如果需要使用iframe，最好是通过javascript动态给iframe添加src属性值，这样可以可以绕开以上两个问题。
+```
 
 - 请描述一下 cookies，sessionStorage 和 localStorage 的区别？ 
 
- 		cookie在浏览器和服务器间来回传递。 sessionStorage和localStorage不会
-		sessionStorage和localStorage的存储空间更大；
-		sessionStorage和localStorage有更多丰富易用的接口；
-		sessionStorage和localStorage各自独立的存储空间；
-		
-
-
+```html
+cookie在浏览器和服务器间来回传递。 sessionStorage和localStorage不会
+sessionStorage和localStorage的存储空间更大；
+sessionStorage和localStorage有更多丰富易用的接口；
+sessionStorage和localStorage各自独立的存储空间；
+```
 
 ## <a name='css'>CSS</a> 
 
 - 介绍一下CSS的盒子模型？
 
-		（1）有两种， IE 盒子模型、标准 W3C 盒子模型；IE的content部分包含了 border 和 pading;
+```html
+（1）有两种， IE 盒子模型、标准 W3C 盒子模型；IE的content部分包含了 border 和 pading;
 
-		（2）盒模型： 内容(content)、填充(padding)、边界(margin)、 边框(border).
-
+（2）盒模型： 内容(content)、填充(padding)、边界(margin)、 边框(border).
+```
 
 
 - CSS 选择符有哪些？哪些属性可以继承？优先级算法如何计算？ CSS3新增伪类有那些？
 
-		*   1.id选择器（ # myid）
-			2.类选择器（.myclassname）
-			3.标签选择器（div, h1, p）
-			4.相邻选择器（h1 + p）
-			5.子选择器（ul < li）
-			6.后代选择器（li a）
-			7.通配符选择器（ * ）
-			8.属性选择器（a[rel = "external"]）
-			9.伪类选择器（a: hover, li: nth - child）
-		  
-		*   可继承的样式： font-size font-family color, UL LI DL DD DT;
+```html
+-   1.id选择器（ # myid）
+	2.类选择器（.myclassname）
+	3.标签选择器（div, h1, p）
+	4.相邻选择器（h1 + p）
+	5.子选择器（ul < li）
+	6.后代选择器（li a）
+	7.通配符选择器（ * ）
+	8.属性选择器（a[rel = "external"]）
+	9.伪类选择器（a: hover, li: nth - child）
+  
+-   可继承的样式： font-size font-family color, UL LI DL DD DT;
 
-		*   不可继承的样式：border padding margin width height ;
-		  
-		*   优先级就近原则，同权重情况下样式定义最近者为准;
+-   不可继承的样式：border padding margin width height ;
+  
+-   优先级就近原则，同权重情况下样式定义最近者为准;
 
-		*   载入样式以最后载入的定位为准;
+-   载入样式以最后载入的定位为准;
 
-	优先级为:
-		  
-		   !important >  id > class > tag  
-		  
-		   important 比 内联优先级高
+优先级为:
+  
+   !important >  id > class > tag  
+  
+   important 比 内联优先级高
 
-	CSS3新增伪类举例：
+CSS3新增伪类举例：
 
-		p:first-of-type	选择属于其父元素的首个 <p> 元素的每个 <p> 元素。
-		p:last-of-type	选择属于其父元素的最后 <p> 元素的每个 <p> 元素。
-        p:only-of-type	选择属于其父元素唯一的 <p> 元素的每个 <p> 元素。
-		p:only-child	选择属于其父元素的唯一子元素的每个 <p> 元素。
-		p:nth-child(2)	选择属于其父元素的第二个子元素的每个 <p> 元素。
- 	    :enabled  :disabled 控制表单控件的禁用状态。
-		:checked        单选框或复选框被选中。
-
+p:first-of-type	选择属于其父元素的首个 <p> 元素的每个 <p> 元素。
+p:last-of-type	选择属于其父元素的最后 <p> 元素的每个 <p> 元素。
+        p:only-of-type选择属于其父元素唯一的 <p> 元素的每个 <p> 元素。
+p:only-child	选择属于其父元素的唯一子元素的每个 <p> 元素。
+p:nth-child(2)	选择属于其父元素的第二个子元素的每个 <p> 元素。
+     :enabled  :disabled 控制表单控件的禁用状态。
+:checked        单选框或复选框被选中。
+```
 
 - 如何居中div？如何居中一个浮动元素？
 
-
-	*  给div设置一个宽度，然后添加margin:0 auto属性
+```html
+-  给div设置一个宽度，然后添加margin:0 auto属性
+ 
+div{
+	width:200px;
+	margin:0 auto;
+ }  
 		 
-			div{
-				width:200px;
-				margin:0 auto;
-			 }  
-
-			 
-	*  居中一个浮动元素
+*  居中一个浮动元素
   
-			  确定容器的宽高 宽500 高 300 的层
-			  设置层的外边距
-			 
-		     .div { 
-			  Width:500px ; height:300px;//高度可以不设
-			  Margin: -150px 0 0 -250px;
-			  position:relative;相对定位
+  确定容器的宽高 宽500 高 300 的层
+  设置层的外边距
+ 
+.div { 
+  Width:500px ; height:300px;//高度可以不设
+  Margin: -150px 0 0 -250px;
+  position:relative;相对定位
               background-color:pink;//方便看效果
-			  left:50%;
-			  top:50%;
-			} 
-
+  left:50%;
+  top:50%;
+} 
+```
 
 - 列出display的值，说明他们的作用。position的值， relative和absolute定位原点是？
  
-	
-	      1.   
-	      block 象块类型元素一样显示。
-		  none 缺省值。象行内元素类型一样显示。
-		  inline-block 象行内元素一样显示，但其内容象块类型元素一样显示。
-		  list-item 象块类型元素一样显示，并添加样式列表标记。
-	  
-	      2. 
-		  *absolute	
-				生成绝对定位的元素，相对于 static 定位以外的第一个父元素进行定位。 
-	
-		  *fixed （老IE不支持）
-				生成绝对定位的元素，相对于浏览器窗口进行定位。 
-	
-		  *relative	
-				生成相对定位的元素，相对于其正常位置进行定位。 
-	
-		  * static	默认值。没有定位，元素出现在正常的流中
-		  *（忽略 top, bottom, left, right z-index 声明）。
-	
-		  * inherit	规定从父元素继承 position 属性的值。
-	  
-- CSS3有哪些新特性？
+```html
+1.   
+  block 象块类型元素一样显示。
+  none 缺省值。象行内元素类型一样显示。
+  inline-block 象行内元素一样显示，但其内容象块类型元素一样显示。
+  list-item 象块类型元素一样显示，并添加样式列表标记。
+  
+2. 
+*absolute
+生成绝对定位的元素，相对于 static 定位以外的第一个父元素进行定位。 
 
-  		  CSS3实现圆角（border-radius:8px），阴影（box-shadow:10px），
-		  对文字加特效（text-shadow、），线性渐变（gradient），旋转（transform）
-          transform:rotate(9deg) scale(0.85,0.90) translate(0px,-30px) skew(-9deg,0deg);//旋转,缩放,定位,倾斜
-          增加了更多的CSS选择器  多背景 rgba 
+*fixed （老IE不支持）
+生成绝对定位的元素，相对于浏览器窗口进行定位。 
+
+*relative
+生成相对定位的元素，相对于其正常位置进行定位。 
+
+- static	默认值。没有定位，元素出现在正常的流中
+  *（忽略 top, bottom, left, right z-index 声明）。
+
+- inherit	规定从父元素继承 position 属性的值。
+```
+
+- CSS3有哪些新特性？
+- 
+```html
+CSS3实现
+圆角（border-radius:8px）,
+阴影（box-shadow:10px）,
+对文字加特效（text-shadow）,
+线性渐变（gradient）,
+旋转（transform）
+transform:rotate(9deg) scale(0.85,0.90) translate(0px,-30px) skew(-9deg,0deg);//旋转,缩放,定位,倾斜
+增加了更多的CSS选择器  多背景 rgba 
+```
 
 - 一个满屏 品 字布局 如何设计?
 
 - 经常遇到的CSS的兼容性有哪些？原因，解决方法是什么？
 
-
-
 - 为什么要初始化CSS样式。
 
-		- 因为浏览器的兼容问题，不同浏览器对有些标签的默认值是不同的，如果没对CSS初始化往往会出现浏览器之间的页面显示差异。
-	
-		- 当然，初始化样式会对SEO有一定的影响，但鱼和熊掌不可兼得，但力求影响最小的情况下初始化。
+```html
++ 因为浏览器的兼容问题，不同浏览器对有些标签的默认值是不同的，如果没对CSS初始化往往会出现浏览器之间的页面显示差异。
 
-		*最简单的初始化方法就是： * {padding: 0; margin: 0;} （不建议）
-	
-		淘宝的样式初始化： 
-		body, h1, h2, h3, h4, h5, h6, hr, p, blockquote, dl, dt, 
-		dd, ul, ol, li, pre, form, fieldset, legend, button, input, textarea, th, td { margin:0; padding:0; }
-		body, button, input, select, textarea { font:12px/1.5tahoma, arial, \5b8b\4f53; }
-		h1, h2, h3, h4, h5, h6{ font-size:100%; }
-		address, cite, dfn, em, var { font-style:normal; }
-		code, kbd, pre, samp { font-family:couriernew, courier, monospace; }
-		small{ font-size:12px; }
-		ul, ol { list-style:none; }
-		a { text-decoration:none; }
-		a:hover { text-decoration:underline; }
-		sup { vertical-align:text-top; }
-		sub{ vertical-align:text-bottom; }
-		legend { color:#000; }
-		fieldset, img { border:0; }
-		button, input, select, textarea { font-size:100%; }
-		table { border-collapse:collapse; border-spacing:0; } 
++ 当然，初始化样式会对SEO有一定的影响，但鱼和熊掌不可兼得，但力求影响最小的情况下初始化。
 
+*最简单的初始化方法就是： * {padding: 0; margin: 0;} （不建议）
 
+淘宝的样式初始化： 
+body, h1, h2, h3, h4, h5, h6, hr, p, blockquote, dl, dt, 
+dd, ul, ol, li, pre, form, fieldset, legend, button, input, textarea, th, td { margin:0; padding:0; }
+body, button, input, select, textarea { font:12px/1.5tahoma, arial, \5b8b\4f53; }
+h1, h2, h3, h4, h5, h6{ font-size:100%; }
+address, cite, dfn, em, var { font-style:normal; }
+code, kbd, pre, samp { font-family:couriernew, courier, monospace; }
+small{ font-size:12px; }
+ul, ol { list-style:none; }
+a { text-decoration:none; }
+a:hover { text-decoration:underline; }
+sup { vertical-align:text-top; }
+sub{ vertical-align:text-bottom; }
+legend { color:#000; }
+fieldset, img { border:0; }
+button, input, select, textarea { font-size:100%; }
+table { border-collapse:collapse; border-spacing:0; } 
+```
 
 - absolute的containing block计算方式跟正常流有什么不同？
 
@@ -533,32 +565,36 @@ HTML5？
 
 - 对BFC规范的理解？
 
-		（W3C CSS 2.1 规范中的一个概念,它决定了元素如何对其内容进行定位,以及与其他元素的关 系和相互作用。）
+```html
+（W3C CSS 2.1 规范中的一个概念,它决定了元素如何对其内容进行定位,以及与其他元素的关 系和相互作用。）
+```
+
 - css定义的权重
 
-		以下是权重的规则：标签的权重为1，class的权重为10，id的权重为100，以下例子是演示各种定义的权重值：
-	 
-		/*权重为1*/
-		div{
-		}
-		/*权重为10*/
-		.class1{
-		}
-		/*权重为100*/
-		#id1{
-		}
-		/*权重为100+1=101*/
-		#id1 div{
-		}
-		/*权重为10+1=11*/
-		.class1 div{
-		}
-		/*权重为10+10+1=21*/
-		.class1 .class2 div{
-		} 
-		
-		如果权重相同，则最后定义的样式会起作用，但是应该避免这种情况出现
+```html
+以下是权重的规则：标签的权重为1，class的权重为10，id的权重为100，以下例子是演示各种定义的权重值：
+ 
+/*权重为1*/
+div{
+}
+/*权重为10*/
+.class1{
+}
+/*权重为100*/
+#id1{
+}
+/*权重为100+1=101*/
+#id1 div{
+}
+/*权重为10+1=11*/
+.class1 div{
+}
+/*权重为10+10+1=21*/
+.class1 .class2 div{
+} 
 
+如果权重相同，则最后定义的样式会起作用，但是应该避免这种情况出现
+```
 
 - 解释下浮动和它的工作原理？清除浮动的技巧
 
@@ -566,231 +602,248 @@ HTML5？
 
 - 使用 CSS 预处理器吗？喜欢那个？
 		
-		SASS 
-
- 
+```html
+SASS 
+LESS
+```
 
 
 ## <a name='js'>JavaScript</a>
 
 -  JavaScript原型，原型链 ? 有什么特点？
 
-	```javascript
-	什么是原型：
-	每一个对象都有原型，使用 __proto__ 标记，原型是一个对象的引用或 null
-	（ Object.prototype 的原型为 null ），允许对象使用其原型所引用的对象中的变量。
-	var fun = function(){}
-	fun.prototype.a = 1;
-	var obj = new fun();
-	obj.a; //1
-	原型的来源：
-	对象的原型来自其构造函数的原型属性（用 prototype 标记）的引用。注意原型与原型属性是两个概念。
-	  Function 为实例（ function ）定义了原型属性，其中包含一个构造函数（默认是 function 对象自己，用于构造 function 自己的实例），因此所有 function 都有原型属性。
-	Function 将自己的的原型属性的引用作为function 的原型。 new 一个 function ，function 的实例便有了原型，指向 function 的原型属性。
-	
-	var fun = function(){
-	  this.a= 1;
-	}
-	fun.prototype.b = 2;
-	var obj = new fun();
-	console.log(obj.a+"---"+obj.b);
-	原型的作用
-	继承。
-	  如：
-	var fun = function(){}
-	fun.prototype = String.prototype;
-	new fun().split //function split() {[native code]}
-	原型链：
-	通过自己的原型并向上寻找直到Object.prototype.__proto__; 这条链就是原型链。
-	```
+```javascript
+什么是原型：
+每一个对象都有原型，使用 __proto__ 标记，原型是一个对象的引用或 null
+（ Object.prototype 的原型为 null ），允许对象使用其原型所引用的对象中的变量。
+var fun = function(){}
+fun.prototype.a = 1;
+var obj = new fun();
+obj.a; //1
+原型的来源：
+对象的原型来自其构造函数的原型属性（用 prototype 标记）的引用。注意原型与原型属性是两个概念。
+  Function 为实例（ function ）定义了原型属性，其中包含一个构造函数（默认是 function 对象自己，用于构造 function 自己的实例），因此所有 function 都有原型属性。
+Function 将自己的的原型属性的引用作为function 的原型。 new 一个 function ，function 的实例便有了原型，指向 function 的原型属性。
+
+var fun = function(){
+  this.a= 1;
+}
+fun.prototype.b = 2;
+var obj = new fun();
+console.log(obj.a+"---"+obj.b);
+原型的作用
+继承。
+  如：
+var fun = function(){}
+fun.prototype = String.prototype;
+new fun().split //function split() {[native code]}
+原型链：
+通过自己的原型并向上寻找直到Object.prototype.__proto__; 这条链就是原型链。
+```
 
 - 看看下面运行结果？
 
-	```javascript
-	window.onload=function(){
-	  var a=1+"1";
-	  var b="1"+1;
-	  var c="abc"+12+5+"def";
-	  var d="abc"+(12+5)+"def";
-	  console.log(a);
-	  console.log(b);
-	  console.log(c);
-	  console.log(d);
-	}
-	
-	//结果
-	11
-	11
-	abc125def
-	abc17def
-	```
+```javascript
+window.onload=function(){
+  var a=1+"1";
+  var b="1"+1;
+  var c="abc"+12+5+"def";
+  var d="abc"+(12+5)+"def";
+  console.log(a);
+  console.log(b);
+  console.log(c);
+  console.log(d);
+}
+
+//结果
+11
+11
+abc125def
+abc17def
+```
 
 -  eval是做什么的？ 
 
-		它的功能是把对应的字符串解析成JS代码并运行；
-		应该避免使用eval，不安全，非常耗性能（2次，一次解析成js语句，一次执行）。
+```html
+它的功能是把对应的字符串解析成JS代码并运行；
+应该避免使用eval，不安全，非常耗性能（2次，一次解析成js语句，一次执行）。
+```
 
 -  null，undefined 的区别？
-		前者的意思是javascript解释器不知道这是什麽东西,会抛出"未定义"的错误
-		後者的意思是你定义了它,但它没有分配内存空间,无心肝不痛,不会抛出错误.
+
+```html
+前者的意思是javascript解释器不知道这是什麽东西,会抛出"未定义"的错误
+後者的意思是你定义了它,但它没有分配内存空间,无心肝不痛,不会抛出错误.
+```
 
 -  写一个通用的事件侦听器函数。
 
-	```javascript
-	// event(事件)工具集，来源：github.com/markyun
-	markyun.Event = {
-		// 页面加载完成后
-		readyEvent : function(fn) {
-			if (fn==null) {
-				fn=document;
-			}
-			var oldonload = window.onload;
-			if (typeof window.onload != 'function') {
-				window.onload = fn;
-			} else {
-				window.onload = function() {
-					oldonload();
-					fn();
-				};
-			}
-		},
-		// 视能力分别使用dom0||dom2||IE方式 来绑定事件
-		// 参数： 操作的元素,事件名称 ,事件处理程序
-		addEvent : function(element, type, handler) {
-			if (element.addEventListener) {
-				//事件类型、需要执行的函数、是否捕捉
-				element.addEventListener(type, handler, false);
-			} else if (element.attachEvent) {
-				element.attachEvent('on' + type, function() {
-					handler.call(element);
-				});
-			} else {
-				element['on' + type] = handler;
-			}
-		},
-		// 移除事件
-		removeEvent : function(element, type, handler) {
-			if (element.removeEnentListener) {
-				element.removeEnentListener(type, handler, false);
-			} else if (element.datachEvent) {
-				element.detachEvent('on' + type, handler);
-			} else {
-				element['on' + type] = null;
-			}
-		}, 
-		// 阻止事件 (主要是事件冒泡，因为IE不支持事件捕获)
-		stopPropagation : function(ev) {
-			if (ev.stopPropagation) {
-				ev.stopPropagation();
-			} else {
-				ev.cancelBubble = true;
-			}
-		},
-		// 取消事件的默认行为
-		preventDefault : function(event) {
-			if (event.preventDefault) {
-				event.preventDefault();
-			} else {
-				event.returnValue = false;
-			}
-		},
-		// 获取事件目标
-		getTarget : function(event) {
-			return event.target || event.srcElement;
-		},
-		// 获取event对象的引用，取到事件的所有信息，确保随时能使用event；
-		getEvent : function(e) {
-			var ev = e || window.event;
-			if (!ev) {
-				var c = this.getEvent.caller;
-				while (c) {
-					ev = c.arguments[0];
-					if (ev && Event == ev.constructor) {
-						break;
-					}
-					c = c.caller;
-				}
-			}
-			return ev;
+```javascript
+// event(事件)工具集，来源：github.com/markyun
+markyun.Event = {
+	// 页面加载完成后
+	readyEvent : function(fn) {
+		if (fn==null) {
+			fn=document;
 		}
-	}; 
-	```
+		var oldonload = window.onload;
+		if (typeof window.onload != 'function') {
+			window.onload = fn;
+		} else {
+			window.onload = function() {
+				oldonload();
+				fn();
+			};
+		}
+	},
+	// 视能力分别使用dom0||dom2||IE方式 来绑定事件
+	// 参数： 操作的元素,事件名称 ,事件处理程序
+	addEvent : function(element, type, handler) {
+		if (element.addEventListener) {
+			//事件类型、需要执行的函数、是否捕捉
+			element.addEventListener(type, handler, false);
+		} else if (element.attachEvent) {
+			element.attachEvent('on' + type, function() {
+				handler.call(element);
+			});
+		} else {
+			element['on' + type] = handler;
+		}
+	},
+	// 移除事件
+	removeEvent : function(element, type, handler) {
+		if (element.removeEnentListener) {
+			element.removeEnentListener(type, handler, false);
+		} else if (element.datachEvent) {
+			element.detachEvent('on' + type, handler);
+		} else {
+			element['on' + type] = null;
+		}
+	}, 
+	// 阻止事件 (主要是事件冒泡，因为IE不支持事件捕获)
+	stopPropagation : function(ev) {
+		if (ev.stopPropagation) {
+			ev.stopPropagation();
+		} else {
+			ev.cancelBubble = true;
+		}
+	},
+	// 取消事件的默认行为
+	preventDefault : function(event) {
+		if (event.preventDefault) {
+			event.preventDefault();
+		} else {
+			event.returnValue = false;
+		}
+	},
+	// 获取事件目标
+	getTarget : function(event) {
+		return event.target || event.srcElement;
+	},
+	// 获取event对象的引用，取到事件的所有信息，确保随时能使用event；
+	getEvent : function(e) {
+		var ev = e || window.event;
+		if (!ev) {
+			var c = this.getEvent.caller;
+			while (c) {
+				ev = c.arguments[0];
+				if (ev && Event == ev.constructor) {
+					break;
+				}
+				c = c.caller;
+			}
+		}
+		return ev;
+	}
+}; 
+```
 
 
 -  Node.js的适用场景？
 
-		高并发、聊天、实时消息推送
+```html
+高并发、聊天、实时消息推送
+```
 
 -  介绍js的基本数据类型。
 
-		number,string,boolean,object,undefined
+```html
+number,string,boolean,object,undefined
+```
 	
 -  Javascript如何实现继承？
 
-		通过原型和构造器
-		我觉得是类继续与原型链继承
-		
-		原型链：每个函数都有自己的原型（prototype）属性，这个属性其实是隐藏对象，通过对这个对象的操作，
-		子类可以同样持有这个对象的引用，间隔实现继承，这个的好处是大大节省了空间，
-		因为下面的子类不用重新去实例化父类定义的属性和方法，而直接引用原型链上的属性与方法，
-		也就是说父类的原型链上定义了一个方法，当子类无论实例化多少次时，并没有实例化原型链上内容，
-		而是共同享有同一个属性与方法。JavaScript原型继承（对象间的继承）
-		
-		类继承：在函数内部定义自身的属性的方法，子类继续时，用call或apply实现对象冒充，
-		把类型定义的东西都复制过来，这样的继承子类与父类并没有多少关联，不互相影响，
-		有利于保护自身的一些私有属性。JavaScript类继承（构造函数间的继承）
-		
-		
-		不过在实际中，肯定是这两种混合使用的
-	
+```html
+通过原型和构造器
+我觉得是类继续与原型链继承
+
+原型链：每个函数都有自己的原型（prototype）属性，这个属性其实是隐藏对象，通过对这个对象的操作，
+子类可以同样持有这个对象的引用，间隔实现继承，这个的好处是大大节省了空间，
+因为下面的子类不用重新去实例化父类定义的属性和方法，而直接引用原型链上的属性与方法，
+也就是说父类的原型链上定义了一个方法，当子类无论实例化多少次时，并没有实例化原型链上内容，
+而是共同享有同一个属性与方法。JavaScript原型继承（对象间的继承）
+
+类继承：在函数内部定义自身的属性的方法，子类继续时，用call或apply实现对象冒充，
+把类型定义的东西都复制过来，这样的继承子类与父类并没有多少关联，不互相影响，
+有利于保护自身的一些私有属性。JavaScript类继承（构造函数间的继承）
+
+
+不过在实际中，肯定是这两种混合使用的
+```
+
 -  ["1", "2", "3"].map(parseInt) 答案是多少？
 
-		 [1, NaN, NaN] 因为 parseInt 需要两个参数 (val, radix) 但 map 传了 3 个 (element, index, array)
+```html
+ [1, NaN, NaN] 因为 parseInt 需要两个参数 (val, radix) 但 map 传了 3 个 (element, index, array)
+```
 
 -  如何创建一个对象? （画出此对象的内存图）
 
-	  ```javascript
-	  function Person(name, age) {
-	    this.name = name;
-	    this.age = age;
-	    this.sing = function() { alert(this.name) } 
-	  } 
-	  ```
-
+```javascript
+function Person(name, age) {
+    this.name = name;
+    this.age = age;
+    this.sing = function() { alert(this.name) } 
+} 
+```
 
 -  谈谈This对象的理解。
 
-		this是js的一个关键字，随着函数使用场合不同，this的值会发生变化。
-		
-		但是有一个总原则，那就是this指的是调用函数的那个对象。
-		
-		this一般情况下：是全局对象Global。 作为方法调用，那么this就是指这个对象	
+```html
+this是js的一个关键字，随着函数使用场合不同，this的值会发生变化。
+
+但是有一个总原则，那就是this指的是调用函数的那个对象。
+
+this一般情况下：是全局对象Global。 作为方法调用，那么this就是指这个对象	
+```
 
 -  事件是？IE与火狐的事件机制有什么区别？ 如何阻止冒泡？ 
 
-		 1. 我们在网页中的某个操作（有的操作对应多个事件）。
-		 例如：当我们点击一个按钮就会产生一个事件。是可以被 JavaScript 侦测到的行为。  
-		 2. 事件处理机制：IE是事件冒泡、火狐是 事件捕获；
-		 3. ev.stopPropagation();
+```html
+ 1. 我们在网页中的某个操作（有的操作对应多个事件）。
+ 例如：当我们点击一个按钮就会产生一个事件。是可以被 JavaScript 侦测到的行为。  
+ 2. 事件处理机制：IE是事件冒泡、火狐是 事件捕获；
+ 3. ev.stopPropagation();
+```
 
 -  什么是闭包（closure），为什么要用它？
 
 ```javascript
-	/**就是一个函数里面又套有子函数，在这个函数里面声明的变量可以直接在子函数里面使用而不用再声明
-	执行say667()后,say667()闭包内部变量会存在,而闭包内部函数的内部变量不会存在.
-	使得Javascript的垃圾回收机制GC不会收回say667()所占用的资源，
-	因为say667()的内部函数的执行需要依赖say667()中的变量。这是对闭包作用的非常直白的描述.**/
-	  
-	function say667() {
-		// Local variable that ends up within closure
-		var num = 666;
-		var sayAlert = function() { alert(num); }
-		num++;
-		return sayAlert;
-	}
-	 
-	var sayAlert = say667();
-	sayAlert()//执行结果应该弹出的667  
+/**就是一个函数里面又套有子函数，在这个函数里面声明的变量可以直接在子函数里面使用而不用再声明
+执行say667()后,say667()闭包内部变量会存在,而闭包内部函数的内部变量不会存在.
+使得Javascript的垃圾回收机制GC不会收回say667()所占用的资源，
+因为say667()的内部函数的执行需要依赖say667()中的变量。这是对闭包作用的非常直白的描述.**/
+  
+function say667() {
+	// Local variable that ends up within closure
+	var num = 666;
+	var sayAlert = function() { alert(num); }
+	num++;
+	return sayAlert;
+}
+ 
+var sayAlert = say667();
+sayAlert()//执行结果应该弹出的667  
 ```
 
 -  "use strict";是什么意思 ? 使用它的好处和坏处分别是什么？
