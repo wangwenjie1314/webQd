@@ -4,13 +4,11 @@
 ## <a name='list'>目录</a>
 
   1. [前言](#user-content-preface)
-  1. [HTML 部分](#user-content-html)
-  1. [CSS  部分](#user-content-css)
-  1. [JavaScript 部分](#user-content-js)
-  1. [其他问题](#user-content-other) 
-  1. [优质网站推荐](#user-content-web) 
- 
- 
+  2. [HTML 部分](#user-content-html)
+  3. [CSS  部分](#user-content-css)
+  4. [JavaScript 部分](#user-content-js)
+  5. [其他问题](#user-content-other) 
+  6. [优质网站推荐](#user-content-web) 
 
 ## <a name='preface' id='preface'>前言</a> ##
 
@@ -30,19 +28,20 @@
 1. 资深的工程师能把absolute和relative弄混，这样的人不要也罢，因为团队需要的你这个人具有可以依靠的才能（靠谱）。
 
 
-
 **前端开发面试知识点大纲：**
 
-	HTML&CSS：
-	对Web标准的理解、浏览器内核差异、兼容性、hack、CSS基本功：布局、盒子模型、
-	选择器优先级及使用、HTML5、CSS3、移动端适应 
-	
-	JavaScript：  
-	数据类型、面向对象、继承、闭包、插件、作用域、跨域、原型链、模块化、自定义事件、
-	内存泄漏、事件机制、异步装载回调、模板引擎、Nodejs、JSON、ajax等。
-	
-	其他：
-	HTTP、安全、正则、优化、重构、响应式、移动端、团队协作、可维护、SEO、UED、架构、职业生涯 
+```javascript
+HTML&CSS：
+对Web标准的理解、浏览器内核差异、兼容性、hack、CSS基本功：布局、盒子模型、
+选择器优先级及使用、HTML5、CSS3、移动端适应 
+
+JavaScript：  
+数据类型、面向对象、继承、闭包、插件、作用域、跨域、原型链、模块化、自定义事件、
+内存泄漏、事件机制、异步装载回调、模板引擎、Nodejs、JSON、ajax等。
+
+其他：
+HTTP、安全、正则、优化、重构、响应式、移动端、团队协作、可维护、SEO、UED、架构、职业生涯
+```
 
 作为一名前端工程师，**无论工作年头长短都应该必须掌握的知识点**：
 
@@ -50,23 +49,25 @@
    
 1、DOM结构——两个节点之间可能存在哪些关系以及如何在节点之间任意移动。
 
-	document.documentElement     返回文档的根节点<html> 
-	document.body     <body> 
-	document.activeElement 返回当前文档中被击活的标签节点(ie) 
-	event.fromElement        返回鼠标移出的源节点(ie) 
-	event.toElement       返回鼠标移入的源节点(ie) 
-	event.srcElement     返回激活事件的源节点(ie) 
-	event.target         返回激活事件的源节点(firefox) 
-	当前对象为node 
-	返回父节点：node.parentNode, node.parendElement, 
-	返回所有子节点：node.childNodes（包含文本节点及标签节点）,node.children 
-	返回第一个子节点：node.firstChild 
-	返回最后一个子节点： node.lastChild 
-	返回同属上一个子节点：node.nextSibling 
-	返回同属下一个子节点：node.previousSibling 
-	parentNode和parentElement功能一样，childNodes和children功能一样。但是parentNode和
-	childNodes是符合W3C标准的，可以说比较通用。而另外两个只是IE支持，不是标准，Firefox就不支持 
-	,所以大家只要记得有parentElement和children就行了 
+```javascript
+document.documentElement     返回文档的根节点<html> 
+document.body     <body> 
+document.activeElement 返回当前文档中被击活的标签节点(ie) 
+event.fromElement        返回鼠标移出的源节点(ie) 
+event.toElement       返回鼠标移入的源节点(ie) 
+event.srcElement     返回激活事件的源节点(ie) 
+event.target         返回激活事件的源节点(firefox) 
+当前对象为node 
+返回父节点：node.parentNode, node.parendElement, 
+返回所有子节点：node.childNodes（包含文本节点及标签节点）,node.children 
+返回第一个子节点：node.firstChild 
+返回最后一个子节点： node.lastChild 
+返回同属上一个子节点：node.nextSibling 
+返回同属下一个子节点：node.previousSibling 
+parentNode和parentElement功能一样，childNodes和children功能一样。但是parentNode和
+childNodes是符合W3C标准的，可以说比较通用。而另外两个只是IE支持，不是标准，Firefox就不支持 
+,所以大家只要记得有parentElement和children就行了 
+```
 
 2、DOM操作——怎样添加、移除、移动、复制、创建和查找节点。
 
@@ -101,8 +102,8 @@
 	XMLHttpRequest 对象提供了在网页加载后与服务器进行通信的方法。
 	
 	<script type="text/javascript">
-	    varxmlhttp;
-	    functionloadXMLDoc(url){
+	    var xmlhttp;
+	    function loadXMLDoc(url){
 	        xmlhttp=null;
 	        if(window.XMLHttpRequest){    //code for all new browsers
 	            xmlhttp=newXMLHttpRequest();
@@ -118,7 +119,7 @@
 	        }
 	}
 	
-	functionstate_Change(){
+	function state_Change(){
 	    if(xmlhttp.readyState==4){    //4 = "loaded"
 	        if(xmlhttp.status==200){    //200 = OK
 	            //...our code here...
@@ -214,14 +215,14 @@
 
 - Doctype作用? 严格模式与混杂模式如何区分？它们有何意义? 
 
-		（1）、<!DOCTYPE> 声明位于文档中的最前面，处于 <html> 标签之前。告知浏览器的解析器，
-		用什么文档类型 规范来解析这个文档。 
-		
-		（2）、严格模式的排版和 JS 运作模式是  以该浏览器支持的最高标准运行。
-		
-		（3）、在混杂模式中，页面以宽松的向后兼容的方式显示。模拟老式浏览器的行为以防止站点无法工作。
-		
-		（4）、DOCTYPE不存在或格式不正确会导致文档以混杂模式呈现。
+	（1）、<!DOCTYPE> 声明位于文档中的最前面，处于 <html> 标签之前。告知浏览器的解析器，
+	用什么文档类型 规范来解析这个文档。 
+	
+	（2）、严格模式的排版和 JS 运作模式是  以该浏览器支持的最高标准运行。
+	
+	（3）、在混杂模式中，页面以宽松的向后兼容的方式显示。模拟老式浏览器的行为以防止站点无法工作。
+	
+	（4）、DOCTYPE不存在或格式不正确会导致文档以混杂模式呈现。
 
 - 行内元素有哪些？块级元素有哪些？ 空(void)元素有那些？
 
