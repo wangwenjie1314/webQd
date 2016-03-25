@@ -1210,6 +1210,16 @@ markyun.Event = {
 
 ```html
  [1, NaN, NaN] 因为 parseInt 需要两个参数 (val, radix) 但 map 传了 3 个 (element, index, array)
+
+ 由于map()接收的回调函数可以有3个参数：callback(currentValue, index, array)，通常我们仅需要第一个参数，而忽略了传入的后面两个参数。不幸的是，parseInt(string, radix)没有忽略第二个参数，导致实际执行的函数分别是：
+
+parseInt('0', 0); // 0, 按十进制转换
+
+parseInt('1', 1); // NaN, 没有一进制
+
+parseInt('2', 2); // NaN, 按二进制转换不允许出现2
+
+可以改为["1", "2", "3"].map(Number);，因为Number(value)函数仅接收一个参数。
 ```
 
 -  如何创建一个对象? （画出此对象的内存图）
