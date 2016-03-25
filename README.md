@@ -1655,6 +1655,68 @@ function commafy(num) {
 //"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2272.101 Safari/537.36"
 ```
 
+- 你感觉下面的代码会输出什么？
+
+```javascript
+//1.考察函数提升
+var a=0;
+function b(){
+  alert(a);
+  var a= 1;
+}
+b();
+
+//2.原型的构造器
+function a(){
+
+} 
+console.log(a.prototype.constructor);
+
+//3.this
+var a={
+  fn1:function(){
+    console.log(this);
+  }
+}
+var b=a.fn1;
+b();
+ 
+//4.typeof
+console.log(typeof "1");
+
+//5.闭包
+function a(){}
+function b(p){
+  var c=0;
+  p.prototype.fn1= function(){
+    console.log(++c);
+  }
+}
+b(a);
+var d = new a();
+var e = new a();
+d.fn1();
+e.fn1();
+```
+
+- 个人经历面试题
+
+```javascript
+
+1、基于flex弹性布局如何布下面的布局[A、BC内外间隔10px][B、C间隔10px]
+-----------------------
+ |--------| |--------|
+ |        | |   B    |
+ |        | |--------|
+ |    A   |
+ |        | |--------|
+ |        | |   C    |
+ |--------| |--------|
+-----------------------
+
+2、如何检测当前变量为Array？
+
+```
 
 ## <a name='other'>其他问题</a>
 
