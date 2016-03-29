@@ -1396,7 +1396,9 @@ HEADER内一起传送到ACTION属性所指的URL地址。用户看不到这个�
 
 ```html
 jsonp、 iframe、window.name、window.postMessage、服务器上设置代理页面
-(1) iframe  (2) 动态创建script标签 （3）JSONP （4）crox
+(1) iframe  (2) 动态创建script标签 （3）JSONP （4）CORS
+
+[了解更多](http://www.liaoxuefeng.com/wiki/001434446689867b27157e896e74d51a89c25cc8b43bdb3000/001434499861493e7c35be5e0864769a2c06afb4754acc6000)
 ```
 
 -  页面编码和被请求的资源编码如果不一致如何处理？
@@ -1791,7 +1793,9 @@ for(var i=0; i<10;i++){
 
 4、如何将当前ajax查询的列表 以href的方式发给别人（拥有相同权限）,其电脑打开链接直接可以看到相同列表数据？
 
+5、是否了解Promise？
 
+http://www.liaoxuefeng.com/wiki/001434446689867b27157e896e74d51a89c25cc8b43bdb3000/0014345008539155e93fc16046d4bb7854943814c4f9dc2000
 ```
 
 ## <a name='other'>其他问题</a>
