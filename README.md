@@ -1716,6 +1716,26 @@ e.fn1();
 
 2、如何检测当前变量为Array？
 
+Array.isArray();
+
+3、如下两种情况分别输出什么？
+
+setTimeout(function(){
+  for(var i = 0; i<10; i++){
+    console.log(i);
+  }
+},1000);
+
+
+for(var i=0; i<10;i++){
+  setTimeout(function(){
+    console.log(i);
+  },1000);
+}
+
+4、如何将当前ajax查询的列表 以href的方式发给别人（拥有相同权限）,其电脑打开链接直接可以看到相同列表数据？
+
+
 ```
 
 ## <a name='other'>其他问题</a>
