@@ -1,4 +1,7 @@
-#2014年最新前端开发面试题（转自markyun）
+# 2016年前端开发面试题
+
+## 原始基础版转自markyun
+
 ### PS：在其基础上完善了一些答案，增加一些问题 欢迎fork wj：）
 
 ## <a name='list'>目录</a>
@@ -15,20 +18,20 @@
 本文总结了一些优质的前端面试题（多数源于网络），初学者阅后也要用心钻研其中的原理，重要知识需要系统学习，透彻学习，形成自己的知识链。万不可投机取巧，只求面试过关是错误的！
 
 
-###面试有几点需注意：(来源程劭非老师 github:@wintercn)
+### 面试有几点需注意：(来源程劭非老师 github:@wintercn)
 
 1. 面试题目： 根据你的等级和职位变化，入门级到专家级：范围↑、深度↑、方向↑。
 
-1. 题目类型： 技术视野、项目细节、理论知识题，算法题，开放性题，案例题。
+2. 题目类型： 技术视野、项目细节、理论知识题，算法题，开放性题，案例题。
 
-1. 进行追问： 可以确保问到你开始不懂或面试官开始不懂为止，这样可以大大延展题目的区分度和深度，知道你的实际能力。因为这种关联知识是长时期的学习，绝对不是临时记得住的。
+3. 进行追问： 可以确保问到你开始不懂或面试官开始不懂为止，这样可以大大延展题目的区分度和深度，知道你的实际能力。因为这种关联知识是长时期的学习，绝对不是临时记得住的。
 
-1. 回答问题再棒，面试官（可能是你的直接领导面试），会考虑我要不要这个人做我的同事？所以态度很重要。（感觉更像是相亲）
+4. 回答问题再棒，面试官（可能是你的直接领导面试），会考虑我要不要这个人做我的同事？所以态度很重要。（感觉更像是相亲）
 
-1. 资深的工程师能把absolute和relative弄混，这样的人不要也罢，因为团队需要的你这个人具有可以依靠的才能（靠谱）。
+5. 资深的工程师能把absolute和relative弄混，这样的人不要也罢，因为团队需要的你这个人具有可以依靠的才能（靠谱）。
 
 
-**前端开发面试知识点大纲：**
+#### 前端开发面试知识点大纲
 
 ```html
 HTML&CSS：
@@ -109,29 +112,29 @@ DOM事件模型最独特的性质是，文本节点也触发事件(在IE中不�
 <script type="text/javascript">
 var xmlhttp;
 function loadXMLDoc(url){
-        xmlhttp=null;
-        if(window.XMLHttpRequest){    //code for all new browsers
-            xmlhttp=newXMLHttpRequest();
-        }elseif(window.ActiveXObject){    //code for IE5 and IE6
-            xmlhttp=newActiveXObject("Microsoft.XMLHTTP");
-        }
-        if(xmlhttp!=null){
-            xmlhttp.onreadystatechange=state_Change;
-               xmlhttp.open("GET",url,true);
-            xmlhttp.send(null);
-        }else{
-            alert("Your browser does not support XMLHTTP.");
-        }
+  xmlhttp=null;
+  if(window.XMLHttpRequest){//code for all new browsers
+    xmlhttp=newXMLHttpRequest();
+  }elseif(window.ActiveXObject){//code for IE5 and IE6
+    xmlhttp=newActiveXObject("Microsoft.XMLHTTP");
+  }
+  if(xmlhttp!=null){
+    xmlhttp.onreadystatechange=state_Change;
+    xmlhttp.open("GET",url,true);
+    xmlhttp.send(null);
+  }else{
+    alert("Your browser does not support XMLHTTP.");
+  }
 }
 
 function state_Change(){
-    if(xmlhttp.readyState==4){    //4 = "loaded"
-        if(xmlhttp.status==200){    //200 = OK
-            //...our code here...
-        }else{
-            alert("Problem retrieving XML data");
-        }
+  if(xmlhttp.readyState==4){    //4 = "loaded"
+    if(xmlhttp.status==200){    //200 = OK
+      //...our code here...
+    }else{
+      alert("Problem retrieving XML data");
     }
+  }
 }
 </script>
 ```
@@ -846,7 +849,6 @@ SASS (SASS、LESS没有本质区别，只因为团队前端都是用的SASS)
 
 - png、jpg、gif 这些图片格式解释一下，分别什么时候用。有没有了解过webp？
 
-
 - 什么是Cookie 隔离？（或者说：请求资源的时候不要让它带cookie怎么做）
 
 ```html
@@ -1055,7 +1057,7 @@ javascript创建对象简单的说,无非就是使用内置对象或各种自定
 
 - 谈谈This对象的理解。
 
--  什么是window对象? 什么是document对象?
+- 什么是window对象? 什么是document对象?
 
 - 看看下面运行结果？
 
@@ -1090,7 +1092,6 @@ abc17def
 ```html
 null表示一个对象被定义了，值为“空值”；
 undefined   表示不存在这个值。
-
 
 typeof undefined
     //"undefined"
@@ -1623,7 +1624,6 @@ setTimeout 的第一个参数使用字符串而非函数的话，会引发内存
 闭包、控制台日志、循环（在两个对象彼此引用且彼此保留时，就会产生一个循环）
 ```
 
-
 - JQuery一个对象可以同时绑定多个事件，这是如何实现的？
 
 -  Node.js的适用场景？
@@ -1796,6 +1796,13 @@ for(var i=0; i<10;i++){
 5、是否了解Promise？
 
 http://www.liaoxuefeng.com/wiki/001434446689867b27157e896e74d51a89c25cc8b43bdb3000/0014345008539155e93fc16046d4bb7854943814c4f9dc2000
+
+6、前后端分离，你们团队是如何协作开发的；
+
+7、写一个todolist(Jquery、Angular、React)
+
+8、你们团队现在使用的前端框架（PC、H5）、前端自动化工具、常用库、插件，是否沉淀组件库等
+
 ```
 
 ## <a name='other'>其他问题</a>
