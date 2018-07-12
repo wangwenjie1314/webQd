@@ -821,11 +821,11 @@ javascript创建对象简单的说,无非就是使用内置对象或各种自定
 2、用function来模拟无参的构造函数
 
     function Person(){}
-    var person=new Person();//定义一个function，如果使用new"实例化",该function可以看作是一个Class
+    var person = new Person();//定义一个function，如果使用new"实例化",该function可以看作是一个Class
     person.name="Mark";
     person.age="25";
     person.work=function(){
-        alert(person.name+" hello...");
+      alert(person.name+" hello...");
     }
     person.work();
 
@@ -856,27 +856,25 @@ javascript创建对象简单的说,无非就是使用内置对象或各种自定
 
 5、用原型方式来创建
 
-    function Dog(){
-
-     }
-     Dog.prototype.name="旺财";
-     Dog.prototype.eat=function(){
-     alert(this.name+"是个吃货");
-     }
-     var wangcai =new Dog();
-     wangcai.eat();
+    function Dog(){}
+    Dog.prototype.name="旺财";
+    Dog.prototype.eat=function(){
+      alert(this.name+"是个吃货");
+    }
+    var wangcai =new Dog();
+    wangcai.eat();
 
 
-5、用混合方式来创建
+6、用混合方式来创建
 
     function Car(name,price){
       this.name=name;
       this.price=price;
     }
-     Car.prototype.sell=function(){
-       alert("我是"+this.name+"，我现在卖"+this.price+"万元");
-      }
-    var camry =new Car("凯美瑞",27);
+    Car.prototype.sell=function(){
+      alert("我是"+this.name+"，我现在卖"+this.price+"万元");
+    }
+    var camry = new Car("凯美瑞",27);
     camry.sell();
 ```
 
@@ -1087,6 +1085,8 @@ this一般情况下：是全局对象Global。 作为方法调用，那么this�
 -  什么是闭包（closure），为什么要用它？
 
 ```html
+一句话可以概括：闭包就是能够读取其他函数内部变量的函数，或者子函数在外调用，子函数所在的父函数的作用域不会被释放。
+
 闭包是指有权访问另一个函数作用域中变量的函数，创建闭包的最常见的方式就是在一个函数内创建另一个函数，通过另一个函数访问这个函数的局部变量,利用闭包可以突破作用链域，将函数内部的变量和方法传递到外部。
 
 闭包的特性：
@@ -1105,13 +1105,30 @@ this一般情况下：是全局对象Global。 作为方法调用，那么this�
 <script type="text/javascript">
     var nodes = document.getElementsByTagName("li");
     for(i = 0;i<nodes.length;i+= 1){
-        nodes[i].onclick = function(){
-            console.log(i+1);//不用闭包的话，值每次都是4
-        }(i);
+      nodes[i].onclick = function(){
+        console.log(i+1);//不用闭包的话，值每次都是4
+      }(i);
     }
 </script>
 ```
 
+- 如何解决异步回调地狱
+
+promise、generator、async/await
+
+```javascript
+let hello = function(){
+  return new Promise(function(resolve,reject){
+    resolve('123');
+  });
+};
+async function say(){
+  return await hello();
+}
+say().then(function(result){
+  console.log(result);
+});
+```
 -  "use strict";是什么意思 ? 使用它的好处和坏处分别是什么？
 
 ```html
@@ -1464,8 +1481,18 @@ setTimeout 的第一个参数使用字符串而非函数的话，会引发内存
 -  (如果会用node)知道route, middleware, cluster, nodemon, pm2, server-side rendering么?
 
 -  解释一下 Backbone 的 MVC 实现方式？
+2010年，Backbone.js;
+Backbone 将前端代码分成两个基本部分。
+Model：管理数据、View：数据的展现;
+Backbone 只有 M 和 V，没有 C。因为，前端 Controller 与后端不同。
+~不需要，也不应该处理业务逻辑;
+~只需要处理 UI 逻辑，响应用户的一举一动;
+所以，前端 Controller 相对比较简单。Backbone 没有 C，只用事件来处理 UI 逻辑。
 
 - 什么是“前端路由”?什么时候适合使用“前端路由”? “前端路由”有哪些优点和缺点?
+http://xxx#xxx
+
+spa
 
 - 知道什么是webkit么? 知道怎么用浏览器的各种工具来调试和debug代码么?
 
@@ -1481,13 +1508,13 @@ setTimeout 的第一个参数使用字符串而非函数的话，会引发内存
 
 ```javascript
 function commafy(num) {
-     num = num + '';
-     var reg = /(-?d+)(d{3})/;
+  num = num + '';
+  var reg = /(-?d+)(d{3})/;
 
-    if(reg.test(num)){
-     num = num.replace(reg, '$1,$2');
-    }
-    return num;
+  if(reg.test(num)){
+    num = num.replace(reg, '$1,$2');
+  }
+  return num;
 }
 ```
 
@@ -1512,9 +1539,7 @@ function b(){
 b();
 
 //2.原型的构造器
-function a(){
-
-}
+function a(){}
 console.log(a.prototype.constructor);
 
 //3.this
@@ -1532,7 +1557,7 @@ console.log(typeof "1");
 //5.闭包
 function a(){}
 function b(p){
-  var c=0;
+  var c = 0;
   p.prototype.fn1= function(){
     console.log(++c);
   }
@@ -1587,7 +1612,7 @@ typeof {}; // 'object'
 
 123..toString(); // '123', 注意是两个点！
 (123).toString(); // '123'
-
+123+''; //'123'
 ```
 
 - 个人经历面试题
@@ -1605,6 +1630,52 @@ typeof {}; // 'object'
  |--------| |--------|
 -----------------------
 
+//html
+<div class="flex-container">
+  <div class="flex-item a">
+    a
+  </div>
+  <div class="flex-item b">
+    <div class="flexb-item c">
+      c
+    </div>
+    <div class="flexb-item d">
+      d
+    </div>
+  </div>
+</div>
+
+  //css
+  .flex-container{
+    display: flex;
+    height: 100vh;
+    overflow: hidden;
+  }
+  .flex-item{
+    flex: 1;
+  }
+  .flex-item.a{
+    background: #f00;
+    margin-right:5px;
+  }
+  .flex-item.b{
+    margin-left: 5px;
+  }
+
+  .flexb-item{
+    flex: 1;
+    flex-direction: column;
+    min-height: 50vh;
+  }
+  .flexb-item.c{
+    background: #c00;
+    margin-bottom: 10px;
+  }
+  .flexb-item.d{
+    background: #000;
+  }
+
+
 2、如何检测当前变量为Array？
 
 Array.isArray();
@@ -1616,19 +1687,20 @@ setTimeout(function(){
     console.log(i);
   }
 },1000);
-
+//0 1 2 3 4 5 6 7 8 9
 
 for(var i=0; i<10;i++){
   setTimeout(function(){
     console.log(i);
   },1000);
 }
+//10 10 10 10 10 10 10 10 10 10
 
 4、如何将当前ajax查询的列表 以href的方式发给别人（拥有相同权限）,其电脑打开链接直接可以看到相同列表数据？
 
 5、是否了解Promise？
 
-http://www.liaoxuefeng.com/wiki/001434446689867b27157e896e74d51a89c25cc8b43bdb3000/0014345008539155e93fc16046d4bb7854943814c4f9dc2000
+[Promise](http://www.liaoxuefeng.com/wiki/001434446689867b27157e896e74d51a89c25cc8b43bdb3000/0014345008539155e93fc16046d4bb7854943814c4f9dc2000)
 
 6、前后端分离，你们团队是如何协作开发的；
 
@@ -1640,7 +1712,7 @@ http://www.liaoxuefeng.com/wiki/001434446689867b27157e896e74d51a89c25cc8b43bdb30
 
 ## <a name='other'>其他问题</a>
 
-- 原来公司工作流程是怎么样的，如何与其他人协作的？如何夸部门合作的？
+- 原来公司工作流程是怎么样的，如何与其他人协作的？如何跨部门合作的？
 
 - 你遇到过比较难的技术问题是？你是如何解决的？
 
@@ -2244,6 +2316,7 @@ JSON建构于两种结构：
 
 
 ## 额外推荐：
+
 * 事先声明：
 		◆ 这些题目的来源：面试曾经被问过;工作被别人问过或者遇见过;网上看见过...
 		◆ 答案真心不给提供，真的是许多问题都需要个人的理解和沉淀，
