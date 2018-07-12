@@ -1,4 +1,11 @@
-# 2016年前端开发面试题
+# 前端开发面试题
+
+## 2018-07-12 更新
+
+```
+总结了17年初到18年初百场前端面试的面试经验(含答案)
+https://juejin.im/post/5b44a485e51d4519945fb6b7
+```
 
 ## 原始基础版转自markyun
 
@@ -10,8 +17,8 @@
   2. [HTML 部分](#user-content-html)
   3. [CSS  部分](#user-content-css)
   4. [JavaScript 部分](#user-content-js)
-  5. [其他问题](#user-content-other) 
-  6. [优质网站推荐](#user-content-web) 
+  5. [其他问题](#user-content-other)
+  6. [优质网站推荐](#user-content-web)
 
 ## <a name='preface' id='preface'>前言</a> ##
 
@@ -36,9 +43,9 @@
 ```html
 HTML&CSS：
 对Web标准的理解、浏览器内核差异、兼容性、hack、CSS基本功：布局、盒子模型、
-选择器优先级及使用、HTML5、CSS3、移动端适应 
+选择器优先级及使用、HTML5、CSS3、移动端适应
 
-JavaScript：  
+JavaScript：
 数据类型、面向对象、继承、闭包、插件、作用域、跨域、原型链、模块化、自定义事件、
 内存泄漏、事件机制、异步装载回调、模板引擎、Nodejs、JSON、ajax等。
 
@@ -48,28 +55,28 @@ HTTP、安全、正则、优化、重构、响应式、移动端、团队协作�
 
 作为一名前端工程师，**无论工作年头长短都应该必须掌握的知识点**：
 
-此条由 王子墨 发表在 [前端随笔](http://julying.com/blog/front-end-engineers-must-master-knowledge/) 
-   
+此条由 王子墨 发表在 [前端随笔](http://julying.com/blog/front-end-engineers-must-master-knowledge/)
+
 1、DOM结构——两个节点之间可能存在哪些关系以及如何在节点之间任意移动。
 
 ```html
-document.documentElement     返回文档的根节点<html> 
-document.body     <body> 
-document.activeElement 返回当前文档中被击活的标签节点(ie) 
-event.fromElement        返回鼠标移出的源节点(ie) 
-event.toElement       返回鼠标移入的源节点(ie) 
-event.srcElement     返回激活事件的源节点(ie) 
-event.target         返回激活事件的源节点(firefox) 
-当前对象为node 
-返回父节点：node.parentNode, node.parendElement, 
-返回所有子节点：node.childNodes（包含文本节点及标签节点）,node.children 
-返回第一个子节点：node.firstChild 
-返回最后一个子节点： node.lastChild 
-返回同属上一个子节点：node.nextSibling 
-返回同属下一个子节点：node.previousSibling 
+document.documentElement     返回文档的根节点<html>
+document.body     <body>
+document.activeElement 返回当前文档中被击活的标签节点(ie)
+event.fromElement        返回鼠标移出的源节点(ie)
+event.toElement       返回鼠标移入的源节点(ie)
+event.srcElement     返回激活事件的源节点(ie)
+event.target         返回激活事件的源节点(firefox)
+当前对象为node
+返回父节点：node.parentNode, node.parendElement,
+返回所有子节点：node.childNodes（包含文本节点及标签节点）,node.children
+返回第一个子节点：node.firstChild
+返回最后一个子节点： node.lastChild
+返回同属上一个子节点：node.nextSibling
+返回同属下一个子节点：node.previousSibling
 parentNode和parentElement功能一样，childNodes和children功能一样。但是parentNode和
-childNodes是符合W3C标准的，可以说比较通用。而另外两个只是IE支持，不是标准，Firefox就不支持 
-,所以大家只要记得有parentElement和children就行了 
+childNodes是符合W3C标准的，可以说比较通用。而另外两个只是IE支持，不是标准，Firefox就不支持
+,所以大家只要记得有parentElement和children就行了
 ```
 
 2、DOM操作——怎样添加、移除、移动、复制、创建和查找节点。
@@ -215,26 +222,26 @@ JSON(JavaScript Object Notation) 是一种轻量级的数据交换格式。
 JSON建构于两种结构：
 “名称/值”对的集合（A collection of name/value pairs）。
 不同的语言中，它被理解为对象（object），纪录（record），结构（struct），
-字典（dictionary），哈希表（hash table），有键列表（keyed list），或者关联数组 （associative array）。 
+字典（dictionary），哈希表（hash table），有键列表（keyed list），或者关联数组 （associative array）。
 值的有序列表（An ordered list of values）。在大部分语言中，它被理解为数组（array）。
 ```
 
-**备注：** 
+**备注：**
 
 根据自己需要选择性阅读，面试题是对理论知识的总结，让自己学会应该如何表达。
 
-资料答案不够正确和全面，**欢迎补充**答案、题目；最好是现在网上没有的。 
+资料答案不够正确和全面，**欢迎补充**答案、题目；最好是现在网上没有的。
 
-格式不断修改更新中。  
+格式不断修改更新中。
 
 
 ## <a name='html'>HTML</a>
 
-- Doctype作用? 严格模式与混杂模式如何区分？它们有何意义? 
+- Doctype作用? 严格模式与混杂模式如何区分？它们有何意义?
 
 ```html
 （1）、<!DOCTYPE> 声明位于文档中的最前面，处于 <html> 标签之前。告知浏览器的解析器，
-用什么文档类型 规范来解析这个文档。 
+用什么文档类型 规范来解析这个文档。
 
 （2）、严格模式的排版和 JS 运作模式是  以该浏览器支持的最高标准运行。
 
@@ -256,14 +263,14 @@ HTML5 不基于 SGML，因此不需要对DTD进行引用，但是需要doctype�
 ```html
 （1）CSS规范规定，每个元素都有display属性，确定该元素的类型，每个元素都有默认的display值，
 比如div默认display属性值为“block”，成为“块级”元素；
-span默认display属性值为“inline”，是“行内”元素。  
-        
+span默认display属性值为“inline”，是“行内”元素。
+
 （2）行内元素有：a b span img input select strong(强调的语气);
-块级元素有：div ul ol li dl dt dd h1 h2 h3 h4…p  
-                
-（3）知名的空元素： 
-<br> <hr> <img> <input> <link> <meta> 
-鲜为人知的是： 
+块级元素有：div ul ol li dl dt dd h1 h2 h3 h4…p
+
+（3）知名的空元素：
+<br> <hr> <img> <input> <link> <meta>
+鲜为人知的是：
 <area> <base> <col> <command> <embed> <keygen> <param> <source> <track> <wbr>
 ```
 
@@ -286,17 +293,17 @@ inline-block：是使元素以块级元素的形式呈现在行内。
 
 ```html
 （1）link属于XHTML标签，而@import是CSS提供的;
-        
+
 （2）页面被加载的时，link会同时被加载，而@import引用的CSS会等到页面被加载完再加载;
-        
+
 （3）import只在IE5以上才能识别，而link是XHTML标签，无兼容问题;
-        
+
 （4）link方式的样式的权重 高于@import的权重.
 ```
 
 - 介绍一下你对浏览器内核的理解？
 
-```html 
+```html
 主要分成两部分：渲染引擎(layout engineer或Rendering Engine)和JS引擎。
 
 渲染引擎：负责取得网页的内容（HTML、XML、图像等等）、整理讯息（例如加入CSS等），以及计算网页的显示方式，然后会输出至显示器或打印机。浏览器的内核的不同对于网页的语法解释会有不同，所以渲染的效果也不相同。所有网页浏览器、电子邮件客户端以及其它需要编辑、显示网络内容的应用程序都需要内核。
@@ -308,7 +315,7 @@ JS引擎则：解析和执行javascript来实现网页的动态效果。
 
 - 浏览器的内核分别是什么?
 
-```html	
+```html
 Trident内核：IE,MaxThon,TT,The World,360,搜狗浏览器等。[又称MSHTML]
 
 Gecko内核：Netscape6及以上版本，FF,MozillaSuite/SeaMonkey等
@@ -327,16 +334,16 @@ Webkit内核：Safari,Chrome等。   [ Chrome的：Blink（WebKit的分支）]
 
 - 浏览器默认的margin和padding不同。解决方案是加一个全局的*{margin:0;padding:0;}来统一。
 
-- IE6双边距bug:块属性标签float后，又有横行的margin情况下，在ie6显示margin比设置的大。 
+- IE6双边距bug:块属性标签float后，又有横行的margin情况下，在ie6显示margin比设置的大。
 
-浮动ie产生的双倍距离 #box{ float:left; width:10px; margin:0 0 0 100px;} 
+浮动ie产生的双倍距离 #box{ float:left; width:10px; margin:0 0 0 100px;}
 
 这种情况之下IE会产生20px的距离，解决方案是在float的标签样式控制中
 加入 ——_display:inline;将其转化为行内属性。(_这个符号只有ie6会识别)
 
-渐进识别的方式，从总体中逐渐排除局部。 
+渐进识别的方式，从总体中逐渐排除局部。
 
-首先，巧妙的使用“\9”这一标记，将IE游览器从所有情况中分离出来。 
+首先，巧妙的使用“\9”这一标记，将IE游览器从所有情况中分离出来。
 接着，再次使用“+”将IE8和IE7、IE6分离开来，这样IE8已经独立识别。
 
 css
@@ -344,39 +351,39 @@ css
 background-color:#f1ee18;/*所有识别*/
 .background-color:#00deff\9; /*IE6、7、8识别*/
 +background-color:#a200ff;/*IE6、7识别*/
-_background-color:#1e0bd1;/*IE6识别*/ 
-} 
+_background-color:#1e0bd1;/*IE6识别*/
+}
 
 -  IE下,可以使用获取常规属性的方法来获取自定义属性,
 也可以使用getAttribute()获取自定义属性;
-Firefox下,只能使用getAttribute()获取自定义属性. 
+Firefox下,只能使用getAttribute()获取自定义属性.
 解决方法:统一通过getAttribute()获取自定义属性.
 
-- IE下,even对象有x,y属性,但是没有pageX,pageY属性; 
+- IE下,even对象有x,y属性,但是没有pageX,pageY属性;
 Firefox下,event对象有pageX,pageY属性,但是没有x,y属性.
 
 - 解决方法：（条件注释）缺点是在IE浏览器下可能会增加额外的HTTP请求数。
 
-- Chrome 中文界面下默认会将小于 12px 的文本强制按照 12px 显示, 
+- Chrome 中文界面下默认会将小于 12px 的文本强制按照 12px 显示,
 可通过加入 CSS 属性 -webkit-text-size-adjust: none; 解决.
 
 超链接访问过后hover样式就不出现了 被点击访问过的超链接样式不在具有hover和active了解决方法是改变CSS属性的排列顺序:
 L-V-H-A :  a:link {} a:visited {} a:hover {} a:active {}
 ```
 
-- html5有哪些新特性、移除了那些元素？如何处理HTML5新标签的浏览器兼容问题？如何区分 HTML 和 
+- html5有哪些新特性、移除了那些元素？如何处理HTML5新标签的浏览器兼容问题？如何区分 HTML 和
 HTML5？
 
 ```html
 - HTML5 现在已经不是 SGML 的子集，主要是关于图像，位置，存储，多任务等功能的增加。
 
-- 绘画 canvas  
-用于媒介回放的 video 和 audio 元素 
+- 绘画 canvas
+用于媒介回放的 video 和 audio 元素
 本地离线存储 localStorage 长期存储数据，浏览器关闭后数据不丢失；
 sessionStorage 的数据在浏览器关闭后自动删除
 
-语意化更好的内容元素，比如 article、footer、header、nav、section 
-表单控件，calendar、date、time、email、url、search  
+语意化更好的内容元素，比如 article、footer、header、nav、section
+表单控件，calendar、date、time、email、url、search
 新的技术webworker, websockt, Geolocation
 
 - 移除的元素
@@ -393,14 +400,14 @@ sessionStorage 的数据在浏览器关闭后自动删除
 浏览器支持新标签后，还需要添加标签默认的样式：
 
 - 当然最好的方式是直接使用成熟的框架、使用最多的是html5shim框架
-   <!--[if lt IE 9]> 
-   <script> src="http://html5shim.googlecode.com/svn/trunk/html5.js"</script> 
-   <![endif]--> 
+   <!--[if lt IE 9]>
+   <script> src="http://html5shim.googlecode.com/svn/trunk/html5.js"</script>
+   <![endif]-->
 如何区分： DOCTYPE声明\新增的结构元素\功能元素
 ```
 
 - 语义化的理解？
- 
+
 ```html
 用正确的标签做正确的事情！
 html语义化就是让页面的内容结构化，便于对浏览器、搜索引擎解析；
@@ -450,14 +457,14 @@ sessionStorage  数据在浏览器关闭后自动删除。
 
 ```html
 （HTML5中新增加的很多标签（如：<article>、<nav>、<header>和<footer>等）
-就是基于语义化设计原则）  
-< div id="header"> 
-< h1>标题< /h1> 
-< h2>专注Web前端技术< /h2> 
+就是基于语义化设计原则）
+< div id="header">
+< h1>标题< /h1>
+< h2>专注Web前端技术< /h2>
 < /div>
 ```
 
-- iframe有那些缺点？ 
+- iframe有那些缺点？
 
 ```html
 *iframe会阻塞主页面的Onload事件；
@@ -469,7 +476,7 @@ sessionStorage  数据在浏览器关闭后自动删除。
 动态给iframe添加src属性值，这样可以绕开以上两个问题。
 ```
 
-- 请描述一下 cookies，sessionStorage 和 localStorage 的区别？ 
+- 请描述一下 cookies，sessionStorage 和 localStorage 的区别？
 
 ```html
 cookie是网站为了标示用户身份而储存在用户本地终端（Client Side）上的数据（通常经过加密）。
@@ -553,7 +560,7 @@ ActiveX HTMLFile (IE) 、
 ```
 
 
-## <a name='css'>CSS</a> 
+## <a name='css'>CSS</a>
 
 - 介绍一下CSS的盒子模型？
 
@@ -576,19 +583,19 @@ ActiveX HTMLFile (IE) 、
 	7.通配符选择器（ * ）
 	8.属性选择器（a[rel = "external"]）
 	9.伪类选择器（a: hover, li: nth - child）
-  
+
 -   可继承的样式： font-size font-family color, UL LI DL DD DT;
 
 -   不可继承的样式：border padding margin width height ;
-  
+
 -   优先级就近原则，同权重情况下样式定义最近者为准;
 
 -   载入样式以最后载入的定位为准;
 
 优先级为:
-  
-   !important >  id > class > tag  
-  
+
+   !important >  id > class > tag
+
    important 比 内联优先级高
 
 CSS3新增伪类举例：
@@ -606,25 +613,25 @@ p:nth-child(2)	选择属于其父元素的第二个子元素的每个 <p> 元素
 
 ```html
 *  给div设置一个宽度，然后添加margin:0 auto属性
- 
+
 div{
 	width:200px;
 	margin:0 auto;
- }  
-		 
+ }
+
 *  居中一个浮动元素
-  
+
   确定容器的宽高 宽500 高 300 的层
   设置层的外边距
- 
-.div { 
+
+.div {
   Width:500px ; height:300px;//高度可以不设
   Margin: -150px 0 0 -250px;
   position:relative;//相对定位
   background-color:pink;//方便看效果
   left:50%;
   top:50%;
-} 
+}
 
 *  让绝对定位的div居中
 
@@ -677,7 +684,7 @@ CSS3实现
 线性渐变（gradient）,
 旋转（transform）
 transform:rotate(9deg) scale(0.85,0.90) translate(0px,-30px) skew(-9deg,0deg);//旋转,缩放,定位,倾斜
-增加了更多的CSS选择器  多背景 rgba 
+增加了更多的CSS选择器  多背景 rgba
 ```
 
 - 请解释一下CSS3的Flexbox（弹性盒布局模型）,以及适用场景？
@@ -717,8 +724,8 @@ transform:rotate(9deg) scale(0.85,0.90) translate(0px,-30px) skew(-9deg,0deg);//
 
 *最简单的初始化方法就是： * {padding: 0; margin: 0;} （不建议）
 
-淘宝的样式初始化： 
-body, h1, h2, h3, h4, h5, h6, hr, p, blockquote, dl, dt, 
+淘宝的样式初始化：
+body, h1, h2, h3, h4, h5, h6, hr, p, blockquote, dl, dt,
 dd, ul, ol, li, pre, form, fieldset, legend, button, input, textarea, th, td { margin:0; padding:0; }
 body, button, input, select, textarea { font:12px/1.5tahoma, arial, \5b8b\4f53; }
 h1, h2, h3, h4, h5, h6{ font-size:100%; }
@@ -733,7 +740,7 @@ sub{ vertical-align:text-bottom; }
 legend { color:#000; }
 fieldset, img { border:0; }
 button, input, select, textarea { font-size:100%; }
-table { border-collapse:collapse; border-spacing:0; } 
+table { border-collapse:collapse; border-spacing:0; }
 ```
 
 - absolute的containing block计算方式跟正常流有什么不同？
@@ -764,7 +771,7 @@ W3C CSS 2.1 规范中的一个概念,它是一个独立容器，决定了元素�
 
 ```html
 以下是权重的规则：标签的权重为1，class的权重为10，id的权重为100，以下例子是演示各种定义的权重值：
- 
+
 /*权重为1*/
 div{
 }
@@ -782,7 +789,7 @@ div{
 }
 /*权重为10+10+1=21*/
 .class1 .class2 div{
-} 
+}
 
 如果权重相同，则最后定义的样式会起作用，但是应该避免这种情况出现
 ```
@@ -792,7 +799,7 @@ div{
 - 用过媒体查询，针对移动端的布局吗？
 
 - 使用 CSS 预处理器吗？喜欢那个？
-		
+
 ```html
 SASS (SASS、LESS没有本质区别，只因为团队前端都是用的SASS)
 ```
@@ -922,14 +929,14 @@ JavaScript对象是通过引用来传递的，我们创建的每个新对象实�
 -  JavaScript有几种类型的值？，你能画一下他们的内存图吗？
 
 ```html
-栈：原始数据类型（Undefined，Null，Boolean，Number、String） 
+栈：原始数据类型（Undefined，Null，Boolean，Number、String）
 堆：引用数据类型（对象、数组和函数）
 
 两种类型的区别是：存储位置不同；
 原始数据类型直接存储在栈(stack)中的简单数据段，占据空间小、大小固定，属于被频繁使用数据，所以放入栈中存储；
 引用数据类型存储在堆(heap)中的对象,占据空间大、大小不固定,如果存储在栈中，将会影响程序运行的性能；引用数据类型在栈中存储了指针，该指针指向堆中该实体的起始地址。当解释器寻找引用值时，会首先检索其
 在栈中的地址，取得地址后从堆中获得实体
-        
+
 ![Stated Clearly Image](http://www.w3school.com.cn/i/ct_js_value.gif)
 ```
 
@@ -948,7 +955,7 @@ JavaScript对象是通过引用来传递的，我们创建的每个新对象实�
 //类式继承
 function Super(){
     this.color = ['red','blue'];
-} 
+}
 
 function Sub(){
     Super.call(this);
@@ -976,7 +983,7 @@ alert(demo.name);//得到被继承的属性
 javascript创建对象简单的说,无非就是使用内置对象或各种自定义对象，当然还可以用JSON；但写法有很多种，也能混合使用。
 
 
-1、对象字面量的方式   
+1、对象字面量的方式
 
     person={
         firstname:"Mark",
@@ -1024,7 +1031,7 @@ javascript创建对象简单的说,无非就是使用内置对象或各种自定
 5、用原型方式来创建
 
     function Dog(){
-    
+
      }
      Dog.prototype.name="旺财";
      Dog.prototype.eat=function(){
@@ -1038,13 +1045,13 @@ javascript创建对象简单的说,无非就是使用内置对象或各种自定
 
     function Car(name,price){
       this.name=name;
-      this.price=price; 
+      this.price=price;
     }
      Car.prototype.sell=function(){
        alert("我是"+this.name+"，我现在卖"+this.price+"万元");
       }
     var camry =new Car("凯美瑞",27);
-    camry.sell(); 
+    camry.sell();
 ```
 
 -  Javascript作用链域?
@@ -1080,7 +1087,7 @@ abc125def
 abc17def
 ```
 
--  eval是做什么的？ 
+-  eval是做什么的？
 
 ```html
 它的功能是把对应的字符串解析成JS代码并运行；
@@ -1095,7 +1102,7 @@ undefined   表示不存在这个值。
 
 typeof undefined
     //"undefined"
-    undefined :是一个表示"无"的原始值或者说表示"缺少值"，就是此处应该有一个值，但是还没有定义。当尝试读取时会返回 undefined； 
+    undefined :是一个表示"无"的原始值或者说表示"缺少值"，就是此处应该有一个值，但是还没有定义。当尝试读取时会返回 undefined；
     例如变量被声明了，但没有赋值时，就等于undefined
 
 typeof null
@@ -1168,7 +1175,7 @@ markyun.Event = {
 		} else {
 			element['on' + type] = null;
 		}
-	}, 
+	},
 	// 阻止事件 (主要是事件冒泡，因为IE不支持事件捕获)
 	stopPropagation : function(ev) {
 		if (ev.stopPropagation) {
@@ -1204,7 +1211,7 @@ markyun.Event = {
 		}
 		return ev;
 	}
-}; 
+};
 ```
 
 -  ["1", "2", "3"].map(parseInt) 答案是多少？
@@ -1229,8 +1236,8 @@ parseInt('2', 2); // NaN, 按二进制转换不允许出现2
 function Person(name, age) {
     this.name = name;
     this.age = age;
-    this.sing = function() { alert(this.name) } 
-} 
+    this.sing = function() { alert(this.name) }
+}
 ```
 
 -  谈谈This对象的理解。
@@ -1240,10 +1247,10 @@ this是js的一个关键字，随着函数使用场合不同，this的值会发�
 
 但是有一个总原则，那就是this指的是调用函数的那个对象。
 
-this一般情况下：是全局对象Global。 作为方法调用，那么this就是指这个对象	
+this一般情况下：是全局对象Global。 作为方法调用，那么this就是指这个对象
 ```
 
--  事件是？IE与火狐的事件机制有什么区别？ 如何阻止冒泡？ 
+-  事件是？IE与火狐的事件机制有什么区别？ 如何阻止冒泡？
 
 ```html
 1. 我们在网页中的某个操作（有的操作对应多个事件）。例如：当我们点击一个按钮就会产生一个事件。是可以被 JavaScript 侦测到的行为。
@@ -1317,7 +1324,7 @@ Base.call(obj);
 
 -  Javascript中，有一个函数，执行时对象查找时，永远不会去查找原型，这个函数是？
 
-```html 
+```html
 hasOwnProperty
 
 javaScript中hasOwnProperty函数方法是返回一个布尔值，指出一个对象是否具有指定名称的属性。此方法无法检查该对象的原型链中是否具有该属性；该属性必须是对象本身的一个成员。
@@ -1345,7 +1352,7 @@ JSON(JavaScript Object Notation) 是一种轻量级的数据交换格式。
 
 -  js延迟加载的方式有哪些？
 
-```html		
+```html
 defer和async、动态创建DOM方式（用得最多）、按需异步载入js
 ```
 
@@ -1376,7 +1383,7 @@ HEADER内一起传送到ACTION属性所指的URL地址。用户看不到这个�
 对于post方式，服务器端用Request.Form获取提交的数据。
 4. get传送的数据量较小，不能大于2KB。post传送的数据量较大，一般被默认为不受限制。
 但理论上，IIS4中最大量为80KB，IIS5中为100KB。
-5. get安全性非常低，post安全性较高。但是执行效率却比Post方法好。 
+5. get安全性非常低，post安全性较高。但是执行效率却比Post方法好。
 
 建议：
 1、get方式的安全性较Post方式要差些，包含机密信息的话，建议用Post数据提交方式；
@@ -1392,7 +1399,7 @@ HEADER内一起传送到ACTION属性所指的URL地址。用户看不到这个�
 
 异步：浏览器访问服务器请求，用户正常操作，浏览器后端进行请求。等请求完，页面不刷新，新内容也会出现，用户看到新内容。
 ```
-	
+
 -  如何解决跨域问题?
 
 ```html
@@ -1421,7 +1428,7 @@ var module1 = (function(){
 　　　　m1 : m1,
 　　　　m2 : m2
 　　};
-})(); 
+})();
 ```
 
 -  AMD（Modules/Asynchronous-Definition）、CMD（Common Module Definition）规范区别？
@@ -1459,7 +1466,7 @@ define(['./a', './b'], function(a, b) { // 依赖必须一开始就写好
 
 -  异步加载的方式有哪些？
 
-```html		
+```html
 (1) defer，只支持IE
 
 (2) async：
@@ -1472,11 +1479,11 @@ define(['./a', './b'], function(a, b) { // 依赖必须一开始就写好
 
 -  谈一谈你对ECMAScript6的了解？
 
--  ECMAScript6 怎么写class么，为什么会出现class这种东西? 
+-  ECMAScript6 怎么写class么，为什么会出现class这种东西?
 
 - documen.write和 innerHTML的区别
 
-```html				  
+```html
 document.write只能重绘整个页面
 
 innerHTML可以重绘页面的一部分
@@ -1486,14 +1493,14 @@ innerHTML可以重绘页面的一部分
 
 ```javascript
 //call: 调用一个对象的一个方法，以另一个对象替换当前对象
-//apply: 应用某一对象的一个方法，用另一个对象替换当前对象 
+//apply: 应用某一对象的一个方法，用另一个对象替换当前对象
 function add(a,b){
 	return a+b;
 }
 function sub(a,b){
 	return a-b;
 }
-alert(add.call(sub,3,1));//add替换sub 
+alert(add.call(sub,3,1));//add替换sub
 //call函数和apply方法的第一个参数都是要传入给当前对象的对象，及函数内部的this。后面的参数都是传递给当前对象的参数。
 var func=new function(){
 	this.a="func";
@@ -1527,7 +1534,7 @@ apply传入的是一个参数数组，也就是将多个参数组合成为一个
 
 -  jquery中如何将数组转化为json字符串，然后再转化回来？
 
--  jQuery 的属性拷贝(extend)的实现原理是什么，如何实现深拷贝？ 
+-  jQuery 的属性拷贝(extend)的实现原理是什么，如何实现深拷贝？
 
 -  jquery.extend 与 jquery.fn.extend的区别？
 
@@ -1544,8 +1551,8 @@ apply传入的是一个参数数组，也就是将多个参数组合成为一个
 -  针对 jQuery性能的优化方法？
 
 -  jQuery与jQuery UI 有啥区别？
- 
-```html		
+
+```html
 *jQuery是一个js库，主要提供的功能是选择器，属性修改和事件绑定等等。
 
 *jQuery UI则是在jQuery的基础上，利用jQuery的扩展性，设计的插件。
@@ -1555,9 +1562,9 @@ apply传入的是一个参数数组，也就是将多个参数组合成为一个
 -  jQuery的源码看过吗？能不能简单说一下它的实现原理？
 
 -  jQuery 中如何将数组转化为json字符串，然后再转化回来？
-		
+
 jQuery中没有提供这个功能，所以你需要先编写两个jQuery的扩展：
- 
+
 ```javascript
 $.fn.stringifyArray = function(array) {
     return JSON.stringify(array)
@@ -1565,21 +1572,21 @@ $.fn.stringifyArray = function(array) {
 
 $.fn.parseArray = function(array) {
     return JSON.parse(array)
-} 
+}
 //然后调用：
 $("#xxx").stringifyArray(array)
 ```
 
 -  针对 jQuery 的优化方法？
 
-```html	
+```html
 *基于Class的选择性的性能相对于Id选择器开销很大，因为需遍历所有DOM元素。
 
-*频繁操作的DOM，先缓存起来再操作。用jQuery的链式调用更好。   
+*频繁操作的DOM，先缓存起来再操作。用jQuery的链式调用更好。
          比如：var str=$("a").attr("href");
 
 *for (var i = size; i < arr.length; i++) {}
-for 循环每一次循环都查找了数组 (arr) 的.length 属性，在开始循环的时候设置一个变量来存储这个数字，可以让循环跑得更快： 
+for 循环每一次循环都查找了数组 (arr) 的.length 属性，在开始循环的时候设置一个变量来存储这个数字，可以让循环跑得更快：
 for (var i = size, length = arr.length; i < length; i++) {}
 ```
 
@@ -1607,15 +1614,15 @@ for (var i = size, length = arr.length; i < length; i++) {}
 
 -  Underscore 对哪些 JS 原生对象进行了扩展以及提供了哪些好用的函数方法？
 
--  JavaScript中的作用域与变量声明提升？ 
+-  JavaScript中的作用域与变量声明提升？
 
 -  如何编写高性能的Javascript？
 
 -  那些操作会造成内存泄漏？
 
-```html	
+```html
 内存泄漏指任何对象在您不再拥有或需要它之后仍然存在。
-	    
+
 垃圾回收器定期扫描对象，并计算引用了每个对象的其他对象的数量。
 如果一个对象的引用数量为 0（没有其他对象引用过该对象），
 或对该对象的惟一引用是循环的，那么该对象的内存即可回收。
@@ -1650,7 +1657,7 @@ setTimeout 的第一个参数使用字符串而非函数的话，会引发内存
 function commafy(num) {
      num = num + '';
      var reg = /(-?d+)(d{3})/;
-    
+
     if(reg.test(num)){
      num = num.replace(reg, '$1,$2');
     }
@@ -1681,7 +1688,7 @@ b();
 //2.原型的构造器
 function a(){
 
-} 
+}
 console.log(a.prototype.constructor);
 
 //3.this
@@ -1692,7 +1699,7 @@ var a={
 }
 var b=a.fn1;
 b();
- 
+
 //4.typeof
 console.log(typeof "1");
 
@@ -1894,7 +1901,7 @@ script 标签的长时间连接(可跨域)
 
 - 对Node的优点和缺点提出了自己的看法？
 
-```html	
+```html
 *（优点）因为Node是基于事件驱动和无阻塞的，所以非常适合处理并发请求，
 因此构建在Node上的代理服务器相比其他技术实现（如Ruby）的服务器表现要好得多。
 此外，与Node代理服务器交互的客户端代码是由javascript语言编写的，
@@ -1906,7 +1913,7 @@ script 标签的长时间连接(可跨域)
 
 - 你有哪些性能优化的方法？
 
-```html	
+```html
  （看雅虎14条性能优化原则）。
 
   （1） 减少http请求次数：CSS Sprites, JS、CSS源码压缩、图片大小控制合适；网页Gzip，CDN托管，data缓存 ，图片服务器。
@@ -1931,7 +1938,7 @@ script 标签的长时间连接(可跨域)
 
 - http状态码有那些？分别代表是什么意思？
 
-```html	
+```html
 简单版
 [
     100  Continue   继续，一般在发送post请求时，已发送了http header之后服务端将返回此信息，表示确认，之后发送具体参数信息
@@ -2034,7 +2041,7 @@ HTTP协议的状态消息都有哪些?
 “200〃 : OK（成功） 一切正常
 “302〃 : Found（临时移动）类似于301，但新的URL应该被视为临时性的替代，而不是永久性的。
 “400〃 : Bad Request（错误请求）请求出现语法错误。
-“404〃 : Not Found（未找到）无法找到指定位置的资源。 
+“404〃 : Not Found（未找到）无法找到指定位置的资源。
 “500〃 : Internal Server Error（服务器内部错误）服务器遇到错误，无法完成请求。
 “502〃 : Bad Gateway（错误网关）服务器作为网关或者代理时，
 为了完成请求访问下一个服务器，但该服务器返回了非法的应答。
@@ -2042,7 +2049,7 @@ HTTP协议的状态消息都有哪些?
 
 - 一个页面从输入 URL 到页面加载显示完成，这个过程中都发生了什么？（流程说的越详细越好）
 
-```html	
+```html
 注：这题胜在区分度高，知识点覆盖广，再不懂的人，也能答出几句，
   而高手可以根据自己擅长的领域自由发挥，从URL规范、HTTP协议、DNS、CDN、数据库查询、
   到浏览器流式解析、CSS规则构建、layout、paint、onload/domready、JS执行、JS API绑定等等；
@@ -2084,7 +2091,7 @@ git 用于版本控制和Code Review
 
 - 对前端界面工程师这个职位是怎么样理解的？它的前景会怎么样？
 
-```html	
+```html
 前端是最贴近用户的程序员，比后端、数据库、产品经理、运营、安全都近。
 
 1、实现界面交互
@@ -2094,13 +2101,13 @@ git 用于版本控制和Code Review
 3、有了Node.js，前端可以实现服务端的一些事情
 
 前端是最贴近用户的程序员，前端的能力就是能让产品从 90分进化到 100 分，甚至更好，
-        
+
 参与项目，快速高质量完成实现效果图，精确到1px；
 
 与团队成员，UI设计，产品经理的沟通；
-        
+
 做好的页面结构，页面重构和用户体验；
-        
+
 处理hack，兼容、写出优美的代码格式；
 
 针对服务器的优化、拥抱最新前端技术。
@@ -2128,17 +2135,17 @@ git 用于版本控制和Code Review
 
 ```html
 先期团队必须确定好全局样式（globe.css），编码模式(utf-8) 等
-		
+
 编写习惯必须一致（例如都是采用继承式的写法，单样式都写成一行）；
-		
+
 标注样式编写人，各模块都及时标注（标注关键样式调用的地方）；
-		
+
 页面进行标注（例如 页面 模块 开始和结束）；
-		
+
 CSS跟HTML 分文件夹并行存放，命名都得统一（例如style.css）
-		
+
 JS 分文件夹存放 命民以该JS 功能为准英文翻译；
-		
+
 图片采用整合的 images.png png8 格式文件使用 尽量整合在一起使用方便将来的管理
 ```
 
@@ -2207,15 +2214,15 @@ ES6\WebAssembly\Node\MVVM\Web Components\React\React Native\Webpack 组件化
 
 5. Startup News：http://news.dbanotes.net/
 
-6. Hacker News： https://news.ycombinator.com/news  
+6. Hacker News： https://news.ycombinator.com/news
 
-7. InfoQ：  		 http://www.infoq.com/ 
+7. InfoQ：  		 http://www.infoq.com/
 
 8. w3cplus：     http://www.w3cplus.com/
 
-9. Stack Overflow： http://stackoverflow.com/ 
+9. Stack Overflow： http://stackoverflow.com/
 
-10. Atp：  		 http://atp-posts.b0.upaiyun.com/posts/ 
+10. Atp：  		 http://atp-posts.b0.upaiyun.com/posts/
 
 
 了解更多：http://note.youdao.com/share/?id=f179a18d162ce08afa020a8ba8fc0cdf&type=note
@@ -2262,33 +2269,33 @@ ES6\WebAssembly\Node\MVVM\Web Components\React\React Native\Webpack 组件化
 		4. 简述JavaScript封装。
 		5. JavaScript继承有哪两种形式形式，进行描述。
 		6. 什么是闭包?以下代码点击<p> 会输出什么?为什么?能大概说明白的话继续问能想出几种解决办法。
-		<!DOCTYPE HTML> 
-		<html> 
-		<head> 
-		<meta charset="utf-8" /> 
-		<title>闭包演示</title> 
-		<style type="text/css"> 
-		    p {background:gold;}  
-		</style> 
-		<script type="text/javascript">   
-		function init() {      
-		    var pAry = document.getElementsByTagName("p");      
-		    for( var i=0; i<pAry.length; i++ ) {      
-		         pAry[i].onclick = function() {      
-		         alert(i);      
-		    }   
-		  }  
-		}  
-		</script>   
-		</head>   
-		<body onload="init();">   
-		<p>产品 0</p>   
-		<p>产品 1</p>   
-		<p>产品 2</p>   
-		<p>产品 3</p>   
-		<p>产品 4</p>   
-		</body>   
-		</html>  
+		<!DOCTYPE HTML>
+		<html>
+		<head>
+		<meta charset="utf-8" />
+		<title>闭包演示</title>
+		<style type="text/css">
+		    p {background:gold;}
+		</style>
+		<script type="text/javascript">
+		function init() {
+		    var pAry = document.getElementsByTagName("p");
+		    for( var i=0; i<pAry.length; i++ ) {
+		         pAry[i].onclick = function() {
+		         alert(i);
+		    }
+		  }
+		}
+		</script>
+		</head>
+		<body onload="init();">
+		<p>产品 0</p>
+		<p>产品 1</p>
+		<p>产品 2</p>
+		<p>产品 3</p>
+		<p>产品 4</p>
+		</body>
+		</html>
 		7. 在JS中this关键字的使用场合和用法(如在构造函数中、setTimeout中等)。
 		8. 简述下cookie的操作，还有cookie的属性都知道哪些。
 		9. IE与FF的JS兼容性都知道哪些。
