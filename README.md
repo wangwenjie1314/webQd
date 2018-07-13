@@ -514,6 +514,44 @@ transform:rotate(9deg) scale(0.85,0.90) translate(0px,-30px) skew(-9deg,0deg);//
 ```
 
 - 请解释一下CSS3的Flexbox（弹性盒布局模型）,以及适用场景？
+```
+文章链接：
+http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html?utm_source=tuicool（语法篇）
+http://www.ruanyifeng.com/blog/2015/07/flex-examples.html（实例篇）
+
+Flex是Flexible Box的缩写，意为"弹性布局"，用来为盒状模型提供最大的灵活性。
+布局的传统解决方案，基于盒状模型，依赖 display属性 + position属性 + float属性。它对于那些特殊布局非常不方便，比如，垂直居中就不容易实现。
+简单的分为容器属性和元素属性
+容器的属性：
+flex-direction：决定主轴的方向（即子item的排列方法）
+.box {
+  flex-direction: row | row-reverse | column | column-reverse;
+}
+
+flex-wrap：决定换行规则
+.box{
+  flex-wrap: nowrap | wrap | wrap-reverse;
+}
+
+flex-flow：让弹性盒的元素以相反的顺序显示，且在必要的时候进行拆行：
+.box {
+  flex-flow: flex-direction flex-wrap|initial|inherit;;
+}
+
+justify-content：对其方式，水平主轴对齐方式
+align-items：对齐方式，竖直轴线方向
+
+项目的属性（元素的属性）：
+
+order属性：定义项目的排列顺序，顺序越小，排列越靠前，默认为0
+flex-grow属性：定义项目的放大比例，即使存在空间，也不会放大
+flex-shrink属性：定义了项目的缩小比例，当空间不足的情况下会等比例的缩小，如果定义个item的flow-shrink为0，则为不缩小
+flex-basis属性：定义了在分配多余的空间，项目占据的空间。
+flex：是flex-grow和flex-shrink、flex-basis的简写，默认值为0 1 auto。
+align-self：允许单个项目与其他项目不一样的对齐方式，可以覆盖align-items，默认属性为auto，表示继承父元素的align-items
+
+比如说，用flex实现圣杯布局
+```
 
 - 用纯CSS创建一个三角形的原理是什么？
 
@@ -536,6 +574,70 @@ transform:rotate(9deg) scale(0.85,0.90) translate(0px,-30px) skew(-9deg,0deg);//
 下面的两个div分别宽50%，
 然后用float或者inline使其不换行即可
 ```
+
+- 垂直居中的方法
+  (1)margin:auto法
+  ```
+  div{
+    width: 400px;
+    height: 400px;
+    position: relative;
+    border: 1px solid #465468;
+  }
+  img{
+    position: absolute;
+    margin: auto;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+
+  <div>
+   <img src="mm.jpg">
+  </div>
+
+  定位为上下左右为0，margin：0可以实现脱离文档流的居中.
+  ```
+
+  (2)margin负值法
+  ```
+  .container{
+    width: 500px;
+    height: 400px;
+    border: 2px solid #379;
+    position: relative;
+  }
+  .inner{
+    width: 480px;
+    height: 380px;
+    background-color: #746;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -190px; /*height的一半*/
+    margin-left: -240px; /*width的一半*/
+  }
+  ```
+  (3)利用flex
+  将父元素设置为display:flex，并且设置align-items:center;justify-content:center;
+  ```
+  .container{
+    width: 300px;
+    height: 200px;
+    border: 3px solid #546461;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+  }
+ .inner{
+    border: 3px solid #458761;
+    padding: 20px;
+  }
+  ```
 
 - li与li之间有看不见的空白间隔是什么原因引起的？有什么解决办法？
 
