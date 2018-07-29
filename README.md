@@ -80,7 +80,7 @@ HTTP、安全、正则、优化、重构、响应式、移动端、团队协作�
 （4）、DOCTYPE不存在或格式不正确会导致文档以混杂模式呈现。
 ```
 
-- HTML5 为什么只需要写 <!DOCTYPE HTML>？
+- HTML5 为什么只需要写 '<!DOCTYPE HTML>'？
 
 ```html
 HTML5 不基于 SGML，因此不需要对DTD进行引用，但是需要doctype来规范浏览器的行为（让浏览器按照它们应该的方式来运行）；
@@ -1648,6 +1648,7 @@ let n = 111111; n.toLocaleString();
 - 浏览器打开一个页面前端缓存了哪些东西？
 
 - 说一下vue的生命周期
+https://www.cnblogs.com/penghuwan/p/7192203.html
 
 - 你的博客用的是Koa，Express用过吗？
 
