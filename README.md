@@ -1753,11 +1753,11 @@ function b(){
   alert(a);
   var a= 1;
 }
-b();
+b();//undefined
 
 //2.原型的构造器
 function a(){}
-console.log(a.prototype.constructor);
+console.log(a.prototype.constructor);//self
 
 //3.this
 var a={
@@ -1766,10 +1766,10 @@ var a={
   }
 }
 var b=a.fn1;
-b();
+b();//window
 
 //4.typeof
-console.log(typeof "1");
+console.log(typeof "1");//string
 
 //5.闭包
 function a(){}
@@ -1782,8 +1782,8 @@ function b(p){
 b(a);
 var d = new a();
 var e = new a();
-d.fn1();
-e.fn1();
+d.fn1();//1
+e.fn1();//2
 ```
 
 - 为了区分对象的类型，我们用typeof操作符获取对象的类型，它总是返回一个字符串
