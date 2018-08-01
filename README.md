@@ -178,12 +178,12 @@ Webkit内核：Safari,Chrome等。   [Chrome的：Blink（WebKit的分支）]
 首先，巧妙的使用“\9”这一标记，将IE游览器从所有情况中分离出来。
 接着，再次使用“+”将IE8和IE7、IE6分离开来，这样IE8已经独立识别。
 
-css
+//css
 .bb{
-background-color:#f1ee18;/*所有识别*/
-.background-color:#00deff\9; /*IE6、7、8识别*/
-+background-color:#a200ff;/*IE6、7识别*/
-_background-color:#1e0bd1;/*IE6识别*/
+  background-color:#f1ee18;/*所有识别*/
+  .background-color:#00deff\9; /*IE6、7、8识别*/
+  +background-color:#a200ff;/*IE6、7识别*/
+  _background-color:#1e0bd1;/*IE6识别*/
 }
 
 -  IE下,可以使用获取常规属性的方法来获取自定义属性,
@@ -405,30 +405,32 @@ ActiveX HTMLFile (IE) 、
 - CSS 选择符有哪些？哪些属性可以继承？优先级算法如何计算？ CSS3新增伪类有那些？
 
 ```html
+选择符:
+1.id选择器（ # myid）
+2.类选择器（.myclassname）
+3.标签选择器（div, h1, p）
+4.相邻选择器（h1 + p）
+5.子选择器（ul < li）
+6.后代选择器（li a）
+7.通配符选择器（ * ）
+8.属性选择器（a[rel = "external"]）
+9.伪类选择器（a: hover, li: nth - child）
 
-  1.id选择器（ # myid）
-	2.类选择器（.myclassname）
-	3.标签选择器（div, h1, p）
-	4.相邻选择器（h1 + p）
-	5.子选择器（ul < li）
-	6.后代选择器（li a）
-	7.通配符选择器（ * ）
-	8.属性选择器（a[rel = "external"]）
-	9.伪类选择器（a: hover, li: nth - child）
+可继承的样式：
+font-size font-family color, UL LI DL DD DT;
 
--   可继承的样式： font-size font-family color, UL LI DL DD DT;
+不可继承的样式：
+border padding margin width height ;
 
--   不可继承的样式：border padding margin width height ;
+优先级就近原则，同权重情况下样式定义最近者为准;
 
--   优先级就近原则，同权重情况下样式定义最近者为准;
-
--   载入样式以最后载入的定位为准;
+载入样式以最后载入的定位为准;
 
 优先级为:
 
-   !important >  id > class > tag
+  !important >  id > class > tag
 
-   important 比 内联优先级高
+  important 比 内联优先级高
 
 CSS3新增伪类举例：
 
@@ -911,27 +913,26 @@ JavaScript对象是通过引用来传递的，我们创建的每个新对象实�
 
 //类式继承
 function Super(){
-    this.color = ['red','blue'];
+  this.color = ['red','blue'];
 }
 
 function Sub(){
-    Super.call(this);
+  Super.call(this);
 }
 
 //原型继承
 function Parent(){
-    this.name = 'wang';
+  this.name = 'wang';
 }
 
 function Child(){
-    this.age = 28;
+  this.age = 28;
 }
 Child.prototype = new Parent();//继承了Parent，通过原型
 
 var demo = new Child();
 alert(demo.age);
 alert(demo.name);//得到被继承的属性
-
 ```
 
 -  javascript创建对象的几种方式？
@@ -943,10 +944,10 @@ javascript创建对象简单的说,无非就是使用内置对象或各种自定
 1、对象字面量的方式
 
     person={
-        firstname:"Mark",
-        lastname:"Yun",
-        age:25,
-        eyecolor:"black"
+      firstname:"Mark",
+      lastname:"Yun",
+      age:25,
+      eyecolor:"black"
     };
 
 2、用function来模拟无参的构造函数
@@ -1025,21 +1026,11 @@ javascript创建对象简单的说,无非就是使用内置对象或各种自定
 
 ```javascript
 window.onload=function(){
-  var a=1+"1";
-  var b="1"+1;
-  var c="abc"+12+5+"def";
-  var d="abc"+(12+5)+"def";
-  console.log(a);
-  console.log(b);
-  console.log(c);
-  console.log(d);
+  var a=1+"1";//11
+  var b="1"+1;//11
+  var c="abc"+12+5+"def";//abc125def
+  var d="abc"+(12+5)+"def";//abc17def
 }
-
-//结果
-11
-11
-abc125def
-abc17def
 ```
 
 -  eval是做什么的？
@@ -1189,9 +1180,9 @@ parseInt('2', 2); // NaN, 按二进制转换不允许出现2
 
 ```javascript
 function Person(name, age) {
-    this.name = name;
-    this.age = age;
-    this.sing = function() { alert(this.name) }
+  this.name = name;
+  this.age = age;
+  this.sing = function() { alert(this.name) }
 }
 ```
 
@@ -1234,12 +1225,12 @@ this一般情况下：是全局对象Global。 作为方法调用，那么this�
     <li> index = 3</li>
 </ul>
 <script type="text/javascript">
-    var nodes = document.getElementsByTagName("li");
-    for(i = 0;i<nodes.length;i+= 1){
-      nodes[i].onclick = function(){
-        console.log(i+1);//不用闭包的话，值每次都是4
-      }(i);
-    }
+  var nodes = document.getElementsByTagName("li");
+  for(i = 0;i<nodes.length;i+= 1){
+    nodes[i].onclick = function(){
+      console.log(i+1);//不用闭包的话，值每次都是4
+    }(i);
+  }
 </script>
 ```
 
@@ -1263,7 +1254,7 @@ use strict是一种ECMAscript 5 添加的（严格）运行模式,这种模式�
 使用instanceof （待完善）
 
 if(a instanceof Person){
-   alert('yes');
+  alert('yes');
 }
 ```
 
@@ -1431,12 +1422,15 @@ define(['./a', './b'], function(a, b) { // 依赖必须一开始就写好
 (3) 创建script，插入到DOM中，加载完毕后callBack
 ```
 
--  requireJS的核心原理是什么？（如何动态加载的？如何避免多次加载的？如何
-缓存的？）
+-  requireJS的核心原理是什么？（如何动态加载的？如何避免多次加载的？如何缓存的？）
 
 -  谈一谈你对ECMAScript6的了解？
 
--  ECMAScript6 怎么写class么，为什么会出现class这种东西?
+https://segmentfault.com/a/1190000002583196
+
+http://es6.ruanyifeng.com/
+
+-  ECMAScript6 怎么写class，为什么会出现class这种东西?
 
 - documen.write和 innerHTML的区别
 
@@ -1459,11 +1453,11 @@ function sub(a,b){
 }
 alert(add.call(sub,3,1));//add替换sub
 //call函数和apply方法的第一个参数都是要传入给当前对象的对象，及函数内部的this。后面的参数都是传递给当前对象的参数。
-var func=new function(){
-	this.a="func";
+var func = new function(){
+	this.a = "func";
 }
-var myfunc=function(x){
-    var a="myfunc";
+var myfunc = function(x){
+    var a = "myfunc";
     alert(this.a);
     alert(x);
 }
