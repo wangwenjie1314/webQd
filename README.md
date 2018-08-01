@@ -1338,16 +1338,6 @@ HEADER内一起传送到ACTION属性所指的URL地址。用户看不到这个�
 2、在做数据查询时，建议用Get方式；而在做数据添加、修改或删除时，建议用Post方式；
 ```
 
--  同步和异步的区别?
-
-```html
-同步的概念应该是来自于OS中关于同步的概念:不同进程为协同完成某项工作而在先后次序上调整(通过阻塞,唤醒等方式).同步强调的是顺序性.谁先谁后.异步则不存在这种顺序性.
-
-同步：浏览器访问服务器请求，用户看得到页面刷新，重新发请求,等请求完，页面刷新，新内容出现，用户看到新内容,进行下一步操作。
-
-异步：浏览器访问服务器请求，用户正常操作，浏览器后端进行请求。等请求完，页面不刷新，新内容也会出现，用户看到新内容。
-```
-
 -  如何解决跨域问题?
 
 ```html
@@ -1485,6 +1475,18 @@ apply传入的是一个参数数组，也就是将多个参数组合成为一个
 
 -  jquery中如何将数组转化为json字符串，然后再转化回来？
 
+```javascript
+$.fn.stringifyArray = function(array) {
+    return JSON.stringify(array)
+}
+
+$.fn.parseArray = function(array) {
+    return JSON.parse(array)
+}
+//然后调用：
+$("#xxx").stringifyArray(array)
+```
+
 -  jQuery 的属性拷贝(extend)的实现原理是什么，如何实现深拷贝？
 
 -  jquery.extend 与 jquery.fn.extend的区别？
@@ -1510,31 +1512,12 @@ apply传入的是一个参数数组，也就是将多个参数组合成为一个
 提供了一些常用的界面元素，诸如对话框、拖动行为、改变大小行为等等
 ```
 
--  jQuery的源码看过吗？能不能简单说一下它的实现原理？
-
--  jQuery 中如何将数组转化为json字符串，然后再转化回来？
-
-jQuery中没有提供这个功能，所以你需要先编写两个jQuery的扩展：
-
-```javascript
-$.fn.stringifyArray = function(array) {
-    return JSON.stringify(array)
-}
-
-$.fn.parseArray = function(array) {
-    return JSON.parse(array)
-}
-//然后调用：
-$("#xxx").stringifyArray(array)
-```
-
 -  针对 jQuery 的优化方法？
 
 ```html
 *基于Class的选择性的性能相对于Id选择器开销很大，因为需遍历所有DOM元素。
 
-*频繁操作的DOM，先缓存起来再操作。用jQuery的链式调用更好。
-         比如：var str=$("a").attr("href");
+*频繁操作的DOM，先缓存起来再操作。用jQuery的链式调用更好。比如：var str=$("a").attr("href");
 
 *for (var i = size; i < arr.length; i++) {}
 for 循环每一次循环都查找了数组 (arr) 的.length 属性，在开始循环的时候设置一个变量来存储这个数字，可以让循环跑得更快：
@@ -1568,6 +1551,10 @@ for (var i = size, length = arr.length; i < length; i++) {}
 -  JavaScript中的作用域与变量声明提升？
 
 -  如何编写高性能的Javascript？
+
+https://segmentfault.com/a/1190000011735788
+
+执行与加载、变量处理、DOM操作的注意点、算法和流程控制、
 
 -  那些操作会造成内存泄漏？
 
@@ -1635,7 +1622,9 @@ spa
 
 同步，异步
 同步：在发出一个同步调用时，在没有得到结果之前，该调用就不返回。
+同步：浏览器访问服务器请求，用户看得到页面刷新，重新发请求,等请求完，页面刷新，新内容出现，用户看到新内容,进行下一步操作。
 异步：在发出一个异步调用后，调用者不会立刻得到结果，该调用就返回了。
+异步：浏览器访问服务器请求，用户正常操作，浏览器后端进行请求。等请求完，页面不刷新，新内容也会出现，用户看到新内容。
 
 (阻塞\非阻塞)[https://img-blog.csdn.net/20161223093414586?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvc2luYXRfMzU1MTIyNDU=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast]
 一个线程/进程经历的5个状态，创建，就绪，运行，阻塞，终止。各个状态的转换条件如上图，其中有个阻塞状态，就是说当线程中调用某个函数，需要IO请求，或者暂时得不到竞争资源的，操作系统会把该线程阻塞起来，避免浪费CPU资源，等到得到了资源，再变成就绪状态，等待CPU调度运行。
