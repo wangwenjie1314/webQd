@@ -70,19 +70,21 @@ HTTP、安全、正则、优化、重构、响应式、移动端、团队协作�
 - Doctype作用? 严格模式与混杂模式如何区分？它们有何意义?
 
 ```html
-（1）、<!DOCTYPE> 声明位于文档中的最前面，处于 <html> 标签之前。告知浏览器的解析器，
+（1）<!DOCTYPE> 声明位于文档中的最前面，处于 <html> 标签之前。告知浏览器的解析器，
 用什么文档类型 规范来解析这个文档。
 
-（2）、严格模式的排版和 JS 运作模式是  以该浏览器支持的最高标准运行。
+（2）严格模式的排版和 JS 运作模式是  以该浏览器支持的最高标准运行。
 
-（3）、在混杂模式中，页面以宽松的向后兼容的方式显示。模拟老式浏览器的行为以防止站点无法工作。
+（3）在混杂模式中，页面以宽松的向后兼容的方式显示。模拟老式浏览器的行为以防止站点无法工作。
 
-（4）、DOCTYPE不存在或格式不正确会导致文档以混杂模式呈现。
+（4）DOCTYPE不存在或格式不正确会导致文档以混杂模式呈现。
 ```
 
 - HTML5 为什么只需要写 '<!DOCTYPE HTML>'？
 
 ```html
+HTML5 为什么只需要写 '<!DOCTYPE HTML>'？
+
 HTML5 不基于 SGML，因此不需要对DTD进行引用，但是需要doctype来规范浏览器的行为（让浏览器按照它们应该的方式来运行）；
 
 而HTML4.01基于SGML,所以需要对DTD进行引用，才能告知浏览器文档所使用的文档类型。
@@ -152,7 +154,7 @@ Gecko内核：Netscape6及以上版本，FF,MozillaSuite/SeaMonkey等
 
 Presto内核：Opera7及以上。      [Opera内核原为：Presto，现为：Blink;]
 
-Webkit内核：Safari,Chrome等。   [ Chrome的：Blink（WebKit的分支）]
+Webkit内核：Safari,Chrome等。   [Chrome的：Blink（WebKit的分支）]
 
 详细文章：[浏览器内核的解析和对比](http://www.cnblogs.com/fullhouse/archive/2011/12/19/2293455.html)
 ```
@@ -209,7 +211,7 @@ HTML5？
 
 - 绘画 canvas
 用于媒介回放的 video 和 audio 元素
-本地离线存储 localStorage 长期存储数据，浏览器关闭后数据不丢失；
+本地离线存储 localStorage (目前业界基本上统一为5M)长期存储数据，浏览器关闭后数据不丢失；
 sessionStorage 的数据在浏览器关闭后自动删除
 
 语意化更好的内容元素，比如 article、footer、header、nav、section
@@ -320,7 +322,7 @@ sessionStorage和localStorage不会自动把数据发给服务器，仅在本地
     sessionStorage和localStorage 虽然也有存储大小的限制，但比cookie大得多，可以达到5M或更大。
 
 有期时间：
-    localStorage    存储持久数据，浏览器关闭后数据不丢失除非主动删除数据；
+    localStorage    存储持久数据(目前业界基本上统一为5M)，浏览器关闭后数据不丢失除非主动删除数据；
     sessionStorage  数据在当前浏览器窗口关闭后自动删除。
     cookie          设置的cookie过期时间之前一直有效，即使窗口或浏览器关闭
 
@@ -336,7 +338,7 @@ sessionStorage和localStorage各自独立的存储空间；
 label标签来定义表单控制间的关系,当用户选择该标签时，浏览器会自动将焦点转到和标签相关的表单控件上。
 
 <label for="Name">Number:</label>
-<input type=“text“name="Name" id="Name"/>
+<input type="text" name="Name" id="Name"/>
 
 <label>Date:<input type="text" name="B"/></label>
 ```
@@ -350,7 +352,7 @@ label标签来定义表单控制间的关系,当用户选择该标签时，浏�
 - 如何实现浏览器内多个标签页之间的通信? (阿里)
 
 ```html
-调用localstorge、cookies等本地存储方式
+使用localStorage、使用cookie+setInterval
 ```
 
 - webSocket如何兼容低浏览器？(阿里)
@@ -403,7 +405,8 @@ ActiveX HTMLFile (IE) 、
 - CSS 选择符有哪些？哪些属性可以继承？优先级算法如何计算？ CSS3新增伪类有那些？
 
 ```html
--   1.id选择器（ # myid）
+
+  1.id选择器（ # myid）
 	2.类选择器（.myclassname）
 	3.标签选择器（div, h1, p）
 	4.相邻选择器（h1 + p）
@@ -444,9 +447,9 @@ p:nth-child(2)	选择属于其父元素的第二个子元素的每个 <p> 元素
 *  给div设置一个宽度，然后添加margin:0 auto属性
 
 div{
-	width:200px;
-	margin:0 auto;
- }
+  width:200px;
+  margin:0 auto;
+}
 
 *  居中一个浮动元素
 
@@ -496,8 +499,10 @@ div{
 生成相对定位的元素，相对于其正常位置进行定位。
 
   static
-默认值。没有定位，元素出现在正常的流中
-   （忽略 top, bottom, left, right z-index 声明）。
+默认值。没有定位，元素出现在正常的流中（忽略 top, bottom, left, right z-index 声明）。
+
+  sticky
+粘性定位，这是一个结合了 position:relative 和 position:fixed 两种定位功能于一体的特殊定位，适用于一些特殊场景。元素先按照普通文档流定位，然后相对于该元素在流中的 flow root（BFC）和 containing block（最近的块级祖先元素）定位。而后，元素定位表现为在跨越特定阈值前为相对定位，之后为固定定位。
 
   inherit
 规定从父元素继承 position 属性的值。
@@ -579,81 +584,80 @@ align-self：允许单个项目与其他项目不一样的对齐方式，可以�
 ```
 
 - 垂直居中的方法
-  (1)margin:auto法
-  ```
-  div{
-    width: 400px;
-    height: 400px;
-    position: relative;
-    border: 1px solid #465468;
-  }
-  img{
-    position: absolute;
-    margin: auto;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-  }
 
-  <div>
-   <img src="mm.jpg">
-  </div>
+(1) margin:auto法
+```
+div{
+  width: 400px;
+  height: 400px;
+  position: relative;
+  border: 1px solid #465468;
+}
+img{
+  position: absolute;
+  margin: auto;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
 
-  定位为上下左右为0，margin：0可以实现脱离文档流的居中.
-  ```
+<div>
+  <img src="mm.jpg">
+</div>
 
-  (2)margin负值法
-  ```
-  .container{
-    width: 500px;
-    height: 400px;
-    border: 2px solid #379;
-    position: relative;
-  }
-  .inner{
-    width: 480px;
-    height: 380px;
-    background-color: #746;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    margin-top: -190px; /*height的一半*/
-    margin-left: -240px; /*width的一半*/
-  }
-  ```
-  (3)利用flex
-  将父元素设置为display:flex，并且设置align-items:center;justify-content:center;
-  ```
-  .container{
-    width: 300px;
-    height: 200px;
-    border: 3px solid #546461;
-    display: -webkit-flex;
-    display: flex;
-    -webkit-align-items: center;
-    align-items: center;
-    -webkit-justify-content: center;
-    justify-content: center;
-  }
- .inner{
-    border: 3px solid #458761;
-    padding: 20px;
-  }
-  ```
+定位为上下左右为0，margin：0可以实现脱离文档流的居中.
+```
 
-- li与li之间有看不见的空白间隔是什么原因引起的？有什么解决办法？
+(2) margin负值法
+```
+.container{
+  width: 500px;
+  height: 400px;
+  border: 2px solid #379;
+  position: relative;
+}
+.inner{
+  width: 480px;
+  height: 380px;
+  background-color: #746;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-top: -190px; /*height的一半*/
+  margin-left: -240px; /*width的一半*/
+}
+```
+(3)利用flex
 
-- 经常遇到的浏览器的兼容性有哪些？原因，解决方法是什么，常用hack的技巧 ？
+将父元素设置为display:flex，并且设置align-items:center;justify-content:center;
+
+```
+.container{
+  width: 300px;
+  height: 200px;
+  border: 3px solid #546461;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+}
+.inner{
+  border: 3px solid #458761;
+  padding: 20px;
+}
+```
 
 - 为什么要初始化CSS样式。
 
 ```html
-+ 因为浏览器的兼容问题，不同浏览器对有些标签的默认值是不同的，如果没对CSS初始化往往会出现浏览器之间的页面显示差异。
+因为浏览器的兼容问题，不同浏览器对有些标签的默认值是不同的，如果没对CSS初始化往往会出现浏览器之间的页面显示差异。
 
-+ 当然，初始化样式会对SEO有一定的影响，但鱼和熊掌不可兼得，但力求影响最小的情况下初始化。
+当然，初始化样式会对SEO有一定的影响，但鱼和熊掌不可兼得，但力求影响最小的情况下初始化。
 
-*最简单的初始化方法就是： * {padding: 0; margin: 0;} （不建议）
+最简单的初始化方法就是： * {padding: 0; margin: 0;} （不建议）
 
 淘宝的样式初始化：
 body, h1, h2, h3, h4, h5, h6, hr, p, blockquote, dl, dt,
@@ -673,6 +677,10 @@ fieldset, img { border:0; }
 button, input, select, textarea { font-size:100%; }
 table { border-collapse:collapse; border-spacing:0; }
 ```
+
+- li与li之间有看不见的空白间隔是什么原因引起的？有什么解决办法？
+
+- 经常遇到的浏览器的兼容性有哪些？原因，解决方法是什么，常用hack的技巧 ？
 
 - absolute的containing block计算方式跟正常流有什么不同？
 
@@ -802,10 +810,19 @@ SASS (SASS、LESS没有本质区别，只因为团队前端都是用的SASS)
 
 ## <a name='js'>JavaScript</a>
 
--  介绍js的基本数据类型。
+-  介绍js的数据类型。
 
-```javascript
-Undefined、Null、Boolean、Number、String、Symbol(es6新增)
+```html
+ECMAScript中有5中简单数据类型（也称为基本数据类型）: Undefined、Null、Boolean、Number和String。
+还有1中复杂的数据类型————Object，Object本质上是由一组无序的名值对组成的。
+
+其中Undefined、Null、Boolean、Number都属于基本类型。
+
+Object、Array和Function则属于引用类型，
+
+String有些特殊（String类型用于表示由零或多个16位Unicode字符组成的字符序列，即字符串）（string类型有些特殊，因为字符串具有可变的大小，所以显然它不能被直接存储在具有固定大小的变量中。由于效率的原因，我们希望JS只复制对字符串的引用，而不是字符串的内容。但是另一方面，字符串在许多方面都和基本类型的表现相似，而字符串是不可变的这一事实（即没法改变一个字符串值的内容），因此可以将字符串看成行为与基本类型相似的不可变引用类型）
+
+拓展：原始数据类型Symbol 表示独一无二的值。
 ```
 
 -  介绍js有哪些内置对象？
@@ -842,20 +859,21 @@ Object 是 JavaScript 中所有对象的父对象
 特点：
 JavaScript对象是通过引用来传递的，我们创建的每个新对象实体中并没有一份属于自己的原型副本。当我们修改原型时，与之相关的对象也会继承这一改变。
 
+当我们需要一个属性的时，Javascript引擎会先看当前对象中是否有这个属性， 如果没有的话，就会查找他的Prototype对象是否有这个属性，如此递推下去，一直检索到 Object 内建对象。
 
- 当我们需要一个属性的时，Javascript引擎会先看当前对象中是否有这个属性， 如果没有的话，
- 就会查找他的Prototype对象是否有这个属性，如此递推下去，一直检索到 Object 内建对象。
-    function Func(){}
-    Func.prototype.name = "Sean";
-    Func.prototype.getInfo = function() {
-      return this.name;
-    }
-    var person = new Func();//现在可以参考var person = Object.create(oldObject);
-    console.log(person.getInfo());//它拥有了Func的属性和方法
-    //"Sean"
-    console.log(Func.prototype);
-    // Func { name="Sean", getInfo=function()}
+  function Func(){}
 
+  Func.prototype.name = "Sean";
+  Func.prototype.getInfo = function() {
+    return this.name;
+  }
+  var person = new Func();//现在可以参考var person = Object.create(oldObject);
+
+  console.log(person.getInfo());//它拥有了Func的属性和方法
+  //"Sean"
+
+  console.log(Func.prototype);
+  // Func { name="Sean", getInfo=function()}
 
   //再看下这个
   function A(){}
