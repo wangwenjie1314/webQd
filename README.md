@@ -4,6 +4,8 @@
 
 [前端面试指南.pdf](file/前端面试指南.pdf)
 
+[WEB前端知识总结](https://zhuanlan.zhihu.com/p/25334672)
+
 [2018进击的大前端.pdf](file/2018进击的大前端.pdf)
 
 ## 2018-07-24 更新
