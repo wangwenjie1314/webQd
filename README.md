@@ -1,5 +1,11 @@
 # 前端开发面试题
 
+## 2018-08-03 更新
+
+[前端面试指南.pdf](file/前端面试指南.pdf)
+
+[2018进击的大前端.pdf](file/2018进击的大前端.pdf)
+
 ## 2018-07-24 更新
 
 [写简历的技巧](https://github.com/atian25/blog/issues/3)
@@ -70,19 +76,21 @@ HTTP、安全、正则、优化、重构、响应式、移动端、团队协作�
 - Doctype作用? 严格模式与混杂模式如何区分？它们有何意义?
 
 ```html
-（1）、<!DOCTYPE> 声明位于文档中的最前面，处于 <html> 标签之前。告知浏览器的解析器，
+（1）<!DOCTYPE> 声明位于文档中的最前面，处于 <html> 标签之前。告知浏览器的解析器，
 用什么文档类型 规范来解析这个文档。
 
-（2）、严格模式的排版和 JS 运作模式是  以该浏览器支持的最高标准运行。
+（2）严格模式的排版和 JS 运作模式是  以该浏览器支持的最高标准运行。
 
-（3）、在混杂模式中，页面以宽松的向后兼容的方式显示。模拟老式浏览器的行为以防止站点无法工作。
+（3）在混杂模式中，页面以宽松的向后兼容的方式显示。模拟老式浏览器的行为以防止站点无法工作。
 
-（4）、DOCTYPE不存在或格式不正确会导致文档以混杂模式呈现。
+（4）DOCTYPE不存在或格式不正确会导致文档以混杂模式呈现。
 ```
 
 - HTML5 为什么只需要写 '!DOCTYPE HTML'？
 
 ```html
+HTML5 为什么只需要写 '<!DOCTYPE HTML>'？
+
 HTML5 不基于 SGML，因此不需要对DTD进行引用，但是需要doctype来规范浏览器的行为（让浏览器按照它们应该的方式来运行）；
 
 而HTML4.01基于SGML,所以需要对DTD进行引用，才能告知浏览器文档所使用的文档类型。
@@ -152,7 +160,7 @@ Gecko内核：Netscape6及以上版本，FF,MozillaSuite/SeaMonkey等
 
 Presto内核：Opera7及以上。      [Opera内核原为：Presto，现为：Blink;]
 
-Webkit内核：Safari,Chrome等。   [ Chrome的：Blink（WebKit的分支）]
+Webkit内核：Safari,Chrome等。   [Chrome的：Blink（WebKit的分支）]
 
 详细文章：[浏览器内核的解析和对比](http://www.cnblogs.com/fullhouse/archive/2011/12/19/2293455.html)
 ```
@@ -176,12 +184,12 @@ Webkit内核：Safari,Chrome等。   [ Chrome的：Blink（WebKit的分支）]
 首先，巧妙的使用“\9”这一标记，将IE游览器从所有情况中分离出来。
 接着，再次使用“+”将IE8和IE7、IE6分离开来，这样IE8已经独立识别。
 
-css
+//css
 .bb{
-background-color:#f1ee18;/*所有识别*/
-.background-color:#00deff\9; /*IE6、7、8识别*/
-+background-color:#a200ff;/*IE6、7识别*/
-_background-color:#1e0bd1;/*IE6识别*/
+  background-color:#f1ee18;/*所有识别*/
+  .background-color:#00deff\9; /*IE6、7、8识别*/
+  +background-color:#a200ff;/*IE6、7识别*/
+  _background-color:#1e0bd1;/*IE6识别*/
 }
 
 -  IE下,可以使用获取常规属性的方法来获取自定义属性,
@@ -209,7 +217,7 @@ HTML5？
 
 - 绘画 canvas
 用于媒介回放的 video 和 audio 元素
-本地离线存储 localStorage 长期存储数据，浏览器关闭后数据不丢失；
+本地离线存储 localStorage (目前业界基本上统一为5M)长期存储数据，浏览器关闭后数据不丢失；
 sessionStorage 的数据在浏览器关闭后自动删除
 
 语意化更好的内容元素，比如 article、footer、header、nav、section
@@ -320,7 +328,7 @@ sessionStorage和localStorage不会自动把数据发给服务器，仅在本地
     sessionStorage和localStorage 虽然也有存储大小的限制，但比cookie大得多，可以达到5M或更大。
 
 有期时间：
-    localStorage    存储持久数据，浏览器关闭后数据不丢失除非主动删除数据；
+    localStorage    存储持久数据(目前业界基本上统一为5M)，浏览器关闭后数据不丢失除非主动删除数据；
     sessionStorage  数据在当前浏览器窗口关闭后自动删除。
     cookie          设置的cookie过期时间之前一直有效，即使窗口或浏览器关闭
 
@@ -336,7 +344,7 @@ sessionStorage和localStorage各自独立的存储空间；
 label标签来定义表单控制间的关系,当用户选择该标签时，浏览器会自动将焦点转到和标签相关的表单控件上。
 
 <label for="Name">Number:</label>
-<input type=“text“name="Name" id="Name"/>
+<input type="text" name="Name" id="Name"/>
 
 <label>Date:<input type="text" name="B"/></label>
 ```
@@ -350,7 +358,7 @@ label标签来定义表单控制间的关系,当用户选择该标签时，浏�
 - 如何实现浏览器内多个标签页之间的通信? (阿里)
 
 ```html
-调用localstorge、cookies等本地存储方式
+使用localStorage、使用cookie+setInterval
 ```
 
 - webSocket如何兼容低浏览器？(阿里)
@@ -403,29 +411,32 @@ ActiveX HTMLFile (IE) 、
 - CSS 选择符有哪些？哪些属性可以继承？优先级算法如何计算？ CSS3新增伪类有那些？
 
 ```html
--   1.id选择器（ # myid）
-	2.类选择器（.myclassname）
-	3.标签选择器（div, h1, p）
-	4.相邻选择器（h1 + p）
-	5.子选择器（ul < li）
-	6.后代选择器（li a）
-	7.通配符选择器（ * ）
-	8.属性选择器（a[rel = "external"]）
-	9.伪类选择器（a: hover, li: nth - child）
+选择符:
+1.id选择器（ # myid）
+2.类选择器（.myclassname）
+3.标签选择器（div, h1, p）
+4.相邻选择器（h1 + p）
+5.子选择器（ul < li）
+6.后代选择器（li a）
+7.通配符选择器（ * ）
+8.属性选择器（a[rel = "external"]）
+9.伪类选择器（a: hover, li: nth - child）
 
--   可继承的样式： font-size font-family color, UL LI DL DD DT;
+可继承的样式：
+font-size font-family color, UL LI DL DD DT;
 
--   不可继承的样式：border padding margin width height ;
+不可继承的样式：
+border padding margin width height ;
 
--   优先级就近原则，同权重情况下样式定义最近者为准;
+优先级就近原则，同权重情况下样式定义最近者为准;
 
--   载入样式以最后载入的定位为准;
+载入样式以最后载入的定位为准;
 
 优先级为:
 
-   !important >  id > class > tag
+  !important >  id > class > tag
 
-   important 比 内联优先级高
+  important 比 内联优先级高
 
 CSS3新增伪类举例：
 
@@ -444,9 +455,9 @@ p:nth-child(2)	选择属于其父元素的第二个子元素的每个 <p> 元素
 *  给div设置一个宽度，然后添加margin:0 auto属性
 
 div{
-	width:200px;
-	margin:0 auto;
- }
+  width:200px;
+  margin:0 auto;
+}
 
 *  居中一个浮动元素
 
@@ -496,8 +507,10 @@ div{
 生成相对定位的元素，相对于其正常位置进行定位。
 
   static
-默认值。没有定位，元素出现在正常的流中
-   （忽略 top, bottom, left, right z-index 声明）。
+默认值。没有定位，元素出现在正常的流中（忽略 top, bottom, left, right z-index 声明）。
+
+  sticky
+粘性定位，这是一个结合了 position:relative 和 position:fixed 两种定位功能于一体的特殊定位，适用于一些特殊场景。元素先按照普通文档流定位，然后相对于该元素在流中的 flow root（BFC）和 containing block（最近的块级祖先元素）定位。而后，元素定位表现为在跨越特定阈值前为相对定位，之后为固定定位。
 
   inherit
 规定从父元素继承 position 属性的值。
@@ -579,81 +592,80 @@ align-self：允许单个项目与其他项目不一样的对齐方式，可以�
 ```
 
 - 垂直居中的方法
-  (1)margin:auto法
-  ```
-  div{
-    width: 400px;
-    height: 400px;
-    position: relative;
-    border: 1px solid #465468;
-  }
-  img{
-    position: absolute;
-    margin: auto;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-  }
 
-  <div>
-   <img src="mm.jpg">
-  </div>
+(1) margin:auto法
+```
+div{
+  width: 400px;
+  height: 400px;
+  position: relative;
+  border: 1px solid #465468;
+}
+img{
+  position: absolute;
+  margin: auto;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
 
-  定位为上下左右为0，margin：0可以实现脱离文档流的居中.
-  ```
+<div>
+  <img src="mm.jpg">
+</div>
 
-  (2)margin负值法
-  ```
-  .container{
-    width: 500px;
-    height: 400px;
-    border: 2px solid #379;
-    position: relative;
-  }
-  .inner{
-    width: 480px;
-    height: 380px;
-    background-color: #746;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    margin-top: -190px; /*height的一半*/
-    margin-left: -240px; /*width的一半*/
-  }
-  ```
-  (3)利用flex
-  将父元素设置为display:flex，并且设置align-items:center;justify-content:center;
-  ```
-  .container{
-    width: 300px;
-    height: 200px;
-    border: 3px solid #546461;
-    display: -webkit-flex;
-    display: flex;
-    -webkit-align-items: center;
-    align-items: center;
-    -webkit-justify-content: center;
-    justify-content: center;
-  }
- .inner{
-    border: 3px solid #458761;
-    padding: 20px;
-  }
-  ```
+定位为上下左右为0，margin：0可以实现脱离文档流的居中.
+```
 
-- li与li之间有看不见的空白间隔是什么原因引起的？有什么解决办法？
+(2) margin负值法
+```
+.container{
+  width: 500px;
+  height: 400px;
+  border: 2px solid #379;
+  position: relative;
+}
+.inner{
+  width: 480px;
+  height: 380px;
+  background-color: #746;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-top: -190px; /*height的一半*/
+  margin-left: -240px; /*width的一半*/
+}
+```
+(3)利用flex
 
-- 经常遇到的浏览器的兼容性有哪些？原因，解决方法是什么，常用hack的技巧 ？
+将父元素设置为display:flex，并且设置align-items:center;justify-content:center;
+
+```
+.container{
+  width: 300px;
+  height: 200px;
+  border: 3px solid #546461;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+}
+.inner{
+  border: 3px solid #458761;
+  padding: 20px;
+}
+```
 
 - 为什么要初始化CSS样式。
 
 ```html
-+ 因为浏览器的兼容问题，不同浏览器对有些标签的默认值是不同的，如果没对CSS初始化往往会出现浏览器之间的页面显示差异。
+因为浏览器的兼容问题，不同浏览器对有些标签的默认值是不同的，如果没对CSS初始化往往会出现浏览器之间的页面显示差异。
 
-+ 当然，初始化样式会对SEO有一定的影响，但鱼和熊掌不可兼得，但力求影响最小的情况下初始化。
+当然，初始化样式会对SEO有一定的影响，但鱼和熊掌不可兼得，但力求影响最小的情况下初始化。
 
-*最简单的初始化方法就是： * {padding: 0; margin: 0;} （不建议）
+最简单的初始化方法就是： * {padding: 0; margin: 0;} （不建议）
 
 淘宝的样式初始化：
 body, h1, h2, h3, h4, h5, h6, hr, p, blockquote, dl, dt,
@@ -673,6 +685,10 @@ fieldset, img { border:0; }
 button, input, select, textarea { font-size:100%; }
 table { border-collapse:collapse; border-spacing:0; }
 ```
+
+- li与li之间有看不见的空白间隔是什么原因引起的？有什么解决办法？
+
+- 经常遇到的浏览器的兼容性有哪些？原因，解决方法是什么，常用hack的技巧 ？
 
 - absolute的containing block计算方式跟正常流有什么不同？
 
@@ -802,10 +818,19 @@ SASS (SASS、LESS没有本质区别，只因为团队前端都是用的SASS)
 
 ## <a name='js'>JavaScript</a>
 
--  介绍js的基本数据类型。
+-  介绍js的数据类型。
 
-```javascript
-Undefined、Null、Boolean、Number、String、Symbol(es6新增)
+```html
+ECMAScript中有5中简单数据类型（也称为基本数据类型）: Undefined、Null、Boolean、Number和String。
+还有1中复杂的数据类型————Object，Object本质上是由一组无序的名值对组成的。
+
+其中Undefined、Null、Boolean、Number都属于基本类型。
+
+Object、Array和Function则属于引用类型，
+
+String有些特殊（String类型用于表示由零或多个16位Unicode字符组成的字符序列，即字符串）（string类型有些特殊，因为字符串具有可变的大小，所以显然它不能被直接存储在具有固定大小的变量中。由于效率的原因，我们希望JS只复制对字符串的引用，而不是字符串的内容。但是另一方面，字符串在许多方面都和基本类型的表现相似，而字符串是不可变的这一事实（即没法改变一个字符串值的内容），因此可以将字符串看成行为与基本类型相似的不可变引用类型）
+
+拓展：原始数据类型Symbol 表示独一无二的值。
 ```
 
 -  介绍js有哪些内置对象？
@@ -842,20 +867,21 @@ Object 是 JavaScript 中所有对象的父对象
 特点：
 JavaScript对象是通过引用来传递的，我们创建的每个新对象实体中并没有一份属于自己的原型副本。当我们修改原型时，与之相关的对象也会继承这一改变。
 
+当我们需要一个属性的时，Javascript引擎会先看当前对象中是否有这个属性， 如果没有的话，就会查找他的Prototype对象是否有这个属性，如此递推下去，一直检索到 Object 内建对象。
 
- 当我们需要一个属性的时，Javascript引擎会先看当前对象中是否有这个属性， 如果没有的话，
- 就会查找他的Prototype对象是否有这个属性，如此递推下去，一直检索到 Object 内建对象。
-    function Func(){}
-    Func.prototype.name = "Sean";
-    Func.prototype.getInfo = function() {
-      return this.name;
-    }
-    var person = new Func();//现在可以参考var person = Object.create(oldObject);
-    console.log(person.getInfo());//它拥有了Func的属性和方法
-    //"Sean"
-    console.log(Func.prototype);
-    // Func { name="Sean", getInfo=function()}
+  function Func(){}
 
+  Func.prototype.name = "Sean";
+  Func.prototype.getInfo = function() {
+    return this.name;
+  }
+  var person = new Func();//现在可以参考var person = Object.create(oldObject);
+
+  console.log(person.getInfo());//它拥有了Func的属性和方法
+  //"Sean"
+
+  console.log(Func.prototype);
+  // Func { name="Sean", getInfo=function()}
 
   //再看下这个
   function A(){}
@@ -893,27 +919,26 @@ JavaScript对象是通过引用来传递的，我们创建的每个新对象实�
 
 //类式继承
 function Super(){
-    this.color = ['red','blue'];
+  this.color = ['red','blue'];
 }
 
 function Sub(){
-    Super.call(this);
+  Super.call(this);
 }
 
 //原型继承
 function Parent(){
-    this.name = 'wang';
+  this.name = 'wang';
 }
 
 function Child(){
-    this.age = 28;
+  this.age = 28;
 }
 Child.prototype = new Parent();//继承了Parent，通过原型
 
 var demo = new Child();
 alert(demo.age);
 alert(demo.name);//得到被继承的属性
-
 ```
 
 -  javascript创建对象的几种方式？
@@ -925,10 +950,10 @@ javascript创建对象简单的说,无非就是使用内置对象或各种自定
 1、对象字面量的方式
 
     person={
-        firstname:"Mark",
-        lastname:"Yun",
-        age:25,
-        eyecolor:"black"
+      firstname:"Mark",
+      lastname:"Yun",
+      age:25,
+      eyecolor:"black"
     };
 
 2、用function来模拟无参的构造函数
@@ -1007,21 +1032,11 @@ javascript创建对象简单的说,无非就是使用内置对象或各种自定
 
 ```javascript
 window.onload=function(){
-  var a=1+"1";
-  var b="1"+1;
-  var c="abc"+12+5+"def";
-  var d="abc"+(12+5)+"def";
-  console.log(a);
-  console.log(b);
-  console.log(c);
-  console.log(d);
+  var a=1+"1";//11
+  var b="1"+1;//11
+  var c="abc"+12+5+"def";//abc125def
+  var d="abc"+(12+5)+"def";//abc17def
 }
-
-//结果
-11
-11
-abc125def
-abc17def
 ```
 
 -  eval是做什么的？
@@ -1171,9 +1186,9 @@ parseInt('2', 2); // NaN, 按二进制转换不允许出现2
 
 ```javascript
 function Person(name, age) {
-    this.name = name;
-    this.age = age;
-    this.sing = function() { alert(this.name) }
+  this.name = name;
+  this.age = age;
+  this.sing = function() { alert(this.name) }
 }
 ```
 
@@ -1216,12 +1231,12 @@ this一般情况下：是全局对象Global。 作为方法调用，那么this�
     <li> index = 3</li>
 </ul>
 <script type="text/javascript">
-    var nodes = document.getElementsByTagName("li");
-    for(i = 0;i<nodes.length;i+= 1){
-      nodes[i].onclick = function(){
-        console.log(i+1);//不用闭包的话，值每次都是4
-      }(i);
-    }
+  var nodes = document.getElementsByTagName("li");
+  for(i = 0;i<nodes.length;i+= 1){
+    nodes[i].onclick = function(){
+      console.log(i+1);//不用闭包的话，值每次都是4
+    }(i);
+  }
 </script>
 ```
 
@@ -1245,7 +1260,7 @@ use strict是一种ECMAscript 5 添加的（严格）运行模式,这种模式�
 使用instanceof （待完善）
 
 if(a instanceof Person){
-   alert('yes');
+  alert('yes');
 }
 ```
 
@@ -1329,16 +1344,6 @@ HEADER内一起传送到ACTION属性所指的URL地址。用户看不到这个�
 2、在做数据查询时，建议用Get方式；而在做数据添加、修改或删除时，建议用Post方式；
 ```
 
--  同步和异步的区别?
-
-```html
-同步的概念应该是来自于OS中关于同步的概念:不同进程为协同完成某项工作而在先后次序上调整(通过阻塞,唤醒等方式).同步强调的是顺序性.谁先谁后.异步则不存在这种顺序性.
-
-同步：浏览器访问服务器请求，用户看得到页面刷新，重新发请求,等请求完，页面刷新，新内容出现，用户看到新内容,进行下一步操作。
-
-异步：浏览器访问服务器请求，用户正常操作，浏览器后端进行请求。等请求完，页面不刷新，新内容也会出现，用户看到新内容。
-```
-
 -  如何解决跨域问题?
 
 ```html
@@ -1413,12 +1418,15 @@ define(['./a', './b'], function(a, b) { // 依赖必须一开始就写好
 (3) 创建script，插入到DOM中，加载完毕后callBack
 ```
 
--  requireJS的核心原理是什么？（如何动态加载的？如何避免多次加载的？如何
-缓存的？）
+-  requireJS的核心原理是什么？（如何动态加载的？如何避免多次加载的？如何缓存的？）
 
 -  谈一谈你对ECMAScript6的了解？
 
--  ECMAScript6 怎么写class么，为什么会出现class这种东西?
+https://segmentfault.com/a/1190000002583196
+
+http://es6.ruanyifeng.com/
+
+-  ECMAScript6 怎么写class，为什么会出现class这种东西?
 
 - documen.write和 innerHTML的区别
 
@@ -1441,11 +1449,11 @@ function sub(a,b){
 }
 alert(add.call(sub,3,1));//add替换sub
 //call函数和apply方法的第一个参数都是要传入给当前对象的对象，及函数内部的this。后面的参数都是传递给当前对象的参数。
-var func=new function(){
-	this.a="func";
+var func = new function(){
+	this.a = "func";
 }
-var myfunc=function(x){
-    var a="myfunc";
+var myfunc = function(x){
+    var a = "myfunc";
     alert(this.a);
     alert(x);
 }
@@ -1473,6 +1481,18 @@ apply传入的是一个参数数组，也就是将多个参数组合成为一个
 
 -  jquery中如何将数组转化为json字符串，然后再转化回来？
 
+```javascript
+$.fn.stringifyArray = function(array) {
+    return JSON.stringify(array)
+}
+
+$.fn.parseArray = function(array) {
+    return JSON.parse(array)
+}
+//然后调用：
+$("#xxx").stringifyArray(array)
+```
+
 -  jQuery 的属性拷贝(extend)的实现原理是什么，如何实现深拷贝？
 
 -  jquery.extend 与 jquery.fn.extend的区别？
@@ -1498,31 +1518,12 @@ apply传入的是一个参数数组，也就是将多个参数组合成为一个
 提供了一些常用的界面元素，诸如对话框、拖动行为、改变大小行为等等
 ```
 
--  jQuery的源码看过吗？能不能简单说一下它的实现原理？
-
--  jQuery 中如何将数组转化为json字符串，然后再转化回来？
-
-jQuery中没有提供这个功能，所以你需要先编写两个jQuery的扩展：
-
-```javascript
-$.fn.stringifyArray = function(array) {
-    return JSON.stringify(array)
-}
-
-$.fn.parseArray = function(array) {
-    return JSON.parse(array)
-}
-//然后调用：
-$("#xxx").stringifyArray(array)
-```
-
 -  针对 jQuery 的优化方法？
 
 ```html
 *基于Class的选择性的性能相对于Id选择器开销很大，因为需遍历所有DOM元素。
 
-*频繁操作的DOM，先缓存起来再操作。用jQuery的链式调用更好。
-         比如：var str=$("a").attr("href");
+*频繁操作的DOM，先缓存起来再操作。用jQuery的链式调用更好。比如：var str=$("a").attr("href");
 
 *for (var i = size; i < arr.length; i++) {}
 for 循环每一次循环都查找了数组 (arr) 的.length 属性，在开始循环的时候设置一个变量来存储这个数字，可以让循环跑得更快：
@@ -1556,6 +1557,10 @@ for (var i = size, length = arr.length; i < length; i++) {}
 -  JavaScript中的作用域与变量声明提升？
 
 -  如何编写高性能的Javascript？
+
+https://segmentfault.com/a/1190000011735788
+
+执行与加载、变量处理、DOM操作的注意点、算法和流程控制、
 
 -  那些操作会造成内存泄漏？
 
@@ -1623,7 +1628,9 @@ spa
 
 同步，异步
 同步：在发出一个同步调用时，在没有得到结果之前，该调用就不返回。
+同步：浏览器访问服务器请求，用户看得到页面刷新，重新发请求,等请求完，页面刷新，新内容出现，用户看到新内容,进行下一步操作。
 异步：在发出一个异步调用后，调用者不会立刻得到结果，该调用就返回了。
+异步：浏览器访问服务器请求，用户正常操作，浏览器后端进行请求。等请求完，页面不刷新，新内容也会出现，用户看到新内容。
 
 (阻塞\非阻塞)[https://img-blog.csdn.net/20161223093414586?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvc2luYXRfMzU1MTIyNDU=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast]
 一个线程/进程经历的5个状态，创建，就绪，运行，阻塞，终止。各个状态的转换条件如上图，其中有个阻塞状态，就是说当线程中调用某个函数，需要IO请求，或者暂时得不到竞争资源的，操作系统会把该线程阻塞起来，避免浪费CPU资源，等到得到了资源，再变成就绪状态，等待CPU调度运行。
@@ -1752,11 +1759,11 @@ function b(){
   alert(a);
   var a= 1;
 }
-b();
+b();//undefined
 
 //2.原型的构造器
 function a(){}
-console.log(a.prototype.constructor);
+console.log(a.prototype.constructor);//self
 
 //3.this
 var a={
@@ -1765,10 +1772,10 @@ var a={
   }
 }
 var b=a.fn1;
-b();
+b();//window
 
 //4.typeof
-console.log(typeof "1");
+console.log(typeof "1");//string
 
 //5.闭包
 function a(){}
@@ -1781,8 +1788,8 @@ function b(p){
 b(a);
 var d = new a();
 var e = new a();
-d.fn1();
-e.fn1();
+d.fn1();//1
+e.fn1();//2
 ```
 
 - 为了区分对象的类型，我们用typeof操作符获取对象的类型，它总是返回一个字符串
