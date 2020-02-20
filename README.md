@@ -1,5 +1,13 @@
 # 前端开发面试题
 
+## 2020-02-16 更新
+
+[前端程序员面试宝典.pdf 提取码: xtg5](https://pan.baidu.com/s/157byyVWX4b-cftXDKgSRBg)
+
+[2019前端面试题（深圳）](https://zhuanlan.zhihu.com/p/60832562)
+
+[老码农的字节跳动前端面试总结](https://zhuanlan.zhihu.com/p/68974750)
+
 ## 2018-08-03 更新
 
 [前端面试指南.pdf](file/前端面试指南.pdf)
