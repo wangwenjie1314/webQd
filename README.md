@@ -1,8 +1,14 @@
 # 前端开发面试题
 
+## 2020-02-22 更新
+
+[我在阿里招前端，我该怎么帮你？](https://segmentfault.com/a/1190000021761594)
+
+[（近3万字，持续更新中）从面试前到终面，全面为您保驾护航](https://juejin.im/post/5e4f7f2ae51d4526d0595090)
+
 ## 2020-02-16 更新
 
-[前端程序员面试宝典.pdf 提取码: xtg5](https://pan.baidu.com/s/157byyVWX4b-cftXDKgSRBg)
+[前端程序员面试宝典.pdf](https://pan.baidu.com/s/157byyVWX4b-cftXDKgSRBg) 提取码: xtg5
 
 [2019前端面试题（深圳）](https://zhuanlan.zhihu.com/p/60832562)
 
