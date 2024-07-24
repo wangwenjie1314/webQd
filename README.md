@@ -6,6 +6,8 @@
 
 [特殊时期的10条生存建议](file/特殊时期的10条生存建议.pdf)
 
+[勇闯自媒体工具箱](https://nod3hje6q7.feishu.cn/docx/R0bMdftngoAjTfx7fhDcHVbHnih)
+
 ## 2024-07-02 更新
 
 > 越来越卷了，日子越来越难了，希望新更新的面试题能帮到你，希望对你有帮助。
